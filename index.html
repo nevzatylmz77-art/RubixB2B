@@ -30,7 +30,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261015d">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261016a">
 </head>
 <body>
 
@@ -373,6 +373,7 @@
             <h3 data-i18n="route.title">Doğru müşteriye, doğru günde, doğru sırayla</h3>
             <p data-i18n="route.text">Haftalık ve günlük rutları planlayın, ziyaret frekanslarını belirleyin. Plasiyerlerin konumunu ve ziyaret durumunu harita üzerinden canlı izleyin.</p>
             <ul class="checks">
+              <li data-i18n="route.l0">Google Maps tabanlı harita, adres ve rota altyapısı</li>
               <li data-i18n="route.l1">Gün / hafta bazlı rut ve ziyaret frekansı planlama</li>
               <li data-i18n="route.l2">GPS doğrulamalı check-in / check-out</li>
               <li data-i18n="route.l3">Plan dışı ve atlanan ziyaret raporları</li>
@@ -481,7 +482,7 @@
           <article class="feature reveal">
             <span class="feature__ico">📍</span>
             <h3 data-i18n="ft2.t">GPS doğrulama</h3>
-            <p data-i18n="ft2.p">Check-in konumu müşteri konumuyla eşleşir; sahte ziyaretlerin önüne geçilir.</p>
+            <p data-i18n="ft2.p">Google Maps altyapısıyla check-in konumu müşteri adresiyle yüksek doğrulukta eşleşir; sahte ziyaretlerin önüne geçilir.</p>
           </article>
           <article class="feature reveal">
             <span class="feature__ico">💳</span>
@@ -610,6 +611,10 @@
           <details>
             <summary data-i18n="faq.q6">Fiyatlandırma nasıl?</summary>
             <p data-i18n="faq.a6">Fiyatlandırma kullanıcı sayısına ve seçilen modüllere göre belirlenir. Size özel teklif için demo talep formunu doldurmanız yeterli.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.q7">Konum ve harita için hangi altyapıyı kullanıyorsunuz?</summary>
+            <p data-i18n="faq.a7">RubixB2, harita, adres ve rota işlemleri için Google Maps altyapısını kullanır. Plasiyerin konumu cihazın GPS'i ile alınır ve Google Maps üzerinde müşteri adresiyle eşleştirilir; böylece ziyaretler yüksek doğrulukla doğrulanır ve rotalar harita üzerinde planlanır.</p>
           </details>
         </div>
       </div>
@@ -873,11 +878,11 @@
     </div>
     <div class="container footer__bottom">
       <span>© <span id="year"></span> <span data-i18n="ftr.rights">NameTech Solutions BV. Tüm hakları saklıdır.</span></span>
-      <span data-i18n="ftr.tm">Odoo, Odoo S.A.'nın tescilli markasıdır.</span>
+      <span><span data-i18n="ftr.tm">Odoo, Odoo S.A.'nın tescilli markasıdır.</span> <span data-i18n="ftr.tm2">Google Maps, Google LLC'nin markasıdır.</span></span>
     </div>
   </footer>
 
-  <script src="assets/js/i18n.js?v=20261015d"></script>
-  <script src="assets/js/main.js?v=20261015d"></script>
+  <script src="assets/js/i18n.js?v=20261016a"></script>
+  <script src="assets/js/main.js?v=20261016a"></script>
 </body>
 </html>
