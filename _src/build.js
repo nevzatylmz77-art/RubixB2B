@@ -142,13 +142,86 @@
     await save(lang + '/index.html', '<!doctype html>\n' + doc.documentElement.outerHTML + '\n');
   }
 
+  // Yasal sayfalar: /xx/privacy/ ve /xx/cookies/
+  var LEGAL = window.LEGAL;
+  var tplDoc = new DOMParser().parseFromString(template, 'text/html');
+  var sprite = tplDoc.body.querySelector('svg').outerHTML; // bayrak sembolleri
+  var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;'); };
+  var cssVer = (template.match(/style\.css\?v=([\w]+)/) || [])[1] || '1';
+  var FLAG_LABEL = { tr: 'Türkçe', en: 'English', fr: 'Français', nl: 'Nederlands (Vlaams)', de: 'Deutsch', es: 'Español' };
+
+  for (var pi = 0; pi < LANGS.length; pi++) {
+    var pl = LANGS[pi];
+    var L = LEGAL[pl];
+    for (var kind of ['privacy', 'cookies']) {
+      var P = L[kind];
+      var url = BASE + pl + '/' + kind + '/';
+      var head = [
+        '<meta charset="utf-8">',
+        '<meta name="viewport" content="width=device-width, initial-scale=1">',
+        '<title>' + esc(P.title) + ' | RubixB2 — NameTech Solutions BV</title>',
+        '<meta name="description" content="' + esc(P.desc) + '">',
+        '<meta name="theme-color" content="#f5f2ec">',
+        '<meta name="robots" content="index, follow">',
+        '<link rel="canonical" href="' + url + '">'
+      ].concat(LANGS.map(function (l) { return '<link rel="alternate" hreflang="' + HREFLANG[l] + '" href="' + BASE + l + '/' + kind + '/">'; }))
+       .concat([
+        '<link rel="alternate" hreflang="x-default" href="' + BASE + 'en/' + kind + '/">',
+        '<meta property="og:type" content="website">',
+        '<meta property="og:site_name" content="RubixB2">',
+        '<meta property="og:title" content="' + esc(P.title) + ' | RubixB2">',
+        '<meta property="og:description" content="' + esc(P.desc) + '">',
+        '<meta property="og:url" content="' + url + '">',
+        '<meta property="og:image" content="' + OG_IMAGE + '">',
+        '<meta property="og:locale" content="' + OG_LOCALE[pl] + '">',
+        '<link rel="icon" type="image/png" href="../../assets/img/favicon.png">',
+        '<link rel="preload" href="../../assets/fonts/plusjakartasans-latin.woff2" as="font" type="font/woff2" crossorigin>',
+        '<link rel="stylesheet" href="../../assets/css/style.css?v=' + cssVer + '">',
+        '<script type="application/ld+json">' + JSON.stringify({
+          '@context': 'https://schema.org', '@type': 'WebPage', url: url, name: P.title, description: P.desc,
+          inLanguage: HREFLANG[pl], isPartOf: { '@id': BASE + '#website' }, publisher: { '@id': BASE + '#organization' }
+        }) + '</script>'
+      ]);
+
+      var langLinks = LANGS.map(function (l) {
+        return '<a href="../../' + l + '/' + kind + '/" hreflang="' + HREFLANG[l] + '" lang="' + l + '"' + (l === pl ? ' aria-current="page"' : '') +
+          '><svg class="flag" aria-hidden="true"><use href="#flag-' + l + '"/></svg>' + FLAG_LABEL[l] + '</a>';
+      }).join('\n      ');
+      var other = kind === 'privacy' ? 'cookies' : 'privacy';
+
+      var html = '<!doctype html>\n<html lang="' + HREFLANG[pl] + '" data-page-lang="' + pl + '">\n<head>\n  ' + head.join('\n  ') + '\n</head>\n<body class="legal-page">\n' +
+        '  ' + sprite + '\n' +
+        '  <header class="header is-scrolled legal-header">\n    <div class="container header__inner">\n' +
+        '      <a href="../" class="logo" aria-label="RubixB2"><img src="../../assets/img/rubixb2-icon.png" alt="" width="256" height="290"><span class="logo__text">Rubix<b>B2</b></span></a>\n' +
+        '      <a href="../" class="btn btn--ghost btn--sm">← ' + esc(L.ui.back) + '</a>\n' +
+        '    </div>\n  </header>\n' +
+        '  <main class="section legal">\n    <div class="container container--narrow">\n' +
+        '      <h1>' + esc(P.title) + '</h1>\n      <p class="legal__updated">' + esc(L.ui.updated) + '</p>\n' +
+        '      <article class="legal__body">' + P.body + '\n      </article>\n' +
+        '      <p class="legal__other"><a href="../' + other + '/">' + esc(L.ui[other]) + ' →</a></p>\n' +
+        '    </div>\n  </main>\n' +
+        '  <footer class="footer">\n' +
+        '    <nav class="container footer__langs" aria-label="' + esc(L.ui.langs) + '">\n      ' + langLinks + '\n    </nav>\n' +
+        '    <div class="container footer__bottom">\n' +
+        '      <span>© ' + new Date().getFullYear() + ' NameTech Solutions BV · Excelsiorlaan 44, 1930 Zaventem, Belgium · <a href="mailto:info@nametech.be">info@nametech.be</a></span>\n' +
+        '      <span class="footer__legal"><a href="../privacy/">' + esc(L.ui.privacy) + '</a> · <a href="../cookies/">' + esc(L.ui.cookies) + '</a></span>\n' +
+        '    </div>\n  </footer>\n' +
+        '  <script>document.querySelectorAll(".footer__langs a").forEach(function(a){a.addEventListener("click",function(){try{localStorage.setItem("rubix-lang",a.getAttribute("lang"))}catch(e){}})});</script>\n' +
+        '</body>\n</html>\n';
+      await save(pl + '/' + kind + '/index.html', html);
+    }
+  }
+
   // Site haritası (hreflang alternatifleriyle)
   var today = new Date().toISOString().slice(0, 10);
-  var alts = LANGS.map(function (l) { return '    <xhtml:link rel="alternate" hreflang="' + HREFLANG[l] + '" href="' + BASE + l + '/"/>'; })
-    .concat(['    <xhtml:link rel="alternate" hreflang="x-default" href="' + BASE + '"/>']).join('\n');
-  var urls = LANGS.map(function (l) {
-    return '  <url>\n    <loc>' + BASE + l + '/</loc>\n    <lastmod>' + today + '</lastmod>\n' + alts + '\n  </url>';
-  }).join('\n');
+  var sitemapEntry = function (path, xdefault) {
+    var alts = LANGS.map(function (l) { return '    <xhtml:link rel="alternate" hreflang="' + HREFLANG[l] + '" href="' + BASE + l + '/' + path + '"/>'; })
+      .concat(['    <xhtml:link rel="alternate" hreflang="x-default" href="' + xdefault + '"/>']).join('\n');
+    return LANGS.map(function (l) {
+      return '  <url>\n    <loc>' + BASE + l + '/' + path + '</loc>\n    <lastmod>' + today + '</lastmod>\n' + alts + '\n  </url>';
+    }).join('\n');
+  };
+  var urls = [sitemapEntry('', BASE), sitemapEntry('privacy/', BASE + 'en/privacy/'), sitemapEntry('cookies/', BASE + 'en/cookies/')].join('\n');
   await save('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + urls + '\n</urlset>\n');
 
   log('\nBuild tamamlandı.');

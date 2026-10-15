@@ -27,10 +27,8 @@
       }
     })();
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261016g">
+  <link rel="preload" href="assets/fonts/plusjakartasans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css?v=20261016i">
 </head>
 <body>
 
@@ -894,7 +892,7 @@
             <input type="text" id="demo-website" name="_honey" tabindex="-1" autocomplete="off">
           </div>
 
-          <p class="form__privacy" data-i18n="fm.privacy">Bilgilerinizi yalnızca talebinize yanıt vermek için kullanırız. Form, FormSubmit servisi aracılığıyla iletilir; sizi pazarlama listelerine eklemez.</p>
+          <p class="form__privacy"><span data-i18n="fm.privacy">Bilgilerinizi yalnızca talebinize yanıt vermek için kullanırız. Form, FormSubmit servisi aracılığıyla iletilir; sizi pazarlama listelerine eklemez.</span> <a href="privacy/" data-i18n="ftr.privacy">Gizlilik Politikası</a></p>
           <button type="submit" class="btn btn--primary btn--lg btn--block" data-i18n="cta.demo">Demo Talep Et</button>
           <p class="form__note" id="form-note" role="status" aria-live="polite"></p>
         </form>
@@ -947,11 +945,12 @@
     </nav>
     <div class="container footer__bottom">
       <span>© <span id="year"></span> <span data-i18n="ftr.rights">NameTech Solutions BV. Tüm hakları saklıdır.</span></span>
+      <span class="footer__legal"><a href="privacy/" data-i18n="ftr.privacy">Gizlilik Politikası</a> · <a href="cookies/" data-i18n="ftr.cookies">Çerez Politikası</a></span>
       <span><span data-i18n="ftr.tm">Odoo, Odoo S.A.'nın tescilli markasıdır.</span> <span data-i18n="ftr.tm2">Google Maps, Google LLC'nin markasıdır.</span></span>
     </div>
   </footer>
 
-  <script src="assets/js/i18n.js?v=20261016g"></script>
-  <script src="assets/js/main.js?v=20261016g"></script>
+  <script src="assets/js/i18n.js?v=20261016i"></script>
+  <script src="assets/js/main.js?v=20261016i"></script>
 </body>
 </html>
