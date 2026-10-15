@@ -166,7 +166,7 @@ window.I18N = {
   /* ---------------------------------- FR ---------------------------------- */
   fr: {
     'meta.title': `RubixB2 | Vente en tournée, système de gestion des tournées et KPI sur Odoo`,
-    'meta.desc': `RubixB2 est une plateforme de vente en tournée, de prise de commandes et de reporting KPI, dotée d'un système de gestion des tournées, qui fonctionne sur Odoo. Pilotez votre équipe terrain depuis un seul écran.`,
+    'meta.desc': `RubixB2 : vente en tournée, prise de commandes, système de gestion des tournées et reporting KPI sur Odoo. Pilotez votre équipe terrain d'un seul écran.`,
     'a.home': `Accueil RubixB2`, 'a.mainnav': `Menu principal`, 'a.lang': `Choisir la langue`, 'a.carousel': `Points forts de RubixB2`,
     'a.slide1': `1 / 3 : Vente terrain`, 'a.slide2': `2 / 3 : Performance`, 'a.slide3': `3 / 3 : Gestion de bout en bout`,
     'a.modules': `Modules clés`, 'a.prev': `Diapositive précédente`, 'a.next': `Diapositive suivante`, 'a.choose': `Choisir une diapositive`,
@@ -444,7 +444,7 @@ window.I18N = {
   /* ---------------------------------- DE ---------------------------------- */
   de: {
     'meta.title': `RubixB2 | Tourenverkauf, Tourenmanagementsystem und KPI-Analyse auf Odoo`,
-    'meta.desc': `RubixB2 ist eine Plattform mit Tourenverkauf, Auftragserfassung, Tourenmanagementsystem und KPI-Reporting auf Basis von Odoo. Steuern Sie Ihren Außendienst von einem Bildschirm aus.`,
+    'meta.desc': `RubixB2: Tourenverkauf, Auftragserfassung, Tourenmanagementsystem und KPI-Reporting auf Odoo. Steuern Sie Ihren Außendienst zentral.`,
     'a.home': `RubixB2 Startseite`, 'a.mainnav': `Hauptmenü`, 'a.lang': `Sprache wählen`, 'a.carousel': `RubixB2 im Überblick`,
     'a.slide1': `1 / 3: Außendienstverkauf`, 'a.slide2': `2 / 3: Leistungssteigerung`, 'a.slide3': `3 / 3: Durchgängige Steuerung`,
     'a.modules': `Wichtige Module`, 'a.prev': `Vorherige Folie`, 'a.next': `Nächste Folie`, 'a.choose': `Folie wählen`,
@@ -583,7 +583,7 @@ window.I18N = {
   /* ---------------------------------- ES ---------------------------------- */
   es: {
     'meta.title': `RubixB2 | Autoventa, sistema de gestión de rutas y análisis de KPI con Odoo`,
-    'meta.desc': `RubixB2 es una plataforma de autoventa, preventa, sistema de gestión de rutas e informes de KPI que funciona sobre Odoo. Gestione su equipo de campo desde una sola pantalla.`,
+    'meta.desc': `RubixB2: autoventa, preventa, sistema de gestión de rutas e informes de KPI sobre Odoo. Gestione su equipo de campo desde una sola pantalla.`,
     'a.home': `Inicio de RubixB2`, 'a.mainnav': `Menú principal`, 'a.lang': `Elegir idioma`, 'a.carousel': `Lo más destacado de RubixB2`,
     'a.slide1': `1 / 3: Venta en campo`, 'a.slide2': `2 / 3: Mejora del rendimiento`, 'a.slide3': `3 / 3: Gestión integral`,
     'a.modules': `Módulos principales`, 'a.prev': `Diapositiva anterior`, 'a.next': `Diapositiva siguiente`, 'a.choose': `Elegir diapositiva`,

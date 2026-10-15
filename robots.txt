@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nevzatylmz77-art.github.io/RubixB2B/sitemap.xml

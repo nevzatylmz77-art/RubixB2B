@@ -11,7 +11,9 @@
   var LANGS = ['tr', 'en', 'fr', 'nl', 'de', 'es'];
   var HTML_LANG = { tr: 'tr', en: 'en', fr: 'fr', nl: 'nl-BE', de: 'de', es: 'es' };
   var DICT = window.I18N || {};
-  var ODOO_IMG = '<img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196">';
+  // Dil sayfaları (/tr/, /en/ …) bir alt klasörde olduğu için yollar bir üst klasörden başlar
+  var ASSET_PREFIX = document.documentElement.hasAttribute('data-page-lang') ? '../' : '';
+  var ODOO_IMG = '<img class="odoo-logo" src="' + ASSET_PREFIX + 'assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196">';
   var lang = LANGS.indexOf(window.__LANG) > -1 ? window.__LANG : 'tr';
   var langListeners = [];
 
@@ -79,7 +81,17 @@
   }
   langBtn.addEventListener('click', function () { setLangMenu(langMenu.hidden, true); });
   langItems.forEach(function (li, i) {
-    li.addEventListener('click', function () { applyLang(li.dataset.lang, true); setLangMenu(false); langBtn.focus(); });
+    li.addEventListener('click', function () {
+      var next = li.dataset.lang;
+      // Yayındaki sitede her dilin kendi adresi var (/tr/, /en/ …): o sayfaya geç
+      if (document.documentElement.hasAttribute('data-page-lang')) {
+        try { localStorage.setItem('rubix-lang', next); } catch (e) {}
+        if (next !== lang) { location.href = '../' + next + '/' + location.hash; return; }
+      } else {
+        applyLang(next, true);
+      }
+      setLangMenu(false); langBtn.focus();
+    });
     li.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); li.click(); }
       if (e.key === 'ArrowDown') { e.preventDefault(); langItems[(i + 1) % langItems.length].focus(); }
@@ -364,6 +376,13 @@
 
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Açılış dilini uygula (tarayıcı dili veya kayıtlı tercih)
+  // Açılış dilini uygula (dil sayfasında sayfanın dili; şablonda tarayıcı dili veya kayıtlı tercih)
   applyLang(lang, false);
+
+  // Alt bilgideki dil bağlantıları da tercihi kaydeder
+  document.querySelectorAll('.footer__langs a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      try { localStorage.setItem('rubix-lang', a.getAttribute('hreflang').slice(0, 2)); } catch (e) {}
+    });
+  });
 })();
