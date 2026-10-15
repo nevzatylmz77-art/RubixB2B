@@ -14,7 +14,7 @@ window.LEGAL = {
 <p>NameTech Solutions BV olarak gizliliğinize önem veriyoruz. Bu politika, RubixB2 web sitesini ziyaret ettiğinizde ve bizimle iletişime geçtiğinizde kişisel verilerinizi nasıl işlediğimizi, Avrupa Birliği Genel Veri Koruma Tüzüğü'ne (GDPR) uygun olarak açıklar.</p>
 
 <h2>1. Veri sorumlusu</h2>
-<p>NameTech Solutions BV<br>Excelsiorlaan 44, 1930 Zaventem, Belçika<br>E-posta: <a href="mailto:info@nametech.be">info@nametech.be</a></p>
+<p>NameTech Solutions BV<br>Excelsiorlaan 44, 1930 Zaventem, Belçika<br>Şirket No (KBO): 1032.351.303 · BTW (KDV) No: BE1032.351.303<br>E-posta: <a href="mailto:info@nametech.be">info@nametech.be</a></p>
 
 <h2>2. Hangi verileri, neden işliyoruz?</h2>
 <h3>a) Siteyi ziyaret ettiğinizde</h3>
@@ -95,7 +95,7 @@ window.LEGAL = {
 <p>At NameTech Solutions BV we take your privacy seriously. This policy explains how we process your personal data when you visit the RubixB2 website and contact us, in accordance with the EU General Data Protection Regulation (GDPR).</p>
 
 <h2>1. Data controller</h2>
-<p>NameTech Solutions BV<br>Excelsiorlaan 44, 1930 Zaventem, Belgium<br>E-mail: <a href="mailto:info@nametech.be">info@nametech.be</a></p>
+<p>NameTech Solutions BV<br>Excelsiorlaan 44, 1930 Zaventem, Belgium<br>Company no. (KBO): 1032.351.303 · VAT: BE1032.351.303<br>E-mail: <a href="mailto:info@nametech.be">info@nametech.be</a></p>
 
 <h2>2. What data we process and why</h2>
 <h3>a) When you visit the website</h3>
@@ -176,7 +176,7 @@ window.LEGAL = {
 <p>Chez NameTech Solutions BV, nous accordons une grande importance à votre vie privée. La présente politique explique comment nous traitons vos données personnelles lorsque vous visitez le site RubixB2 et nous contactez, conformément au Règlement général sur la protection des données (RGPD).</p>
 
 <h2>1. Responsable du traitement</h2>
-<p>NameTech Solutions BV<br>Excelsiorlaan 44, 1930 Zaventem, Belgique<br>E-mail : <a href="mailto:info@nametech.be">info@nametech.be</a></p>
+<p>NameTech Solutions BV<br>Excelsiorlaan 44, 1930 Zaventem, Belgique<br>N° d'entreprise (BCE) : 1032.351.303 · TVA : BE1032.351.303<br>E-mail : <a href="mailto:info@nametech.be">info@nametech.be</a></p>
 
 <h2>2. Quelles données traitons-nous et pourquoi ?</h2>
 <h3>a) Lors de votre visite du site</h3>
@@ -257,7 +257,7 @@ window.LEGAL = {
 <p>NameTech Solutions BV hecht veel belang aan uw privacy. Dit beleid legt uit hoe we uw persoonsgegevens verwerken wanneer u de RubixB2-website bezoekt en contact met ons opneemt, in overeenstemming met de Algemene Verordening Gegevensbescherming (AVG/GDPR).</p>
 
 <h2>1. Verwerkingsverantwoordelijke</h2>
-<p>NameTech Solutions BV<br>Excelsiorlaan 44, 1930 Zaventem, België<br>E-mail: <a href="mailto:info@nametech.be">info@nametech.be</a></p>
+<p>NameTech Solutions BV<br>Excelsiorlaan 44, 1930 Zaventem, België<br>Ondernemingsnummer (KBO): 1032.351.303 · Btw: BE1032.351.303<br>E-mail: <a href="mailto:info@nametech.be">info@nametech.be</a></p>
 
 <h2>2. Welke gegevens verwerken we en waarom?</h2>
 <h3>a) Wanneer u de website bezoekt</h3>
@@ -338,7 +338,7 @@ window.LEGAL = {
 <p>Der Schutz Ihrer Privatsphäre ist der NameTech Solutions BV wichtig. Diese Erklärung beschreibt, wie wir Ihre personenbezogenen Daten verarbeiten, wenn Sie die RubixB2-Website besuchen und mit uns Kontakt aufnehmen – gemäß der Datenschutz-Grundverordnung (DSGVO).</p>
 
 <h2>1. Verantwortlicher</h2>
-<p>NameTech Solutions BV<br>Excelsiorlaan 44, 1930 Zaventem, Belgien<br>E-Mail: <a href="mailto:info@nametech.be">info@nametech.be</a></p>
+<p>NameTech Solutions BV<br>Excelsiorlaan 44, 1930 Zaventem, Belgien<br>Unternehmensnummer (ZDU/KBO): 1032.351.303 · USt-IdNr.: BE1032.351.303<br>E-Mail: <a href="mailto:info@nametech.be">info@nametech.be</a></p>
 
 <h2>2. Welche Daten wir verarbeiten und warum</h2>
 <h3>a) Beim Besuch der Website</h3>
@@ -419,7 +419,7 @@ window.LEGAL = {
 <p>En NameTech Solutions BV nos tomamos muy en serio su privacidad. Esta política explica cómo tratamos sus datos personales cuando visita el sitio web de RubixB2 y se pone en contacto con nosotros, de conformidad con el Reglamento General de Protección de Datos (RGPD).</p>
 
 <h2>1. Responsable del tratamiento</h2>
-<p>NameTech Solutions BV<br>Excelsiorlaan 44, 1930 Zaventem, Bélgica<br>Correo electrónico: <a href="mailto:info@nametech.be">info@nametech.be</a></p>
+<p>NameTech Solutions BV<br>Excelsiorlaan 44, 1930 Zaventem, Bélgica<br>N.º de empresa (BCE): 1032.351.303 · IVA: BE1032.351.303<br>Correo electrónico: <a href="mailto:info@nametech.be">info@nametech.be</a></p>
 
 <h2>2. Qué datos tratamos y por qué</h2>
 <h3>a) Cuando visita el sitio web</h3>

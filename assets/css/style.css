@@ -803,6 +803,7 @@ body { transition: opacity .2s; }
 .footer__col h4 { font-size: 14px; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 6px; }
 .footer__col a, .footer__col address { color: var(--muted); font-size: 15px; font-style: normal; }
 .footer__col a:hover { color: var(--orange-2); }
+.footer__reg { color: var(--muted); font-size: 13px; line-height: 1.6; }
 .footer__langs { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
 .footer__langs a { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--muted); }
 .footer__langs a:hover, .footer__langs a[aria-current="page"] { color: var(--navy-2); }

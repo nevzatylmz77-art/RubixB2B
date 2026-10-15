@@ -100,7 +100,9 @@
       '@graph': [
         {
           '@type': 'Organization', '@id': BASE + '#organization',
-          name: 'NameTech Solutions BV', url: BASE, email: 'info@nametech.be',
+          name: 'NameTech Solutions BV', legalName: 'NameTech Solutions BV', url: BASE, email: 'info@nametech.be',
+          vatID: 'BE1032351303',
+          identifier: { '@type': 'PropertyValue', propertyID: 'KBO/BCE', value: '1032.351.303' },
           logo: BASE + 'assets/img/nametech-logo.png',
           address: { '@type': 'PostalAddress', streetAddress: 'Excelsiorlaan 44', postalCode: '1930', addressLocality: 'Zaventem', addressCountry: 'BE' }
         },
@@ -203,7 +205,7 @@
         '  <footer class="footer">\n' +
         '    <nav class="container footer__langs" aria-label="' + esc(L.ui.langs) + '">\n      ' + langLinks + '\n    </nav>\n' +
         '    <div class="container footer__bottom">\n' +
-        '      <span>© ' + new Date().getFullYear() + ' NameTech Solutions BV · Excelsiorlaan 44, 1930 Zaventem, Belgium · <a href="mailto:info@nametech.be">info@nametech.be</a></span>\n' +
+        '      <span>© ' + new Date().getFullYear() + ' NameTech Solutions BV · Excelsiorlaan 44, 1930 Zaventem, Belgium · BE1032.351.303 · <a href="mailto:info@nametech.be">info@nametech.be</a></span>\n' +
         '      <span class="footer__legal"><a href="../privacy/">' + esc(L.ui.privacy) + '</a> · <a href="../cookies/">' + esc(L.ui.cookies) + '</a></span>\n' +
         '    </div>\n  </footer>\n' +
         '  <script>document.querySelectorAll(".footer__langs a").forEach(function(a){a.addEventListener("click",function(){try{localStorage.setItem("rubix-lang",a.getAttribute("lang"))}catch(e){}})});</script>\n' +
