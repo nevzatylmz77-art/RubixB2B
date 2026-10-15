@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RubixB2B | Odoo ile Plasiyer Satış, Rut Yönetimi ve KPI Analizi</title>
+  <meta name="description" content="RubixB2B; Odoo üzerinde çalışan sıcak ve soğuk satış, rut yönetimi ve KPI performans raporlama platformu. Saha ekibinizi tek ekrandan yönetin.">
+  <meta name="theme-color" content="#070b18">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237c5cff'/%3E%3Cpath d='M9 9h8a5 5 0 0 1 0 10h-3l5 5h-4l-5-5v5H9z' fill='white'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header" id="top">
+    <div class="container header__inner">
+      <a href="#top" class="logo" aria-label="RubixB2B ana sayfa">
+        <span class="logo__mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32"><rect width="32" height="32" rx="8"/><path d="M9 9h8a5 5 0 0 1 0 10h-3l5 5h-4l-5-5v5H9z"/></svg>
+        </span>
+        <span class="logo__text">Rubix<b>B2B</b></span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Ana menü">
+        <a href="#cozumler">Çözümler</a>
+        <a href="#nasil-calisir">Nasıl Çalışır</a>
+        <a href="#ozellikler">Özellikler</a>
+        <a href="#odoo">Odoo Entegrasyonu</a>
+        <a href="#sss">SSS</a>
+        <a href="#iletisim" class="btn btn--primary nav__cta">Demo Talep Et</a>
+      </nav>
+
+      <div class="header__actions">
+        <a href="#iletisim" class="btn btn--primary btn--sm header__cta">Demo Talep Et</a>
+        <button class="burger" id="burger" aria-label="Menüyü aç" aria-expanded="false" aria-controls="nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="grid-bg"></div>
+        <div class="glow glow--1"></div>
+        <div class="glow glow--2"></div>
+      </div>
+
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <span class="eyebrow"><span class="dot"></span> Odoo Partner çözümü</span>
+          <h1>Sahada satış.<br>Rotada verim.<br><span class="gradient-text">Raporda netlik.</span></h1>
+          <p class="lead">RubixB2B; sıcak ve soğuk satış, rut yönetimi ve KPI performans raporlamasını Odoo ile tek platformda birleştirir. Plasiyerleriniz sahada satarken tüm veriler anında ERP'nize akar.</p>
+          <div class="hero__ctas">
+            <a href="#iletisim" class="btn btn--primary btn--lg">Ücretsiz Demo Talep Et
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#cozumler" class="btn btn--ghost btn--lg">Çözümleri İncele</a>
+          </div>
+          <ul class="chips" aria-label="Öne çıkan modüller">
+            <li>Sıcak Satış</li>
+            <li>Soğuk Satış</li>
+            <li>Rut Planlama</li>
+            <li>Tahsilat</li>
+            <li>KPI Dashboard</li>
+            <li>Offline Mod</li>
+          </ul>
+        </div>
+
+        <!-- Hero mockup -->
+        <div class="hero__visual" aria-hidden="true">
+          <div class="phone">
+            <div class="phone__notch"></div>
+            <div class="phone__screen">
+              <div class="app-top">
+                <div>
+                  <small>Bugünkü rut</small>
+                  <strong>Kadıköy – Ataşehir</strong>
+                </div>
+                <span class="pill pill--live">● Canlı</span>
+              </div>
+              <div class="app-progress">
+                <div class="app-progress__label"><span>Ziyaret</span><span>8 / 12</span></div>
+                <div class="bar"><span style="width:66%"></span></div>
+              </div>
+              <ul class="visit-list">
+                <li class="done"><span class="vi-ico">✓</span><div><b>Yıldız Market</b><small>Sipariş · ₺12.480</small></div></li>
+                <li class="done"><span class="vi-ico">✓</span><div><b>Güneş Gıda</b><small>Tahsilat · ₺6.200</small></div></li>
+                <li class="active"><span class="vi-ico">➜</span><div><b>Deniz Şarküteri</b><small>Check-in · 2 dk önce</small></div></li>
+                <li><span class="vi-ico">4</span><div><b>Ata Toptan</b><small>14:30 planlı</small></div></li>
+                <li><span class="vi-ico">5</span><div><b>Mavi Büfe</b><small>15:10 planlı</small></div></li>
+              </ul>
+              <div class="app-btn">+ Yeni Sipariş</div>
+            </div>
+          </div>
+
+          <div class="float-card float-card--kpi">
+            <div class="ring" style="--p:78"><span>%78</span></div>
+            <div><small>Günlük hedef</small><strong>₺94.300</strong></div>
+          </div>
+
+          <div class="float-card float-card--chart">
+            <small>Haftalık satış</small>
+            <div class="mini-bars">
+              <span style="--h:45%"></span><span style="--h:62%"></span><span style="--h:54%"></span>
+              <span style="--h:78%"></span><span style="--h:70%"></span><span style="--h:92%"></span><span style="--h:66%"></span>
+            </div>
+          </div>
+
+          <div class="float-card float-card--sync">
+            <span class="sync-ico">⟳</span>
+            <div><small>Odoo senkron</small><strong>Az önce</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VALUE STRIP ============ -->
+    <section class="strip">
+      <div class="container strip__inner">
+        <div class="strip__item"><span class="strip__ico">⚡</span><div><b>Odoo üzerinde</b><small>Ek ERP gerekmez</small></div></div>
+        <div class="strip__item"><span class="strip__ico">📶</span><div><b>Offline çalışma</b><small>Çekmeyen yerde de satış</small></div></div>
+        <div class="strip__item"><span class="strip__ico">🔄</span><div><b>Gerçek zamanlı senkron</b><small>Stok, fiyat, cari</small></div></div>
+        <div class="strip__item"><span class="strip__ico">📱</span><div><b>Mobil + Web</b><small>Saha ve merkez birlikte</small></div></div>
+      </div>
+    </section>
+
+    <!-- ============ SOLUTIONS (TABS) ============ -->
+    <section class="section" id="cozumler">
+      <div class="container">
+        <div class="section__head">
+          <span class="eyebrow">Çözümler</span>
+          <h2>Saha satışının her adımı için <span class="gradient-text">tek platform</span></h2>
+          <p>Araçtan satıştan ön siparişe, rut planlamadan performans analizine kadar tüm süreçler Odoo verinizle konuşur.</p>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Çözüm modülleri">
+          <button class="tab is-active" role="tab" aria-selected="true" aria-controls="panel-sicak" id="tab-sicak">
+            <span class="tab__ico">🚚</span>Sıcak Satış
+          </button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="panel-soguk" id="tab-soguk" tabindex="-1">
+            <span class="tab__ico">📝</span>Soğuk Satış
+          </button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="panel-rut" id="tab-rut" tabindex="-1">
+            <span class="tab__ico">🗺️</span>Rut Yönetimi
+          </button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="panel-kpi" id="tab-kpi" tabindex="-1">
+            <span class="tab__ico">📊</span>KPI &amp; Performans
+          </button>
+        </div>
+
+        <!-- Sıcak satış -->
+        <div class="panel is-active" role="tabpanel" id="panel-sicak" aria-labelledby="tab-sicak">
+          <div class="panel__text">
+            <span class="tag">Van Sales</span>
+            <h3>Araçtan anında satış, faturalama ve tahsilat</h3>
+            <p>Plasiyeriniz araç stoğundaki ürünü müşteriye satar, belgeyi sahada keser ve tahsilatı aynı ziyarette alır. Tüm hareketler Odoo'daki stok ve muhasebe kayıtlarına otomatik işlenir.</p>
+            <ul class="checks">
+              <li>Araç deposu bazında anlık stok takibi</li>
+              <li>Sahada fatura / irsaliye oluşturma ve yazdırma</li>
+              <li>Nakit, kredi kartı ve çek ile tahsilat</li>
+              <li>İade ve değişim yönetimi</li>
+              <li>Gün sonu kasa ve araç sayım raporu</li>
+            </ul>
+          </div>
+          <div class="panel__visual">
+            <div class="ui-card">
+              <div class="ui-card__head"><b>Araç Stoğu · 34 RBX 01</b><span class="pill">Güncel</span></div>
+              <div class="stock-row"><span>Su 0,5L (24'lü)</span><div class="bar"><span style="width:72%"></span></div><b>86</b></div>
+              <div class="stock-row"><span>Meyve Suyu 1L</span><div class="bar"><span style="width:45%"></span></div><b>54</b></div>
+              <div class="stock-row"><span>Gazlı İçecek 330ml</span><div class="bar bar--warn"><span style="width:18%"></span></div><b>21</b></div>
+              <div class="stock-row"><span>Soğuk Çay 500ml</span><div class="bar"><span style="width:60%"></span></div><b>72</b></div>
+              <div class="ui-card__foot"><span>Bugünkü tahsilat</span><b class="txt-green">₺48.250</b></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Soğuk satış -->
+        <div class="panel" role="tabpanel" id="panel-soguk" aria-labelledby="tab-soguk" hidden>
+          <div class="panel__text">
+            <span class="tag">Pre-Sales</span>
+            <h3>Ön sipariş topla, sevkiyatı merkez planlasın</h3>
+            <p>Satış temsilcisi müşteriye özel fiyat listesi ve kampanyalarla siparişi alır; sipariş anında Odoo'ya düşer, depo ve sevkiyat ekibi hazırlığa başlar.</p>
+            <ul class="checks">
+              <li>Müşteriye özel fiyat listeleri ve iskontolar</li>
+              <li>Kampanya, promosyon ve bedelsiz ürün kuralları</li>
+              <li>Cari bakiye, risk limiti ve geçmiş sipariş görüntüleme</li>
+              <li>Ürün görselli dijital katalog</li>
+              <li>Sipariş onay akışı ve durum takibi</li>
+            </ul>
+          </div>
+          <div class="panel__visual">
+            <div class="ui-card">
+              <div class="ui-card__head"><b>Sipariş #SO-2481</b><span class="pill pill--violet">Odoo'ya aktarıldı</span></div>
+              <div class="order-row"><span>Çikolatalı Bisküvi × 40</span><b>₺3.200</b></div>
+              <div class="order-row"><span>Kraker Paket × 25</span><b>₺1.375</b></div>
+              <div class="order-row"><span>Kampanya: 10 al 1 bedava</span><b class="txt-green">−₺320</b></div>
+              <div class="order-row"><span>Cari risk limiti</span><b>%42 kullanıldı</b></div>
+              <div class="ui-card__foot"><span>Toplam</span><b>₺4.255</b></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rut yönetimi -->
+        <div class="panel" role="tabpanel" id="panel-rut" aria-labelledby="tab-rut" hidden>
+          <div class="panel__text">
+            <span class="tag">Route Management</span>
+            <h3>Doğru müşteriye, doğru günde, doğru sırayla</h3>
+            <p>Haftalık ve günlük rutları planlayın, ziyaret frekanslarını belirleyin. Plasiyerlerin konumunu ve ziyaret durumunu harita üzerinden canlı izleyin.</p>
+            <ul class="checks">
+              <li>Gün / hafta bazlı rut ve ziyaret frekansı planlama</li>
+              <li>GPS doğrulamalı check-in / check-out</li>
+              <li>Plan dışı ve atlanan ziyaret raporları</li>
+              <li>Harita üzerinde canlı ekip takibi</li>
+              <li>Ziyaret süresi ve ziyaret başına satış analizi</li>
+            </ul>
+          </div>
+          <div class="panel__visual">
+            <div class="ui-card ui-card--map">
+              <svg viewBox="0 0 400 260" class="map" role="img" aria-label="Örnek rut haritası">
+                <defs>
+                  <pattern id="mapgrid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="currentColor" stroke-opacity=".08"/></pattern>
+                </defs>
+                <rect width="400" height="260" fill="url(#mapgrid)"/>
+                <path class="map__road" d="M0 190 C80 170 120 210 200 180 S330 120 400 140"/>
+                <path class="map__road" d="M120 0 C130 80 90 140 140 260"/>
+                <path class="map__route" d="M50 200 L110 150 L170 175 L230 110 L300 140 L350 70"/>
+                <g class="map__pin map__pin--done"><circle cx="50" cy="200" r="9"/><text x="50" y="204">1</text></g>
+                <g class="map__pin map__pin--done"><circle cx="110" cy="150" r="9"/><text x="110" y="154">2</text></g>
+                <g class="map__pin map__pin--done"><circle cx="170" cy="175" r="9"/><text x="170" y="179">3</text></g>
+                <g class="map__pin map__pin--active"><circle cx="230" cy="110" r="11"/><text x="230" y="114">4</text></g>
+                <g class="map__pin"><circle cx="300" cy="140" r="9"/><text x="300" y="144">5</text></g>
+                <g class="map__pin"><circle cx="350" cy="70" r="9"/><text x="350" y="74">6</text></g>
+              </svg>
+              <div class="ui-card__foot"><span>Rut tamamlanma</span><b>3 / 6 ziyaret · 42 km</b></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- KPI -->
+        <div class="panel" role="tabpanel" id="panel-kpi" aria-labelledby="tab-kpi" hidden>
+          <div class="panel__text">
+            <span class="tag">Analytics</span>
+            <h3>Saha performansını rakamlarla yönetin</h3>
+            <p>Plasiyer, bölge, kanal ve ürün bazında hedef–gerçekleşme analizleri. Yöneticiler sahada ne olduğunu raporu beklemeden, anlık görür.</p>
+            <ul class="checks">
+              <li>Hedef – gerçekleşme ve prim hesaplama altyapısı</li>
+              <li>Ziyaret başarı oranı, sipariş/ziyaret oranı</li>
+              <li>Ürün dağılımı (numerik / ağırlıklı distribüsyon)</li>
+              <li>Plasiyer karşılaştırma ve liderlik tablosu</li>
+              <li>Excel / PDF dışa aktarma ve zamanlanmış e-posta raporları</li>
+            </ul>
+          </div>
+          <div class="panel__visual">
+            <div class="ui-card">
+              <div class="ui-card__head"><b>Plasiyer Performansı · Ekim</b><span class="pill">Örnek veri</span></div>
+              <div class="leader-row"><span class="avatar">AK</span><span>Ahmet K.</span><div class="bar"><span style="width:96%"></span></div><b>%96</b></div>
+              <div class="leader-row"><span class="avatar">ZT</span><span>Zeynep T.</span><div class="bar"><span style="width:88%"></span></div><b>%88</b></div>
+              <div class="leader-row"><span class="avatar">MY</span><span>Murat Y.</span><div class="bar"><span style="width:74%"></span></div><b>%74</b></div>
+              <div class="leader-row"><span class="avatar">EB</span><span>Elif B.</span><div class="bar bar--warn"><span style="width:58%"></span></div><b>%58</b></div>
+              <div class="ui-card__foot"><span>Ekip ortalaması</span><b class="txt-green">%79 hedef</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section class="section section--alt" id="nasil-calisir">
+      <div class="container">
+        <div class="section__head">
+          <span class="eyebrow">Nasıl Çalışır</span>
+          <h2>Planla, ziyaret et, sat, <span class="gradient-text">analiz et</span></h2>
+          <p>Merkez ve saha aynı veriyle çalışır; her adım bir sonrakini besler.</p>
+        </div>
+
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step__num">01</span>
+            <h3>Planla</h3>
+            <p>Merkez; rutları, hedefleri, fiyat listelerini ve kampanyaları Odoo üzerinden tanımlar.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__num">02</span>
+            <h3>Ziyaret et</h3>
+            <p>Plasiyer günlük rutunu mobil uygulamada görür, GPS ile check-in yapar.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__num">03</span>
+            <h3>Sat &amp; tahsil et</h3>
+            <p>Sıcak veya soğuk satış yapar, tahsilatı alır; veriler anında senkronize olur.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__num">04</span>
+            <h3>Analiz et</h3>
+            <p>Yönetici KPI panelinde ekip ve bölge performansını canlı izler, aksiyon alır.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ FEATURES ============ -->
+    <section class="section" id="ozellikler">
+      <div class="container">
+        <div class="section__head">
+          <span class="eyebrow">Özellikler</span>
+          <h2>Sahanın ihtiyacı olan <span class="gradient-text">her şey</span></h2>
+        </div>
+
+        <div class="features">
+          <article class="feature reveal">
+            <span class="feature__ico">📶</span>
+            <h3>Offline çalışma</h3>
+            <p>İnternet olmayan bölgelerde satış devam eder, bağlantı gelince veriler otomatik eşitlenir.</p>
+          </article>
+          <article class="feature reveal">
+            <span class="feature__ico">📍</span>
+            <h3>GPS doğrulama</h3>
+            <p>Check-in konumu müşteri konumuyla eşleşir; sahte ziyaretlerin önüne geçilir.</p>
+          </article>
+          <article class="feature reveal">
+            <span class="feature__ico">💳</span>
+            <h3>Tahsilat yönetimi</h3>
+            <p>Nakit, kart, çek ve senet tahsilatları; makbuz ve cari hesap güncellemesi.</p>
+          </article>
+          <article class="feature reveal">
+            <span class="feature__ico">🏷️</span>
+            <h3>Fiyat &amp; kampanya</h3>
+            <p>Müşteri grubu, bölge ve kanal bazlı fiyatlar; kademeli iskonto ve promosyon kuralları.</p>
+          </article>
+          <article class="feature reveal">
+            <span class="feature__ico">📦</span>
+            <h3>Araç deposu</h3>
+            <p>Yükleme, boşaltma, araç arası transfer ve gün sonu sayım işlemleri.</p>
+          </article>
+          <article class="feature reveal">
+            <span class="feature__ico">📸</span>
+            <h3>Saha görevleri</h3>
+            <p>Raf fotoğrafı, anket ve kontrol listeleriyle mağaza içi uygulama denetimi.</p>
+          </article>
+          <article class="feature reveal">
+            <span class="feature__ico">🎯</span>
+            <h3>Hedef takibi</h3>
+            <p>Plasiyer kendi hedefini ve gerçekleşmesini mobil uygulamada anlık görür.</p>
+          </article>
+          <article class="feature reveal">
+            <span class="feature__ico">🔐</span>
+            <h3>Rol &amp; yetki</h3>
+            <p>Plasiyer, bölge müdürü ve yönetici için ayrı yetki ve görünürlük seviyeleri.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ODOO ============ -->
+    <section class="section section--alt" id="odoo">
+      <div class="container odoo">
+        <div class="odoo__text">
+          <span class="eyebrow">Odoo Entegrasyonu</span>
+          <h2>Odoo'nun gücü, <span class="gradient-text">sahanın hızıyla</span></h2>
+          <p>RubixB2B ayrı bir sistem değil, Odoo'nuzun sahadaki uzantısıdır. Ürün, stok, fiyat, cari ve muhasebe verileri tek kaynaktan yönetilir; çift veri girişi ve aktarım hataları ortadan kalkar.</p>
+          <ul class="checks">
+            <li>Odoo Satış, Stok, Muhasebe ve CRM modülleriyle yerleşik bağlantı</li>
+            <li>Tek veritabanı: sahadaki işlem anında merkezde</li>
+            <li>Odoo Partner ekibimizle kurulum, uyarlama ve destek</li>
+          </ul>
+          <a href="#iletisim" class="btn btn--primary">Entegrasyonu Konuşalım</a>
+        </div>
+
+        <div class="odoo__diagram" aria-hidden="true">
+          <div class="hub">
+            <div class="hub__core">
+              <span>Odoo</span>
+              <small>ERP</small>
+            </div>
+            <div class="hub__ring"></div>
+            <div class="hub__node hub__node--1">🛒<small>Satış</small></div>
+            <div class="hub__node hub__node--2">📦<small>Stok</small></div>
+            <div class="hub__node hub__node--3">🧾<small>Muhasebe</small></div>
+            <div class="hub__node hub__node--4">🤝<small>CRM</small></div>
+            <div class="hub__node hub__node--5 hub__node--rubix">📱<small>RubixB2B</small></div>
+            <div class="hub__node hub__node--6">📊<small>Raporlar</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ AUDIENCE ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <span class="eyebrow">Kimler İçin</span>
+          <h2>Sahada satış yapan <span class="gradient-text">her ekip için</span></h2>
+        </div>
+        <div class="audience">
+          <article class="aud-card reveal">
+            <h3>Distribütörler</h3>
+            <p>Çok markalı portföy, geniş bayi ağı ve yoğun sevkiyat operasyonlarını tek ekrandan yönetin.</p>
+          </article>
+          <article class="aud-card reveal">
+            <h3>Üretici Markalar</h3>
+            <p>Kendi satış ekibinizle pazara çıkın, distribüsyon ve raf görünürlüğünü ölçün.</p>
+          </article>
+          <article class="aud-card reveal">
+            <h3>FMCG · Gıda &amp; İçecek</h3>
+            <p>Yüksek ziyaret frekansı, kampanya yoğunluğu ve hızlı devir hızına uygun akışlar.</p>
+          </article>
+          <article class="aud-card reveal">
+            <h3>Toptancılar</h3>
+            <p>Ön sipariş ve araçtan satışı birlikte yürütün, tahsilat riskini kontrol altında tutun.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section section--alt" id="sss">
+      <div class="container container--narrow">
+        <div class="section__head">
+          <span class="eyebrow">SSS</span>
+          <h2>Sıkça sorulan sorular</h2>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>Sıcak satış ile soğuk satış arasındaki fark nedir?</summary>
+            <p>Sıcak satışta (van sales) plasiyer ürünü araçtan anında teslim eder, belgeyi keser ve tahsilatı alır. Soğuk satışta (ön sipariş) temsilci yalnızca siparişi toplar; teslimat daha sonra depo ve sevkiyat ekibi tarafından yapılır. RubixB2B iki modeli ayrı ayrı veya birlikte destekler.</p>
+          </details>
+          <details>
+            <summary>Mevcut Odoo sistemimizle çalışır mı?</summary>
+            <p>Evet. RubixB2B, Odoo üzerinde çalışacak şekilde tasarlanmıştır. Mevcut ürün, müşteri, fiyat ve stok verileriniz doğrudan kullanılır. Sürüm ve kurulum detaylarını demo görüşmesinde birlikte değerlendiriyoruz.</p>
+          </details>
+          <details>
+            <summary>İnternet olmadan kullanılabilir mi?</summary>
+            <p>Evet. Mobil uygulama offline modda sipariş, satış ve tahsilat kaydetmeye devam eder; bağlantı sağlandığında veriler Odoo ile otomatik eşitlenir.</p>
+          </details>
+          <details>
+            <summary>Kurulum ne kadar sürer?</summary>
+            <p>Süre; ekip büyüklüğü, mevcut Odoo yapınız ve ihtiyaç duyulan uyarlamalara göre değişir. İhtiyaç analizinden sonra size net bir proje planı sunuyoruz.</p>
+          </details>
+          <details>
+            <summary>Hangi raporları alabilirim?</summary>
+            <p>Hedef–gerçekleşme, ziyaret ve rut uyumu, ürün distribüsyonu, tahsilat, iade ve plasiyer karşılaştırma raporları hazır gelir. İhtiyaca özel KPI ve dashboard'lar da tasarlanabilir.</p>
+          </details>
+          <details>
+            <summary>Fiyatlandırma nasıl?</summary>
+            <p>Fiyatlandırma kullanıcı sayısına ve seçilen modüllere göre belirlenir. Size özel teklif için demo talep formunu doldurmanız yeterli.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA / CONTACT ============ -->
+    <section class="section cta" id="iletisim">
+      <div class="container cta__inner">
+        <div class="cta__text">
+          <span class="eyebrow">Demo Talebi</span>
+          <h2>Her rutta <span class="gradient-text">daha fazla satış</span></h2>
+          <p>Ekibinizin ihtiyaçlarını dinleyelim, RubixB2B'yi kendi süreçleriniz üzerinde gösterelim.</p>
+          <ul class="contact-list">
+            <!-- TODO: Gerçek iletişim bilgilerinizi girin -->
+            <li><span>✉️</span> <a href="mailto:info@sirketiniz.com">info@sirketiniz.com</a></li>
+            <li><span>📞</span> <a href="tel:+900000000000">+90 (000) 000 00 00</a></li>
+            <li><span>📍</span> Adresiniz</li>
+          </ul>
+        </div>
+
+        <form class="form" id="demo-form" novalidate>
+          <div class="form__row">
+            <label>Ad Soyad<input type="text" name="name" required autocomplete="name"></label>
+            <label>Firma<input type="text" name="company" required autocomplete="organization"></label>
+          </div>
+          <div class="form__row">
+            <label>E-posta<input type="email" name="email" required autocomplete="email"></label>
+            <label>Telefon<input type="tel" name="phone" autocomplete="tel"></label>
+          </div>
+          <label>Saha ekibi büyüklüğü
+            <select name="team">
+              <option>1–5 plasiyer</option>
+              <option>6–20 plasiyer</option>
+              <option>21–50 plasiyer</option>
+              <option>50+ plasiyer</option>
+            </select>
+          </label>
+          <label>Mesajınız<textarea name="message" rows="3" placeholder="Kısaca ihtiyacınızdan bahsedin"></textarea></label>
+          <button type="submit" class="btn btn--primary btn--lg btn--block">Demo Talep Et</button>
+          <p class="form__note" id="form-note" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="#top" class="logo">
+          <span class="logo__mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32"><rect width="32" height="32" rx="8"/><path d="M9 9h8a5 5 0 0 1 0 10h-3l5 5h-4l-5-5v5H9z"/></svg>
+          </span>
+          <span class="logo__text">Rubix<b>B2B</b></span>
+        </a>
+        <p>Odoo ile plasiyer satış, rut yönetimi ve KPI analizi.</p>
+        <span class="badge-odoo">Odoo Partner</span>
+      </div>
+      <div class="footer__col">
+        <h4>Çözümler</h4>
+        <a href="#cozumler">Sıcak Satış</a>
+        <a href="#cozumler">Soğuk Satış</a>
+        <a href="#cozumler">Rut Yönetimi</a>
+        <a href="#cozumler">KPI &amp; Performans</a>
+      </div>
+      <div class="footer__col">
+        <h4>Ürün</h4>
+        <a href="#ozellikler">Özellikler</a>
+        <a href="#odoo">Odoo Entegrasyonu</a>
+        <a href="#nasil-calisir">Nasıl Çalışır</a>
+        <a href="#sss">SSS</a>
+      </div>
+      <div class="footer__col">
+        <h4>İletişim</h4>
+        <a href="#iletisim">Demo Talep Et</a>
+        <a href="mailto:info@sirketiniz.com">info@sirketiniz.com</a>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <span>© <span id="year"></span> RubixB2B. Tüm hakları saklıdır.</span>
+      <span>Odoo, Odoo S.A.'nın tescilli markasıdır.</span>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
