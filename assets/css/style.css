@@ -814,8 +814,10 @@ body { transition: opacity .2s; }
   .strip__inner { grid-template-columns: 1fr; gap: 16px; }
   .features, .audience, .steps { grid-template-columns: 1fr; }
 
-  .tabs { width: 100%; display: grid; grid-template-columns: 1fr 1fr; }
-  .tab { justify-content: center; padding: 12px 10px; font-size: 14px; }
+  .tabs { width: 100%; display: grid; grid-template-columns: minmax(0, 1fr); }
+  .tab { justify-content: flex-start; padding: 12px 14px; font-size: 15px; text-align: left; }
+  .tab span { min-width: 0; overflow-wrap: anywhere; hyphens: auto; }
+  .footer__col a, .country-list li, .chips li { overflow-wrap: anywhere; }
 
   .panel { padding: 22px 18px; }
   .ui-card { padding: 16px; }

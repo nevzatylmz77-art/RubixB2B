@@ -8,8 +8,8 @@ window.I18N = {
 
   /* ---------------------------------- TR ---------------------------------- */
   tr: {
-    'meta.title': `RubixB2 | Odoo ile Plasiyer Satış, Rut Yönetimi ve KPI Analizi`,
-    'meta.desc': `RubixB2; Odoo üzerinde çalışan sıcak ve soğuk satış, rut yönetimi ve KPI performans raporlama platformu. Saha ekibinizi tek ekrandan yönetin.`,
+    'meta.title': `RubixB2 | Odoo ile Plasiyer Satış, Rut Yönetim Sistemi ve KPI Analizi`,
+    'meta.desc': `RubixB2; Odoo üzerinde çalışan sıcak ve soğuk satış, rut yönetim sistemi ve KPI performans raporlama platformu. Saha ekibinizi tek ekrandan yönetin.`,
     'js.menuOpen': `Menüyü aç`,
     'js.menuClose': `Menüyü kapat`,
     'js.pause': `Otomatik geçişi durdur`,
@@ -25,8 +25,8 @@ window.I18N = {
 
   /* ---------------------------------- EN ---------------------------------- */
   en: {
-    'meta.title': `RubixB2 | Van Sales, Route Management & KPI Analytics on Odoo`,
-    'meta.desc': `RubixB2 is a van sales, pre-sales, route management and KPI reporting platform running on Odoo. Manage your field team from a single screen.`,
+    'meta.title': `RubixB2 | Van Sales, Route Management System & KPI Analytics on Odoo`,
+    'meta.desc': `RubixB2 is a van sales, pre-sales, route management system and KPI reporting platform running on Odoo. Manage your field team from a single screen.`,
     'a.home': `RubixB2 home`, 'a.mainnav': `Main menu`, 'a.lang': `Choose language`, 'a.carousel': `RubixB2 highlights`,
     'a.slide1': `1 / 3: Field sales`, 'a.slide2': `2 / 3: Performance growth`, 'a.slide3': `3 / 3: End-to-end management`,
     'a.modules': `Key modules`, 'a.prev': `Previous slide`, 'a.next': `Next slide`, 'a.choose': `Choose slide`,
@@ -37,7 +37,7 @@ window.I18N = {
 
     's1.eyebrow': `Field Sales`,
     's1.title': `Sell in the field.<br>Efficient on every route.<br><span class="accent-text">Clear in every report.</span>`,
-    's1.lead': `RubixB2 brings van sales, pre-sales, route management and KPI performance reporting together in one platform with Odoo. While your sales reps sell in the field, every piece of data flows straight into your ERP.`,
+    's1.lead': `RubixB2 brings van sales, pre-sales, a route management system and KPI performance reporting together in one platform with Odoo. While your sales reps sell in the field, every piece of data flows straight into your ERP.`,
     'cta.freeDemo': `Request a Free Demo`, 'cta.explore': `Explore Solutions`,
     'chip.hot': `Van Sales`, 'chip.cold': `Pre-Sales`, 'chip.route': `Route Planning`, 'chip.collect': `Collections`, 'chip.live': `Live Data`,
     'm.todayRoute': `Today's route`, 'm.routeName': `Zaventem – Brussels`, 'm.live': `Live`, 'm.visit': `Visits`,
@@ -67,7 +67,7 @@ window.I18N = {
 
     'sol.title': `One platform for <span class="gradient-text">every step of field sales</span>`,
     'sol.lead': `From van sales to pre-orders, from route planning to performance analysis, every process talks to your Odoo data.`,
-    'tab.route': `Route Management`, 'tab.kpi': `KPI &amp; Performance`,
+    'tab.route': `Route Management System`, 'tab.kpi': `KPI &amp; Performance`,
     'hot.title': `Instant sales, invoicing and collection from the van`,
     'hot.text': `Your sales rep sells products straight from the van stock, issues the document on the spot and collects payment during the same visit. Every movement is posted automatically to the stock and accounting records in Odoo.`,
     'hot.l1': `Real-time stock tracking per van warehouse`, 'hot.l2': `Create and print invoices / delivery notes in the field`, 'hot.l3': `Collect payment by cash, credit card or cheque`,
@@ -152,7 +152,7 @@ window.I18N = {
     'fm.message': `Your message *`, 'fm.ph': `Briefly describe what you need`,
     'fm.privacy': `We only use your details to respond to your request. The form is delivered via the FormSubmit service and does not sign you up for any marketing lists.`,
 
-    'ftr.tagline': `Van sales, route management and KPI analytics with Odoo.`, 'ftr.dev': `Developed by`, 'ftr.product': `Product`, 'ftr.contact': `Contact`,
+    'ftr.tagline': `Van sales, route management system and KPI analytics with Odoo.`, 'ftr.dev': `Developed by`, 'ftr.product': `Product`, 'ftr.contact': `Contact`,
     'ftr.rights': `NameTech Solutions BV. All rights reserved.`, 'ftr.tm': `Odoo is a registered trademark of Odoo S.A.`,
 
     'js.menuOpen': `Open menu`, 'js.menuClose': `Close menu`, 'js.pause': `Pause autoplay`, 'js.play': `Start autoplay`,
@@ -164,8 +164,8 @@ window.I18N = {
 
   /* ---------------------------------- FR ---------------------------------- */
   fr: {
-    'meta.title': `RubixB2 | Vente en tournée, gestion des tournées et KPI sur Odoo`,
-    'meta.desc': `RubixB2 est une plateforme de vente en tournée, de prise de commandes, de gestion des tournées et de reporting KPI qui fonctionne sur Odoo. Pilotez votre équipe terrain depuis un seul écran.`,
+    'meta.title': `RubixB2 | Vente en tournée, système de gestion des tournées et KPI sur Odoo`,
+    'meta.desc': `RubixB2 est une plateforme de vente en tournée, de prise de commandes et de reporting KPI, dotée d'un système de gestion des tournées, qui fonctionne sur Odoo. Pilotez votre équipe terrain depuis un seul écran.`,
     'a.home': `Accueil RubixB2`, 'a.mainnav': `Menu principal`, 'a.lang': `Choisir la langue`, 'a.carousel': `Points forts de RubixB2`,
     'a.slide1': `1 / 3 : Vente terrain`, 'a.slide2': `2 / 3 : Performance`, 'a.slide3': `3 / 3 : Gestion de bout en bout`,
     'a.modules': `Modules clés`, 'a.prev': `Diapositive précédente`, 'a.next': `Diapositive suivante`, 'a.choose': `Choisir une diapositive`,
@@ -176,7 +176,7 @@ window.I18N = {
 
     's1.eyebrow': `Vente terrain`,
     's1.title': `Vendre sur le terrain.<br>Optimiser chaque tournée.<br><span class="accent-text">Piloter avec clarté.</span>`,
-    's1.lead': `RubixB2 réunit la vente en tournée, la prise de commandes, la gestion des tournées et le reporting KPI dans une seule plateforme avec Odoo. Pendant que vos commerciaux vendent sur le terrain, toutes les données arrivent instantanément dans votre ERP.`,
+    's1.lead': `RubixB2 réunit la vente en tournée, la prise de commandes, le système de gestion des tournées et le reporting KPI dans une seule plateforme avec Odoo. Pendant que vos commerciaux vendent sur le terrain, toutes les données arrivent instantanément dans votre ERP.`,
     'cta.freeDemo': `Demander une démo gratuite`, 'cta.explore': `Découvrir les solutions`,
     'chip.hot': `Vente en tournée`, 'chip.cold': `Prise de commandes`, 'chip.route': `Planification des tournées`, 'chip.collect': `Encaissement`, 'chip.live': `Données en direct`,
     'm.todayRoute': `Tournée du jour`, 'm.routeName': `Zaventem – Bruxelles`, 'm.live': `En direct`, 'm.visit': `Visites`,
@@ -206,7 +206,7 @@ window.I18N = {
 
     'sol.title': `Une seule plateforme pour <span class="gradient-text">chaque étape de la vente terrain</span>`,
     'sol.lead': `De la vente en tournée à la prise de commandes, de la planification des tournées à l'analyse des performances, tous les processus communiquent avec vos données Odoo.`,
-    'tab.route': `Gestion des tournées`, 'tab.kpi': `KPI &amp; performance`,
+    'tab.route': `Système de gestion des tournées`, 'tab.kpi': `KPI &amp; performance`,
     'hot.title': `Vente, facturation et encaissement immédiats depuis le véhicule`,
     'hot.text': `Votre commercial vend directement depuis le stock du véhicule, émet le document sur place et encaisse lors de la même visite. Chaque mouvement est enregistré automatiquement dans le stock et la comptabilité d'Odoo.`,
     'hot.l1': `Suivi du stock en temps réel par véhicule`, 'hot.l2': `Création et impression de factures / bons de livraison sur le terrain`, 'hot.l3': `Encaissement en espèces, par carte ou par chèque`,
@@ -291,7 +291,7 @@ window.I18N = {
     'fm.message': `Votre message *`, 'fm.ph': `Décrivez brièvement votre besoin`,
     'fm.privacy': `Nous utilisons vos données uniquement pour répondre à votre demande. Le formulaire est transmis via le service FormSubmit et ne vous inscrit à aucune liste marketing.`,
 
-    'ftr.tagline': `Vente en tournée, gestion des tournées et analyse KPI avec Odoo.`, 'ftr.dev': `Développé par`, 'ftr.product': `Produit`, 'ftr.contact': `Contact`,
+    'ftr.tagline': `Vente en tournée, système de gestion des tournées et analyse KPI avec Odoo.`, 'ftr.dev': `Développé par`, 'ftr.product': `Produit`, 'ftr.contact': `Contact`,
     'ftr.rights': `NameTech Solutions BV. Tous droits réservés.`, 'ftr.tm': `Odoo est une marque déposée d'Odoo S.A.`,
 
     'js.menuOpen': `Ouvrir le menu`, 'js.menuClose': `Fermer le menu`, 'js.pause': `Mettre en pause le défilement`, 'js.play': `Lancer le défilement`,
@@ -303,8 +303,8 @@ window.I18N = {
 
   /* ---------------------------- NL (Vlaams) ------------------------------- */
   nl: {
-    'meta.title': `RubixB2 | Ritverkoop, routebeheer en KPI-analyse op Odoo`,
-    'meta.desc': `RubixB2 is een platform voor ritverkoop, orderopname, routebeheer en KPI-rapportering dat op Odoo draait. Stuur uw buitendienst aan vanaf één scherm.`,
+    'meta.title': `RubixB2 | Ritverkoop, routebeheersysteem en KPI-analyse op Odoo`,
+    'meta.desc': `RubixB2 is een platform voor ritverkoop, orderopname, routebeheersysteem en KPI-rapportering dat op Odoo draait. Stuur uw buitendienst aan vanaf één scherm.`,
     'a.home': `RubixB2 startpagina`, 'a.mainnav': `Hoofdmenu`, 'a.lang': `Kies een taal`, 'a.carousel': `RubixB2 in de kijker`,
     'a.slide1': `1 / 3: Verkoop op het terrein`, 'a.slide2': `2 / 3: Betere prestaties`, 'a.slide3': `3 / 3: Beheer van A tot Z`,
     'a.modules': `Belangrijkste modules`, 'a.prev': `Vorige dia`, 'a.next': `Volgende dia`, 'a.choose': `Kies een dia`,
@@ -315,7 +315,7 @@ window.I18N = {
 
     's1.eyebrow': `Verkoop op het terrein`,
     's1.title': `Verkopen op het terrein.<br>Efficiënt op elke route.<br><span class="accent-text">Helder in elk rapport.</span>`,
-    's1.lead': `RubixB2 brengt ritverkoop, orderopname, routebeheer en KPI-rapportering samen in één platform met Odoo. Terwijl uw vertegenwoordigers op het terrein verkopen, stromen alle gegevens meteen naar uw ERP.`,
+    's1.lead': `RubixB2 brengt ritverkoop, orderopname, een routebeheersysteem en KPI-rapportering samen in één platform met Odoo. Terwijl uw vertegenwoordigers op het terrein verkopen, stromen alle gegevens meteen naar uw ERP.`,
     'cta.freeDemo': `Gratis demo aanvragen`, 'cta.explore': `Ontdek de oplossingen`,
     'chip.hot': `Ritverkoop`, 'chip.cold': `Orderopname`, 'chip.route': `Routeplanning`, 'chip.collect': `Betalingen innen`, 'chip.live': `Live data`,
     'm.todayRoute': `Route van vandaag`, 'm.routeName': `Zaventem – Brussel`, 'm.live': `Live`, 'm.visit': `Bezoeken`,
@@ -345,7 +345,7 @@ window.I18N = {
 
     'sol.title': `Eén platform voor <span class="gradient-text">elke stap van de terreinverkoop</span>`,
     'sol.lead': `Van ritverkoop tot orderopname, van routeplanning tot prestatieanalyse: alle processen praten met uw Odoo-data.`,
-    'tab.route': `Routebeheer`, 'tab.kpi': `KPI &amp; prestaties`,
+    'tab.route': `Routebeheersysteem`, 'tab.kpi': `KPI &amp; prestaties`,
     'hot.title': `Meteen verkopen, factureren en innen vanuit de bestelwagen`,
     'hot.text': `Uw vertegenwoordiger verkoopt rechtstreeks uit de voorraad van de bestelwagen, maakt het document ter plaatse op en int de betaling tijdens hetzelfde bezoek. Elke beweging wordt automatisch geboekt in de voorraad en de boekhouding van Odoo.`,
     'hot.l1': `Realtime voorraadopvolging per bestelwagen`, 'hot.l2': `Facturen / leveringsbonnen opmaken en afdrukken op het terrein`, 'hot.l3': `Betalingen innen in contanten, met kredietkaart of cheque`,
@@ -430,7 +430,7 @@ window.I18N = {
     'fm.message': `Uw bericht *`, 'fm.ph': `Beschrijf kort wat u nodig hebt`,
     'fm.privacy': `We gebruiken uw gegevens enkel om op uw aanvraag te antwoorden. Het formulier wordt verstuurd via de dienst FormSubmit en schrijft u niet in op marketinglijsten.`,
 
-    'ftr.tagline': `Ritverkoop, routebeheer en KPI-analyse met Odoo.`, 'ftr.dev': `Ontwikkeld door`, 'ftr.product': `Product`, 'ftr.contact': `Contact`,
+    'ftr.tagline': `Ritverkoop, routebeheersysteem en KPI-analyse met Odoo.`, 'ftr.dev': `Ontwikkeld door`, 'ftr.product': `Product`, 'ftr.contact': `Contact`,
     'ftr.rights': `NameTech Solutions BV. Alle rechten voorbehouden.`, 'ftr.tm': `Odoo is een geregistreerd handelsmerk van Odoo S.A.`,
 
     'js.menuOpen': `Menu openen`, 'js.menuClose': `Menu sluiten`, 'js.pause': `Automatisch afspelen pauzeren`, 'js.play': `Automatisch afspelen starten`,
@@ -442,8 +442,8 @@ window.I18N = {
 
   /* ---------------------------------- DE ---------------------------------- */
   de: {
-    'meta.title': `RubixB2 | Tourenverkauf, Tourenplanung und KPI-Analyse auf Odoo`,
-    'meta.desc': `RubixB2 ist eine Plattform für Tourenverkauf, Auftragserfassung, Tourenplanung und KPI-Reporting auf Basis von Odoo. Steuern Sie Ihren Außendienst von einem Bildschirm aus.`,
+    'meta.title': `RubixB2 | Tourenverkauf, Tourenmanagementsystem und KPI-Analyse auf Odoo`,
+    'meta.desc': `RubixB2 ist eine Plattform mit Tourenverkauf, Auftragserfassung, Tourenmanagementsystem und KPI-Reporting auf Basis von Odoo. Steuern Sie Ihren Außendienst von einem Bildschirm aus.`,
     'a.home': `RubixB2 Startseite`, 'a.mainnav': `Hauptmenü`, 'a.lang': `Sprache wählen`, 'a.carousel': `RubixB2 im Überblick`,
     'a.slide1': `1 / 3: Außendienstverkauf`, 'a.slide2': `2 / 3: Leistungssteigerung`, 'a.slide3': `3 / 3: Durchgängige Steuerung`,
     'a.modules': `Wichtige Module`, 'a.prev': `Vorherige Folie`, 'a.next': `Nächste Folie`, 'a.choose': `Folie wählen`,
@@ -454,7 +454,7 @@ window.I18N = {
 
     's1.eyebrow': `Außendienstverkauf`,
     's1.title': `Verkaufen vor Ort.<br>Effizient auf jeder Tour.<br><span class="accent-text">Klarheit in jedem Bericht.</span>`,
-    's1.lead': `RubixB2 vereint Tourenverkauf, Auftragserfassung, Tourenplanung und KPI-Reporting mit Odoo auf einer Plattform. Während Ihre Außendienstmitarbeiter vor Ort verkaufen, fließen alle Daten sofort in Ihr ERP.`,
+    's1.lead': `RubixB2 vereint Tourenverkauf, Auftragserfassung, ein Tourenmanagementsystem und KPI-Reporting mit Odoo auf einer Plattform. Während Ihre Außendienstmitarbeiter vor Ort verkaufen, fließen alle Daten sofort in Ihr ERP.`,
     'cta.freeDemo': `Kostenlose Demo anfragen`, 'cta.explore': `Lösungen entdecken`,
     'chip.hot': `Tourenverkauf`, 'chip.cold': `Auftragserfassung`, 'chip.route': `Tourenplanung`, 'chip.collect': `Inkasso`, 'chip.live': `Live-Daten`,
     'm.todayRoute': `Heutige Tour`, 'm.routeName': `Zaventem – Brüssel`, 'm.live': `Live`, 'm.visit': `Besuche`,
@@ -484,7 +484,7 @@ window.I18N = {
 
     'sol.title': `Eine Plattform für <span class="gradient-text">jeden Schritt im Außendienstverkauf</span>`,
     'sol.lead': `Vom Tourenverkauf bis zur Auftragserfassung, von der Tourenplanung bis zur Leistungsanalyse – alle Prozesse arbeiten mit Ihren Odoo-Daten.`,
-    'tab.route': `Tourenmanagement`, 'tab.kpi': `KPI &amp; Leistung`,
+    'tab.route': `Tourenmanagementsystem`, 'tab.kpi': `KPI &amp; Leistung`,
     'hot.title': `Sofort verkaufen, fakturieren und kassieren – direkt aus dem Fahrzeug`,
     'hot.text': `Ihr Außendienstmitarbeiter verkauft direkt aus dem Fahrzeugbestand, stellt den Beleg vor Ort aus und kassiert beim selben Besuch. Jede Bewegung wird automatisch in Lager und Buchhaltung von Odoo verbucht.`,
     'hot.l1': `Bestandsverfolgung in Echtzeit je Fahrzeuglager`, 'hot.l2': `Rechnungen / Lieferscheine vor Ort erstellen und drucken`, 'hot.l3': `Zahlung bar, per Kreditkarte oder Scheck`,
@@ -569,7 +569,7 @@ window.I18N = {
     'fm.message': `Ihre Nachricht *`, 'fm.ph': `Beschreiben Sie kurz Ihren Bedarf`,
     'fm.privacy': `Wir verwenden Ihre Angaben ausschließlich zur Beantwortung Ihrer Anfrage. Das Formular wird über den Dienst FormSubmit übermittelt und trägt Sie in keine Marketingliste ein.`,
 
-    'ftr.tagline': `Tourenverkauf, Tourenplanung und KPI-Analyse mit Odoo.`, 'ftr.dev': `Entwickelt von`, 'ftr.product': `Produkt`, 'ftr.contact': `Kontakt`,
+    'ftr.tagline': `Tourenverkauf, Tourenmanagementsystem und KPI-Analyse mit Odoo.`, 'ftr.dev': `Entwickelt von`, 'ftr.product': `Produkt`, 'ftr.contact': `Kontakt`,
     'ftr.rights': `NameTech Solutions BV. Alle Rechte vorbehalten.`, 'ftr.tm': `Odoo ist eine eingetragene Marke der Odoo S.A.`,
 
     'js.menuOpen': `Menü öffnen`, 'js.menuClose': `Menü schließen`, 'js.pause': `Automatische Wiedergabe anhalten`, 'js.play': `Automatische Wiedergabe starten`,
@@ -581,8 +581,8 @@ window.I18N = {
 
   /* ---------------------------------- ES ---------------------------------- */
   es: {
-    'meta.title': `RubixB2 | Autoventa, gestión de rutas y análisis de KPI con Odoo`,
-    'meta.desc': `RubixB2 es una plataforma de autoventa, preventa, gestión de rutas e informes de KPI que funciona sobre Odoo. Gestione su equipo de campo desde una sola pantalla.`,
+    'meta.title': `RubixB2 | Autoventa, sistema de gestión de rutas y análisis de KPI con Odoo`,
+    'meta.desc': `RubixB2 es una plataforma de autoventa, preventa, sistema de gestión de rutas e informes de KPI que funciona sobre Odoo. Gestione su equipo de campo desde una sola pantalla.`,
     'a.home': `Inicio de RubixB2`, 'a.mainnav': `Menú principal`, 'a.lang': `Elegir idioma`, 'a.carousel': `Lo más destacado de RubixB2`,
     'a.slide1': `1 / 3: Venta en campo`, 'a.slide2': `2 / 3: Mejora del rendimiento`, 'a.slide3': `3 / 3: Gestión integral`,
     'a.modules': `Módulos principales`, 'a.prev': `Diapositiva anterior`, 'a.next': `Diapositiva siguiente`, 'a.choose': `Elegir diapositiva`,
@@ -593,7 +593,7 @@ window.I18N = {
 
     's1.eyebrow': `Venta en campo`,
     's1.title': `Vende en campo.<br>Eficiencia en cada ruta.<br><span class="accent-text">Claridad en cada informe.</span>`,
-    's1.lead': `RubixB2 reúne la autoventa, la preventa, la gestión de rutas y los informes de KPI en una sola plataforma con Odoo. Mientras sus vendedores venden en campo, todos los datos llegan al instante a su ERP.`,
+    's1.lead': `RubixB2 reúne la autoventa, la preventa, el sistema de gestión de rutas y los informes de KPI en una sola plataforma con Odoo. Mientras sus vendedores venden en campo, todos los datos llegan al instante a su ERP.`,
     'cta.freeDemo': `Solicitar demo gratuita`, 'cta.explore': `Ver soluciones`,
     'chip.hot': `Autoventa`, 'chip.cold': `Preventa`, 'chip.route': `Planificación de rutas`, 'chip.collect': `Cobros`, 'chip.live': `Datos en vivo`,
     'm.todayRoute': `Ruta de hoy`, 'm.routeName': `Zaventem – Bruselas`, 'm.live': `En vivo`, 'm.visit': `Visitas`,
@@ -623,7 +623,7 @@ window.I18N = {
 
     'sol.title': `Una plataforma para <span class="gradient-text">cada paso de la venta en campo</span>`,
     'sol.lead': `De la autoventa a la preventa, de la planificación de rutas al análisis del rendimiento: todos los procesos hablan con sus datos de Odoo.`,
-    'tab.route': `Gestión de rutas`, 'tab.kpi': `KPI y rendimiento`,
+    'tab.route': `Sistema de gestión de rutas`, 'tab.kpi': `KPI y rendimiento`,
     'hot.title': `Venta, facturación y cobro inmediatos desde el vehículo`,
     'hot.text': `Su vendedor vende directamente desde el stock del vehículo, emite el documento en el momento y cobra en la misma visita. Cada movimiento se registra automáticamente en el inventario y la contabilidad de Odoo.`,
     'hot.l1': `Seguimiento del stock en tiempo real por vehículo`, 'hot.l2': `Creación e impresión de facturas / albaranes en campo`, 'hot.l3': `Cobro en efectivo, con tarjeta o cheque`,
@@ -708,7 +708,7 @@ window.I18N = {
     'fm.message': `Su mensaje *`, 'fm.ph': `Describa brevemente lo que necesita`,
     'fm.privacy': `Solo usamos sus datos para responder a su solicitud. El formulario se envía a través del servicio FormSubmit y no le suscribe a ninguna lista de marketing.`,
 
-    'ftr.tagline': `Autoventa, gestión de rutas y análisis de KPI con Odoo.`, 'ftr.dev': `Desarrollado por`, 'ftr.product': `Producto`, 'ftr.contact': `Contacto`,
+    'ftr.tagline': `Autoventa, sistema de gestión de rutas y análisis de KPI con Odoo.`, 'ftr.dev': `Desarrollado por`, 'ftr.product': `Producto`, 'ftr.contact': `Contacto`,
     'ftr.rights': `NameTech Solutions BV. Todos los derechos reservados.`, 'ftr.tm': `Odoo es una marca registrada de Odoo S.A.`,
 
     'js.menuOpen': `Abrir menú`, 'js.menuClose': `Cerrar menú`, 'js.pause': `Pausar la reproducción automática`, 'js.play': `Iniciar la reproducción automática`,
