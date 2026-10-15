@@ -63,6 +63,12 @@ button { font: inherit; }
 }
 .accent-text { color: var(--orange); }
 
+/* Odoo logosu metin içinde: alt çizgisi yazı tabanına oturur */
+.odoo-logo { display: inline-block; height: .78em; width: auto; vertical-align: baseline; margin: 0 .04em; }
+h1 .odoo-logo, h2 .odoo-logo { height: .74em; }
+.eyebrow .odoo-logo { height: 1.05em; vertical-align: -0.15em; }
+.pill .odoo-logo { height: 1em; vertical-align: -0.15em; }
+
 /* ---------- Buttons ---------- */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -460,11 +466,11 @@ button { font: inherit; }
 .hub__ring { position: absolute; inset: 40px; border-radius: 50%; border: 1.5px dashed rgba(20,54,106,.22); animation: spin 60s linear infinite; }
 .hub__core {
   position: absolute; inset: 50%; width: 130px; height: 130px; margin: -65px 0 0 -65px; border-radius: 50%;
-  display: grid; place-content: center; text-align: center; color: #fff;
-  background: radial-gradient(circle at 30% 30%, #1e4a85, #0d1d3d); box-shadow: 0 24px 50px -16px rgba(13,29,61,.6);
+  display: grid; place-content: center; justify-items: center; gap: 6px; text-align: center;
+  background: #fff; border: 3px solid rgba(113,75,103,.18); box-shadow: 0 24px 50px -16px rgba(113,75,103,.45);
 }
-.hub__core span { font-size: 26px; font-weight: 800; }
-.hub__core small { font-size: 12px; opacity: .85; letter-spacing: .1em; }
+.hub__core img { width: 84px; height: auto; }
+.hub__core small { font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: .14em; }
 .hub__node {
   position: absolute; width: 92px; height: 92px; margin: -46px 0 0 -46px; border-radius: 24px;
   display: grid; place-content: center; text-align: center; font-size: 26px;
@@ -602,7 +608,8 @@ button { font: inherit; }
 .footer__brand p { color: var(--muted); max-width: 300px; }
 .footer__maker small { display: block; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
 .footer__maker img { width: 160px; }
-.badge-odoo { font-size: 12px; font-weight: 700; padding: 6px 12px; border-radius: 8px; background: rgba(113,75,103,.08); color: #714b67; border: 1px solid rgba(113,75,103,.22); }
+.badge-odoo img { display: inline-block; height: 14px; width: auto; vertical-align: -1px; }
+.badge-odoo { display: inline-flex; align-items: center; gap: 5px; font-size: 13px; font-weight: 700; padding: 7px 12px; border-radius: 8px; background: rgba(113,75,103,.08); color: #714b67; border: 1px solid rgba(113,75,103,.22); }
 .footer__col { display: flex; flex-direction: column; gap: 10px; }
 .footer__col h4 { font-size: 14px; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 6px; }
 .footer__col a, .footer__col address { color: var(--muted); font-size: 15px; font-style: normal; }
@@ -708,7 +715,7 @@ button { font: inherit; }
 
   .hub { width: 320px; height: 320px; }
   .hub__core { width: 100px; height: 100px; margin: -50px 0 0 -50px; }
-  .hub__core span { font-size: 20px; }
+  .hub__core img { width: 64px; }
   .hub__node { width: 72px; height: 72px; margin: -36px 0 0 -36px; font-size: 20px; border-radius: 18px; }
   .hub__node small { font-size: 10px; }
   .hub__ring { inset: 30px; }
