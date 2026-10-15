@@ -87,37 +87,87 @@
     });
   });
 
-  // Demo formu: sunucu olmadığı için e-posta istemcisini açar
+  // Demo formu: FormSubmit AJAX uç noktasına JSON olarak gönderilir
   var form = document.getElementById('demo-form');
   var note = document.getElementById('form-note');
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
+  var submitBtn = form.querySelector('[type="submit"]');
+  var interestSelect = form.querySelector('[name="interest"]');
+  var subjectField = form.querySelector('[name="_subject"]');
+  var formContext = document.getElementById('form-context');
+  var FALLBACK_MSG = 'Mesajınız gönderilemedi. Lütfen doğrudan ' + CONTACT_EMAIL + ' adresine yazın.';
+
+  function showStatus(message, state) {
+    note.textContent = message;
+    note.classList.toggle('is-error', state === 'error');
+    note.classList.toggle('is-pending', state === 'pending');
+  }
+
+  function updateContext() {
+    var interest = interestSelect.value;
+    var general = interest === 'Genel bilgi';
+    formContext.textContent = general
+      ? 'Ekibimiz size en uygun çözümü bulmanıza yardımcı olur.'
+      : interest + ' ihtiyaçlarınızdan bahsedin, sizi doğru ekiple buluşturalım.';
+    subjectField.value = general ? 'Yeni demo talebi — RubixB2' : interest + ' talebi — RubixB2';
+  }
+  interestSelect.addEventListener('change', updateContext);
+
+  function validate() {
     var valid = true;
     form.querySelectorAll('[required]').forEach(function (input) {
       var ok = input.value.trim() !== '' && (input.type !== 'email' || /^\S+@\S+\.\S+$/.test(input.value));
       input.classList.toggle('is-invalid', !ok);
       if (!ok) valid = false;
     });
-    if (!valid) {
-      note.textContent = 'Lütfen zorunlu alanları doğru doldurun.';
-      note.classList.add('is-error');
+    return valid;
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (submitBtn.disabled) return;
+    if (!validate()) {
+      showStatus('Lütfen zorunlu (*) alanları doğru doldurun.', 'error');
       return;
     }
-    var d = new FormData(form);
-    var body = [
-      'Ad Soyad: ' + d.get('name'),
-      'Firma: ' + d.get('company'),
-      'E-posta: ' + d.get('email'),
-      'Telefon: ' + d.get('phone'),
-      'Ekip büyüklüğü: ' + d.get('team'),
-      '',
-      d.get('message')
-    ].join('\n');
-    window.location.href = 'mailto:' + CONTACT_EMAIL +
-      '?subject=' + encodeURIComponent('RubixB2 Demo Talebi - ' + d.get('company')) +
-      '&body=' + encodeURIComponent(body);
-    note.classList.remove('is-error');
-    note.textContent = 'Teşekkürler! E-posta uygulamanız açılıyor.';
+
+    var payload = {};
+    new FormData(form).forEach(function (value, key) { payload[key] = value; });
+    if (payload._honey) { showStatus(FALLBACK_MSG, 'error'); return; }
+    payload._replyto = payload.email;
+
+    var label = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Gönderiliyor…';
+    form.setAttribute('aria-busy', 'true');
+    showStatus('Mesajınız gönderiliyor…', 'pending');
+
+    var controller = 'AbortController' in window ? new AbortController() : null;
+    var timeout = setTimeout(function () { if (controller) controller.abort(); }, 20000);
+
+    fetch(form.dataset.endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(payload),
+      signal: controller ? controller.signal : undefined
+    })
+      .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+      .then(function (r) {
+        var msg = (r.data && r.data.message) || '';
+        // FormSubmit ilk gönderimde adresin onaylanmasını ister
+        if (!r.ok || String(r.data.success) !== 'true' || /activat|confirm|check.*email/i.test(msg)) {
+          throw new Error(msg || 'send failed');
+        }
+        form.reset();
+        updateContext();
+        showStatus('Teşekkürler! Mesajınız bize ulaştı, en kısa sürede dönüş yapacağız.', 'success');
+      })
+      .catch(function () { showStatus(FALLBACK_MSG, 'error'); })
+      .then(function () {
+        clearTimeout(timeout);
+        submitBtn.disabled = false;
+        submitBtn.textContent = label;
+        form.removeAttribute('aria-busy');
+      });
   });
 
   // Hero slider

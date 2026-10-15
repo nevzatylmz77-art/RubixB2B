@@ -744,26 +744,54 @@
           </ul>
         </div>
 
-        <form class="form" id="demo-form" novalidate>
+        <!-- Form, FormSubmit (formsubmit.co) üzerinden info@nametech.be adresine iletilir -->
+        <form class="form" id="demo-form" action="https://formsubmit.co/info@nametech.be" method="post"
+              data-endpoint="https://formsubmit.co/ajax/info@nametech.be" novalidate>
+          <input type="hidden" name="_subject" value="Yeni demo talebi — RubixB2">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+
           <div class="form__row">
-            <label>Ad Soyad<input type="text" name="name" required autocomplete="name"></label>
-            <label>Firma<input type="text" name="company" required autocomplete="organization"></label>
+            <label>Ad Soyad *<input type="text" name="name" required autocomplete="name" maxlength="100"></label>
+            <label>Firma *<input type="text" name="company" required autocomplete="organization" maxlength="120"></label>
           </div>
           <div class="form__row">
-            <label>E-posta<input type="email" name="email" required autocomplete="email"></label>
-            <label>Telefon<input type="tel" name="phone" autocomplete="tel"></label>
+            <label>E-posta *<input type="email" name="email" required autocomplete="email" maxlength="160"></label>
+            <label>Telefon<input type="tel" name="phone" autocomplete="tel" maxlength="40"></label>
           </div>
-          <label>Saha ekibi büyüklüğü
-            <select name="team">
-              <option>1–5 plasiyer</option>
-              <option>6–20 plasiyer</option>
-              <option>21–50 plasiyer</option>
-              <option>50+ plasiyer</option>
-            </select>
-          </label>
-          <label>Mesajınız<textarea name="message" rows="3" placeholder="Kısaca ihtiyacınızdan bahsedin"></textarea></label>
+          <div class="form__row">
+            <label>İlgilendiğiniz konu
+              <select name="interest">
+                <option>Genel bilgi</option>
+                <option>Sıcak Satış</option>
+                <option>Soğuk Satış</option>
+                <option>Rut Yönetimi</option>
+                <option>KPI &amp; Raporlama</option>
+                <option>Odoo Entegrasyonu</option>
+                <option>İş Ortaklığı</option>
+              </select>
+            </label>
+            <label>Saha ekibi büyüklüğü
+              <select name="team">
+                <option>1–5 plasiyer</option>
+                <option>6–20 plasiyer</option>
+                <option>21–50 plasiyer</option>
+                <option>50+ plasiyer</option>
+              </select>
+            </label>
+          </div>
+          <p class="form__context" id="form-context">Ekibimiz size en uygun çözümü bulmanıza yardımcı olur.</p>
+          <label>Mesajınız *<textarea name="message" rows="4" required maxlength="3000" placeholder="Kısaca ihtiyacınızdan bahsedin"></textarea></label>
+
+          <!-- Spam botları için tuzak alan: gerçek kullanıcılar görmez -->
+          <div class="form__honeypot" aria-hidden="true">
+            <label for="demo-website">Bu alanı boş bırakın</label>
+            <input type="text" id="demo-website" name="_honey" tabindex="-1" autocomplete="off">
+          </div>
+
+          <p class="form__privacy">Bilgilerinizi yalnızca talebinize yanıt vermek için kullanırız. Form, FormSubmit servisi aracılığıyla iletilir; sizi pazarlama listelerine eklemez.</p>
           <button type="submit" class="btn btn--primary btn--lg btn--block">Demo Talep Et</button>
-          <p class="form__note" id="form-note" role="status"></p>
+          <p class="form__note" id="form-note" role="status" aria-live="polite"></p>
         </form>
       </div>
     </section>

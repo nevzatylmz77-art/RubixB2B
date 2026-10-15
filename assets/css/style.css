@@ -585,6 +585,12 @@ button { font: inherit; }
 .form .is-invalid { border-color: #c2410c; }
 .form__note { font-size: 14px; min-height: 1.4em; text-align: center; color: var(--green); }
 .form__note.is-error { color: #c2410c; }
+.form__note.is-pending { color: var(--muted); }
+.form__context { font-size: 14px; color: var(--teal-2); margin-top: -4px; }
+.form__privacy { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+.form__honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.form { position: relative; }
+.form button[disabled] { opacity: .7; cursor: progress; transform: none; }
 .form .btn--primary { background: var(--orange); box-shadow: 0 12px 26px -14px rgba(242,131,35,.9); }
 .form .btn--primary:hover { background: var(--orange-2); }
 
