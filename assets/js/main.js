@@ -1,8 +1,8 @@
 (function () {
   'use strict';
 
-  // TODO: Formun gönderileceği e-posta adresi
-  var CONTACT_EMAIL = 'info@sirketiniz.com';
+  // Formun gönderileceği e-posta adresi
+  var CONTACT_EMAIL = 'info@nametech.be';
 
   var header = document.querySelector('.header');
   var burger = document.getElementById('burger');
