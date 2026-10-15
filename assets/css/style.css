@@ -269,8 +269,9 @@ body { transition: opacity .2s; }
   display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 10px; cursor: pointer;
   font-size: 14px; font-weight: 500; color: var(--text); outline: none;
 }
-.flag { flex: none; width: 24px; height: 16px; border-radius: 3px; overflow: hidden; box-shadow: 0 0 0 1px rgba(19,33,63,.14); }
-.lang__btn .flag { width: 26px; height: 18px; }
+/* Bayraklar: butondaki ikon çizgi stili bayrağa geçmesin */
+.flag, .lang__btn .flag { flex: none; width: 24px; height: 16px; border-radius: 3px; overflow: hidden; box-shadow: 0 0 0 1px rgba(19,33,63,.14); fill: initial; stroke: none; }
+.lang__btn .flag { width: 27px; height: 18px; }
 .lang__menu li:hover, .lang__menu li:focus-visible { background: var(--bg); }
 .lang__menu li[aria-selected="true"] { background: rgba(2,123,160,.08); color: var(--teal-2); font-weight: 700; }
 .lang__menu li[aria-selected="true"] .flag { box-shadow: 0 0 0 2px var(--teal); }
