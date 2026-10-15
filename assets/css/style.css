@@ -618,12 +618,21 @@ body { transition: opacity .2s; }
 .office-map__streets { width: 100%; height: 100%; }
 .office-map__streets path { fill: none; stroke: #fff; stroke-width: 12; stroke-linecap: round; }
 .office-map__streets path.minor { stroke-width: 5; stroke: rgba(255,255,255,.75); }
+/* NameTech logolu konum etiketi; alttaki turuncu üçgen konumu işaret eder */
 .office-map__pin {
-  position: absolute; left: 50%; top: 34%; transform: translate(-50%, -50%);
-  width: 48px; height: 48px; border-radius: 50% 50% 50% 0; rotate: -45deg;
-  display: grid; place-items: center; background: var(--orange); box-shadow: 0 8px 18px -6px rgba(242,131,35,.8);
+  position: absolute; left: 50%; top: 32%; transform: translate(-50%, -100%);
+  padding: 8px 12px; border-radius: 12px; background: #fff;
+  border: 2px solid var(--orange); box-shadow: 0 10px 22px -10px rgba(13,29,61,.45);
 }
-.office-map__pin img { width: 26px; rotate: 45deg; background: #fff; border-radius: 50%; padding: 3px; }
+.office-map__pin img { display: block; width: 110px; height: auto; }
+.office-map__pin::after {
+  content: ""; position: absolute; left: 50%; bottom: -11px; transform: translateX(-50%);
+  border: 9px solid transparent; border-top-color: var(--orange); border-bottom: 0;
+}
+.office-map__pin::before {
+  content: ""; position: absolute; left: 50%; bottom: -22px; width: 10px; height: 10px; margin-left: -5px;
+  border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 5px rgba(242,131,35,.25);
+}
 .office-map__overlay {
   position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 12px 14px; border-radius: 14px;
   display: grid; grid-template-columns: 1fr auto; column-gap: 12px; row-gap: 2px; align-items: center;
@@ -639,7 +648,7 @@ body { transition: opacity .2s; }
 .office-map__dir:hover { color: var(--orange-2); }
 .office-map__dir svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round; }
 @media (max-width: 600px) {
-  .office-map { aspect-ratio: 4 / 3; }
+  .office-map { aspect-ratio: 1 / 1; }
   .office-map__overlay { grid-template-columns: 1fr; }
   .office-map__overlay .btn { grid-column: 1; grid-row: auto; margin-top: 8px; justify-self: start; }
 }
