@@ -120,5 +120,90 @@
     note.textContent = 'Teşekkürler! E-posta uygulamanız açılıyor.';
   });
 
+  // Hero slider
+  var slider = document.getElementById('hero-slider');
+  if (slider) {
+    var slides = Array.prototype.slice.call(slider.querySelectorAll('.slide'));
+    var dots = Array.prototype.slice.call(slider.querySelectorAll('.slider__dot'));
+    var pauseBtn = document.getElementById('slider-pause');
+    var DURATION = 7000;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var current = 0, timer = null, userPaused = reduceMotion, hoverPaused = false;
+
+    slider.style.setProperty('--slide-ms', DURATION + 'ms');
+
+    function go(index) {
+      var prev = current;
+      current = (index + slides.length) % slides.length;
+      slides.forEach(function (s, i) {
+        var on = i === current;
+        s.classList.toggle('is-active', on);
+        s.classList.toggle('is-leaving', i === prev && !on);
+        s.setAttribute('aria-hidden', String(!on));
+      });
+      dots.forEach(function (d, i) {
+        var on = i === current;
+        d.classList.remove('is-active');
+        d.setAttribute('aria-selected', String(on));
+      });
+      void dots[current].offsetWidth; // ilerleme çubuğunu yeniden başlat
+      dots[current].classList.add('is-active');
+      schedule();
+    }
+
+    function schedule() {
+      clearTimeout(timer);
+      var paused = userPaused || hoverPaused;
+      slider.classList.toggle('is-paused', paused);
+      if (!paused) timer = setTimeout(function () { go(current + 1); }, DURATION);
+    }
+
+    dots.forEach(function (d, i) { d.addEventListener('click', function () { go(i); }); });
+    slider.querySelectorAll('.slider__arrow').forEach(function (btn) {
+      btn.addEventListener('click', function () { go(current + Number(btn.dataset.dir)); });
+    });
+
+    pauseBtn.addEventListener('click', function () {
+      userPaused = !userPaused;
+      pauseBtn.setAttribute('aria-pressed', String(userPaused));
+      pauseBtn.setAttribute('aria-label', userPaused ? 'Otomatik geçişi başlat' : 'Otomatik geçişi durdur');
+      if (userPaused) schedule(); else go(current);
+    });
+    if (userPaused) {
+      pauseBtn.setAttribute('aria-pressed', 'true');
+      pauseBtn.setAttribute('aria-label', 'Otomatik geçişi başlat');
+    }
+
+    slider.addEventListener('mouseenter', function () { hoverPaused = true; schedule(); });
+    slider.addEventListener('mouseleave', function () { hoverPaused = false; if (!userPaused) go(current); });
+
+    slider.addEventListener('keydown', function (e) {
+      if (e.target.closest('.slider__dot, .slider__arrow')) {
+        if (e.key === 'ArrowRight') { e.preventDefault(); go(current + 1); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); go(current - 1); }
+      }
+    });
+
+    // Dokunmatik kaydırma
+    var startX = null, startY = null;
+    slider.addEventListener('touchstart', function (e) {
+      startX = e.touches[0].clientX; startY = e.touches[0].clientY;
+    }, { passive: true });
+    slider.addEventListener('touchend', function (e) {
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      var dy = e.changedTouches[0].clientY - startY;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) go(current + (dx < 0 ? 1 : -1));
+      startX = null;
+    }, { passive: true });
+
+    // Sekme görünmezken durdur
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) clearTimeout(timer); else schedule();
+    });
+
+    go(0);
+  }
+
   document.getElementById('year').textContent = new Date().getFullYear();
 })();
