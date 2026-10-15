@@ -4,6 +4,88 @@
   // Formun gönderileceği e-posta adresi
   var CONTACT_EMAIL = 'info@nametech.be';
 
+  /* =========================================================
+     Dil desteği
+     Türkçe metinler HTML'den okunur; diğer diller assets/js/i18n.js içinde.
+     ========================================================= */
+  var LANGS = ['tr', 'en', 'fr', 'nl', 'de', 'es'];
+  var HTML_LANG = { tr: 'tr', en: 'en', fr: 'fr', nl: 'nl-BE', de: 'de', es: 'es' };
+  var DICT = window.I18N || {};
+  var ODOO_IMG = '<img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196">';
+  var lang = LANGS.indexOf(window.__LANG) > -1 ? window.__LANG : 'tr';
+  var langListeners = [];
+
+  var textNodes = Array.prototype.map.call(document.querySelectorAll('[data-i18n]'), function (el) {
+    return { el: el, key: el.getAttribute('data-i18n'), tr: el.innerHTML };
+  });
+  var attrNodes = [];
+  Array.prototype.forEach.call(document.querySelectorAll('[data-i18n-attr]'), function (el) {
+    el.getAttribute('data-i18n-attr').split(';').forEach(function (pair) {
+      var p = pair.split(':');
+      if (p.length === 2) attrNodes.push({ el: el, attr: p[0].trim(), key: p[1].trim(), tr: el.getAttribute(p[0].trim()) || '' });
+    });
+  });
+
+  function t(key, vars) {
+    var s = (DICT[lang] && DICT[lang][key]) || (DICT.tr && DICT.tr[key]) || '';
+    if (vars) Object.keys(vars).forEach(function (k) { s = s.split('{' + k + '}').join(vars[k]); });
+    return s;
+  }
+
+  function translated(key, original) {
+    if (lang === 'tr') return original;
+    var v = DICT[lang] && DICT[lang][key];
+    return v == null ? original : v;
+  }
+
+  function applyLang(next, remember) {
+    lang = LANGS.indexOf(next) > -1 ? next : 'tr';
+    textNodes.forEach(function (n) { n.el.innerHTML = translated(n.key, n.tr).replace(/\{odoo\}/g, ODOO_IMG); });
+    attrNodes.forEach(function (n) {
+      var v = translated(n.key, n.tr).replace(/\{odoo\}/g, 'Odoo').replace(/<[^>]+>/g, '').replace(/&amp;/g, '&');
+      n.el.setAttribute(n.attr, v);
+    });
+    document.documentElement.lang = HTML_LANG[lang];
+    document.title = t('meta.title');
+    var desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute('content', t('meta.desc'));
+    langCode.textContent = lang.toUpperCase();
+    langMenu.querySelectorAll('[data-lang]').forEach(function (li) {
+      li.setAttribute('aria-selected', String(li.dataset.lang === lang));
+    });
+    if (remember) { try { localStorage.setItem('rubix-lang', lang); } catch (e) {} }
+    langListeners.forEach(function (fn) { fn(); });
+    document.documentElement.classList.remove('i18n-loading');
+  }
+
+  // Dil seçici
+  var langBox = document.getElementById('lang');
+  var langBtn = document.getElementById('lang-btn');
+  var langMenu = document.getElementById('lang-menu');
+  var langCode = document.getElementById('lang-code');
+  var langItems = Array.prototype.slice.call(langMenu.querySelectorAll('[data-lang]'));
+  langItems.forEach(function (li) { li.tabIndex = -1; });
+
+  function setLangMenu(open, focusCurrent) {
+    langMenu.hidden = !open;
+    langBtn.setAttribute('aria-expanded', String(open));
+    if (open && focusCurrent) {
+      var cur = langMenu.querySelector('[data-lang="' + lang + '"]') || langItems[0];
+      cur.focus();
+    }
+  }
+  langBtn.addEventListener('click', function () { setLangMenu(langMenu.hidden, true); });
+  langItems.forEach(function (li, i) {
+    li.addEventListener('click', function () { applyLang(li.dataset.lang, true); setLangMenu(false); langBtn.focus(); });
+    li.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); li.click(); }
+      if (e.key === 'ArrowDown') { e.preventDefault(); langItems[(i + 1) % langItems.length].focus(); }
+      if (e.key === 'ArrowUp') { e.preventDefault(); langItems[(i - 1 + langItems.length) % langItems.length].focus(); }
+      if (e.key === 'Escape' || e.key === 'Tab') { setLangMenu(false); if (e.key === 'Escape') langBtn.focus(); }
+    });
+  });
+  document.addEventListener('click', function (e) { if (!langBox.contains(e.target)) setLangMenu(false); });
+
   var header = document.querySelector('.header');
   var burger = document.getElementById('burger');
   var nav = document.getElementById('nav');
@@ -21,8 +103,9 @@
     header.classList.toggle('nav-active', open);
     document.body.classList.toggle('nav-open', open);
     burger.setAttribute('aria-expanded', String(open));
-    burger.setAttribute('aria-label', open ? 'Menüyü kapat' : 'Menüyü aç');
+    burger.setAttribute('aria-label', t(open ? 'js.menuClose' : 'js.menuOpen'));
   }
+  langListeners.push(function () { setMenu(nav.classList.contains('is-open')); });
   burger.addEventListener('click', function () {
     setMenu(!nav.classList.contains('is-open'));
   });
@@ -30,10 +113,10 @@
     a.addEventListener('click', function () { setMenu(false); });
   });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') setMenu(false);
+    if (e.key === 'Escape') { setMenu(false); setLangMenu(false); }
   });
   window.addEventListener('resize', function () {
-    if (window.innerWidth > 920) setMenu(false);
+    if (window.innerWidth > 1100) setMenu(false);
   });
 
   // Çözüm sekmeleri
@@ -93,8 +176,8 @@
   var submitBtn = form.querySelector('[type="submit"]');
   var interestSelect = form.querySelector('[name="interest"]');
   var subjectField = form.querySelector('[name="_subject"]');
+  var langField = form.querySelector('[name="language"]');
   var formContext = document.getElementById('form-context');
-  var FALLBACK_MSG = 'Mesajınız gönderilemedi. Lütfen doğrudan ' + CONTACT_EMAIL + ' adresine yazın.';
 
   function showStatus(message, state) {
     note.textContent = message;
@@ -102,15 +185,17 @@
     note.classList.toggle('is-pending', state === 'pending');
   }
 
+  // Konu satırı ve değerler e-postada Türkçe kalır; ziyaretçinin dili ayrıca belirtilir
   function updateContext() {
     var interest = interestSelect.value;
     var general = interest === 'Genel bilgi';
-    formContext.textContent = general
-      ? 'Ekibimiz size en uygun çözümü bulmanıza yardımcı olur.'
-      : interest + ' ihtiyaçlarınızdan bahsedin, sizi doğru ekiple buluşturalım.';
-    subjectField.value = general ? 'Yeni demo talebi — RubixB2' : interest + ' talebi — RubixB2';
+    var topic = interestSelect.options[interestSelect.selectedIndex].text;
+    formContext.textContent = general ? t('js.ctxGeneral') : t('js.ctxTopic', { topic: topic });
+    subjectField.value = (general ? 'Yeni demo talebi — RubixB2' : interest + ' talebi — RubixB2') + ' [' + lang.toUpperCase() + ']';
+    langField.value = lang.toUpperCase();
   }
   interestSelect.addEventListener('change', updateContext);
+  langListeners.push(function () { updateContext(); showStatus('', ''); });
 
   function validate() {
     var valid = true;
@@ -126,20 +211,21 @@
     e.preventDefault();
     if (submitBtn.disabled) return;
     if (!validate()) {
-      showStatus('Lütfen zorunlu (*) alanları doğru doldurun.', 'error');
+      showStatus(t('js.required'), 'error');
       return;
     }
 
+    var fallback = t('js.fallback', { email: CONTACT_EMAIL });
     var payload = {};
     new FormData(form).forEach(function (value, key) { payload[key] = value; });
-    if (payload._honey) { showStatus(FALLBACK_MSG, 'error'); return; }
+    if (payload._honey) { showStatus(fallback, 'error'); return; }
     payload._replyto = payload.email;
 
-    var label = submitBtn.textContent;
+    var label = submitBtn.innerHTML;
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Gönderiliyor…';
+    submitBtn.textContent = t('js.sendingBtn');
     form.setAttribute('aria-busy', 'true');
-    showStatus('Mesajınız gönderiliyor…', 'pending');
+    showStatus(t('js.sending'), 'pending');
 
     var controller = 'AbortController' in window ? new AbortController() : null;
     var timeout = setTimeout(function () { if (controller) controller.abort(); }, 20000);
@@ -159,13 +245,13 @@
         }
         form.reset();
         updateContext();
-        showStatus('Teşekkürler! Mesajınız bize ulaştı, en kısa sürede dönüş yapacağız.', 'success');
+        showStatus(t('js.success'), 'success');
       })
-      .catch(function () { showStatus(FALLBACK_MSG, 'error'); })
+      .catch(function () { showStatus(fallback, 'error'); })
       .then(function () {
         clearTimeout(timeout);
         submitBtn.disabled = false;
-        submitBtn.textContent = label;
+        submitBtn.innerHTML = label;
         form.removeAttribute('aria-busy');
       });
   });
@@ -208,6 +294,12 @@
       if (!paused) timer = setTimeout(function () { go(current + 1); }, DURATION);
     }
 
+    function updatePauseLabel() {
+      pauseBtn.setAttribute('aria-pressed', String(userPaused));
+      pauseBtn.setAttribute('aria-label', t(userPaused ? 'js.play' : 'js.pause'));
+    }
+    langListeners.push(updatePauseLabel);
+
     dots.forEach(function (d, i) { d.addEventListener('click', function () { go(i); }); });
     slider.querySelectorAll('.slider__arrow').forEach(function (btn) {
       btn.addEventListener('click', function () { go(current + Number(btn.dataset.dir)); });
@@ -215,14 +307,9 @@
 
     pauseBtn.addEventListener('click', function () {
       userPaused = !userPaused;
-      pauseBtn.setAttribute('aria-pressed', String(userPaused));
-      pauseBtn.setAttribute('aria-label', userPaused ? 'Otomatik geçişi başlat' : 'Otomatik geçişi durdur');
+      updatePauseLabel();
       if (userPaused) schedule(); else go(current);
     });
-    if (userPaused) {
-      pauseBtn.setAttribute('aria-pressed', 'true');
-      pauseBtn.setAttribute('aria-label', 'Otomatik geçişi başlat');
-    }
 
     slider.addEventListener('mouseenter', function () { hoverPaused = true; schedule(); });
     slider.addEventListener('mouseleave', function () { hoverPaused = false; if (!userPaused) go(current); });
@@ -256,4 +343,7 @@
   }
 
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Açılış dilini uygula (tarayıcı dili veya kayıtlı tercih)
+  applyLang(lang, false);
 })();

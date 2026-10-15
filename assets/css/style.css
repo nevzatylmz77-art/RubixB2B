@@ -134,7 +134,39 @@ h1 .odoo-logo, h2 .odoo-logo { height: .74em; }
 .nav a:not(.btn):hover::after { right: 0; }
 .nav__cta { display: none; }
 
-.header__actions { display: flex; align-items: center; gap: 12px; }
+.header__actions { display: flex; align-items: center; gap: 10px; }
+
+/* Çeviri uygulanana kadar sayfayı gizle (Türkçe dışı açılışta) */
+html.i18n-loading body { opacity: 0; }
+body { transition: opacity .2s; }
+
+/* Dil seçici */
+.lang { position: relative; }
+.lang__btn {
+  display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 10px 0 12px;
+  border-radius: 12px; border: 1px solid var(--border-strong); background: var(--surface);
+  color: var(--navy); font-weight: 700; font-size: 13px; cursor: pointer; transition: border-color .2s;
+}
+.lang__btn:hover, .lang__btn[aria-expanded="true"] { border-color: var(--teal); }
+.lang__btn svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.lang__btn .lang__caret { width: 14px; height: 14px; stroke-width: 2.2; transition: transform .2s; }
+.lang__btn[aria-expanded="true"] .lang__caret { transform: rotate(180deg); }
+.lang__menu {
+  position: absolute; right: 0; top: calc(100% + 8px); z-index: 60; min-width: 220px; margin: 0; padding: 6px; list-style: none;
+  border-radius: 14px; background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow);
+}
+.lang__menu li {
+  display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 10px; cursor: pointer;
+  font-size: 14px; font-weight: 500; color: var(--text); outline: none;
+}
+.lang__menu li span { width: 26px; font-size: 11px; font-weight: 800; color: var(--muted); letter-spacing: .04em; }
+.lang__menu li:hover, .lang__menu li:focus-visible { background: var(--bg); }
+.lang__menu li[aria-selected="true"] { background: rgba(2,123,160,.08); color: var(--teal-2); font-weight: 700; }
+.lang__menu li[aria-selected="true"] span { color: var(--teal-2); }
+
+/* Login butonu */
+.login-btn { height: 40px; padding: 0 14px; gap: 6px; }
+.login-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
 
 .burger { display: none; width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--border-strong); background: var(--surface); cursor: pointer; padding: 0; position: relative; }
 .burger span { position: absolute; left: 12px; right: 12px; height: 2px; background: var(--navy); border-radius: 2px; transition: transform .3s, opacity .3s; }
@@ -624,6 +656,12 @@ h1 .odoo-logo, h2 .odoo-logo { height: .74em; }
 /* =========================================================
    Responsive
    ========================================================= */
+@media (max-width: 1240px) {
+  .nav { gap: 18px; }
+  .nav a:not(.btn) { font-size: 14px; }
+  .header__cta { display: none; }
+}
+
 @media (max-width: 1080px) {
   .features, .audience { grid-template-columns: repeat(2, 1fr); }
   .steps { grid-template-columns: repeat(2, 1fr); }
@@ -631,6 +669,25 @@ h1 .odoo-logo, h2 .odoo-logo { height: .74em; }
   .hero__inner { gap: 32px; }
   .float-card--chart { right: -10px; }
 }
+
+/* Menü 1100px altında hamburger menüye geçer (uzun dillerde taşmayı önler) */
+@media (max-width: 1100px) {
+  .burger { display: block; }
+  .header__cta { display: none; }
+  .nav {
+    position: fixed; top: var(--header-h); left: 0; right: 0; bottom: 0;
+    flex-direction: column; align-items: stretch; gap: 0; padding: 16px 24px 32px;
+    background: var(--bg);
+    transform: translateX(100%); transition: transform .35s ease; overflow-y: auto;
+  }
+  .nav.is-open { transform: none; }
+  .nav a:not(.btn) { padding: 16px 0; font-size: 18px; color: var(--navy-2); border-bottom: 1px solid var(--border); }
+  .nav a:not(.btn)::after { display: none; }
+  .nav__cta { display: inline-flex; margin-top: 24px; }
+  body.nav-open { overflow: hidden; }
+  .header.nav-active { background: var(--bg); border-bottom-color: var(--border); }
+}
+.nav a { white-space: nowrap; }
 
 @media (max-width: 920px) {
   :root { --header-h: 66px; }
@@ -679,6 +736,13 @@ h1 .odoo-logo, h2 .odoo-logo { height: .74em; }
 }
 
 @media (max-width: 600px) {
+  .header__actions { gap: 6px; }
+  .login-btn { width: 40px; padding: 0; }
+  .login-btn span { display: none; }
+  .lang__btn { padding: 0 8px; }
+  .lang__btn .lang__caret { display: none; }
+  .logo__text { font-size: 20px; }
+  .logo img { height: 34px; }
   .container { padding: 0 16px; }
   .hero h1, .hero__title { font-size: 34px; }
   .lead { font-size: 16px; }

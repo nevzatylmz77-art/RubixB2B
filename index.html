@@ -9,32 +9,70 @@
   <meta name="author" content="NameTech Solutions BV">
   <link rel="icon" type="image/png" href="assets/img/favicon.png">
   <link rel="apple-touch-icon" href="assets/img/rubixb2-icon.png">
+  <script>
+    /* Dil seçimi: kayıtlı tercih > ?lang= > tarayıcı dili. Türkçe dışı dilde, çeviri uygulanana kadar sayfa gizlenir. */
+    (function () {
+      var langs = ['tr', 'en', 'fr', 'nl', 'de', 'es'], pick = null;
+      try { var q = new URLSearchParams(location.search).get('lang'); if (langs.indexOf(q) > -1) pick = q; } catch (e) {}
+      if (!pick) { try { var s = localStorage.getItem('rubix-lang'); if (langs.indexOf(s) > -1) pick = s; } catch (e) {} }
+      if (!pick) {
+        var list = navigator.languages || [navigator.language || 'en'];
+        for (var i = 0; i < list.length && !pick; i++) { var c = String(list[i]).slice(0, 2).toLowerCase(); if (langs.indexOf(c) > -1) pick = c; }
+      }
+      pick = pick || 'en';
+      window.__LANG = pick;
+      if (pick !== 'tr') {
+        document.documentElement.className += ' i18n-loading';
+        setTimeout(function () { document.documentElement.classList.remove('i18n-loading'); }, 2500);
+      }
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261015c">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261015d">
 </head>
 <body>
 
   <!-- ============ HEADER ============ -->
   <header class="header" id="top">
     <div class="container header__inner">
-      <a href="#top" class="logo" aria-label="RubixB2 ana sayfa">
+      <a href="#top" class="logo" aria-label="RubixB2 ana sayfa" data-i18n-attr="aria-label:a.home">
         <img src="assets/img/rubixb2-icon.png" alt="" width="256" height="290">
         <span class="logo__text">Rubix<b>B2</b></span>
       </a>
 
-      <nav class="nav" id="nav" aria-label="Ana menü">
-        <a href="#cozumler">Çözümler</a>
-        <a href="#nasil-calisir">Nasıl Çalışır</a>
-        <a href="#ozellikler">Özellikler</a>
-        <a href="#odoo">Odoo Entegrasyonu</a>
-        <a href="#sss">SSS</a>
-        <a href="#iletisim" class="btn btn--primary nav__cta">Demo Talep Et</a>
+      <nav class="nav" id="nav" aria-label="Ana menü" data-i18n-attr="aria-label:a.mainnav">
+        <a href="#cozumler" data-i18n="nav.solutions">Çözümler</a>
+        <a href="#nasil-calisir" data-i18n="nav.how">Nasıl Çalışır</a>
+        <a href="#ozellikler" data-i18n="nav.features">Özellikler</a>
+        <a href="#odoo" data-i18n="nav.odoo">Odoo Entegrasyonu</a>
+        <a href="#sss" data-i18n="nav.faq">SSS</a>
+        <a href="#iletisim" class="btn btn--primary nav__cta" data-i18n="cta.demo">Demo Talep Et</a>
       </nav>
 
       <div class="header__actions">
-        <a href="#iletisim" class="btn btn--primary btn--sm header__cta">Demo Talep Et</a>
+        <div class="lang" id="lang">
+          <button type="button" class="lang__btn" id="lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Dil seçin" data-i18n-attr="aria-label:a.lang">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3C9.5 5.6 8.2 8.6 8.2 12s1.3 6.4 3.8 9"/></svg>
+            <span class="lang__code" id="lang-code">TR</span>
+            <svg class="lang__caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="lang__menu" id="lang-menu" role="listbox" aria-label="Dil seçin" data-i18n-attr="aria-label:a.lang" hidden>
+            <li role="option" data-lang="tr" lang="tr"><span>TR</span>Türkçe</li>
+            <li role="option" data-lang="en" lang="en"><span>EN</span>English</li>
+            <li role="option" data-lang="fr" lang="fr"><span>FR</span>Français</li>
+            <li role="option" data-lang="nl" lang="nl"><span>NL</span>Nederlands (Vlaams)</li>
+            <li role="option" data-lang="de" lang="de"><span>DE</span>Deutsch</li>
+            <li role="option" data-lang="es" lang="es"><span>ES</span>Español</li>
+          </ul>
+        </div>
+        <!-- Login: henüz bir hedefe bağlı değil -->
+        <button type="button" class="btn btn--ghost btn--sm login-btn" id="login-btn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
+          <span data-i18n="btn.login">Giriş</span>
+        </button>
+        <a href="#iletisim" class="btn btn--primary btn--sm header__cta" data-i18n="cta.demo">Demo Talep Et</a>
         <button class="burger" id="burger" aria-label="Menüyü aç" aria-expanded="false" aria-controls="nav">
           <span></span><span></span><span></span>
         </button>
@@ -44,7 +82,7 @@
 
   <main>
     <!-- ============ HERO ============ -->
-    <section class="hero" aria-roledescription="carousel" aria-label="RubixB2 öne çıkanlar">
+    <section class="hero" aria-roledescription="carousel" aria-label="RubixB2 öne çıkanlar" data-i18n-attr="aria-label:a.carousel">
       <div class="hero__bg" aria-hidden="true">
         <div class="dots-bg"></div>
         <div class="blob blob--1"></div>
@@ -55,23 +93,23 @@
         <div class="slider__track">
 
         <!-- ===== SLIDE 1: Saha satışı ===== -->
-        <div class="slide hero__inner is-active" role="group" aria-roledescription="slide" aria-label="1 / 3: Saha satışı">
+        <div class="slide hero__inner is-active" role="group" aria-roledescription="slide" aria-label="1 / 3: Saha satışı" data-i18n-attr="aria-label:a.slide1">
         <div class="hero__content">
-          <span class="eyebrow"><span class="dot"></span> Saha Satışı</span>
-          <h1>Sahada satış.<br>Rotada verim.<br><span class="accent-text">Raporda netlik.</span></h1>
-          <p class="lead">RubixB2; sıcak ve soğuk satış, rut yönetimi ve KPI performans raporlamasını Odoo ile tek platformda birleştirir. Plasiyerleriniz sahada satarken tüm veriler anında ERP'nize akar.</p>
+          <span class="eyebrow"><span class="dot"></span> <span data-i18n="s1.eyebrow">Saha Satışı</span></span>
+          <h1 data-i18n="s1.title">Sahada satış.<br>Rotada verim.<br><span class="accent-text">Raporda netlik.</span></h1>
+          <p class="lead" data-i18n="s1.lead">RubixB2; sıcak ve soğuk satış, rut yönetimi ve KPI performans raporlamasını Odoo ile tek platformda birleştirir. Plasiyerleriniz sahada satarken tüm veriler anında ERP'nize akar.</p>
           <div class="hero__ctas">
-            <a href="#iletisim" class="btn btn--primary btn--lg">Ücretsiz Demo Talep Et
+            <a href="#iletisim" class="btn btn--primary btn--lg"><span data-i18n="cta.freeDemo">Ücretsiz Demo Talep Et</span>
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
-            <a href="#cozumler" class="btn btn--ghost btn--lg">Çözümleri İncele</a>
+            <a href="#cozumler" class="btn btn--ghost btn--lg" data-i18n="cta.explore">Çözümleri İncele</a>
           </div>
-          <ul class="chips" aria-label="Öne çıkan modüller">
-            <li>Sıcak Satış</li>
-            <li>Soğuk Satış</li>
-            <li>Rut Planlama</li>
-            <li>Tahsilat</li>
-            <li>Canlı Veri</li>
+          <ul class="chips" aria-label="Öne çıkan modüller" data-i18n-attr="aria-label:a.modules">
+            <li data-i18n="chip.hot">Sıcak Satış</li>
+            <li data-i18n="chip.cold">Soğuk Satış</li>
+            <li data-i18n="chip.route">Rut Planlama</li>
+            <li data-i18n="chip.collect">Tahsilat</li>
+            <li data-i18n="chip.live">Canlı Veri</li>
           </ul>
         </div>
 
@@ -82,33 +120,33 @@
             <div class="phone__screen">
               <div class="app-top">
                 <div>
-                  <small>Bugünkü rut</small>
-                  <strong>Zaventem – Brussel</strong>
+                  <small data-i18n="m.todayRoute">Bugünkü rut</small>
+                  <strong data-i18n="m.routeName">Zaventem – Brussel</strong>
                 </div>
-                <span class="pill pill--live">● Canlı</span>
+                <span class="pill pill--live">● <span data-i18n="m.live">Canlı</span></span>
               </div>
               <div class="app-progress">
-                <div class="app-progress__label"><span>Ziyaret</span><span>8 / 12</span></div>
+                <div class="app-progress__label"><span data-i18n="m.visit">Ziyaret</span><span>8 / 12</span></div>
                 <div class="bar"><span style="width:66%"></span></div>
               </div>
               <ul class="visit-list">
-                <li class="done"><span class="vi-ico">✓</span><div><b>Market Peeters</b><small>Sipariş · €1.248</small></div></li>
-                <li class="done"><span class="vi-ico">✓</span><div><b>Épicerie Dubois</b><small>Tahsilat · €620</small></div></li>
-                <li class="active"><span class="vi-ico">➜</span><div><b>Bakkerij Janssens</b><small>Check-in · 2 dk önce</small></div></li>
-                <li><span class="vi-ico">4</span><div><b>Groothandel Maes</b><small>14:30 planlı</small></div></li>
-                <li><span class="vi-ico">5</span><div><b>Café Central</b><small>15:10 planlı</small></div></li>
+                <li class="done"><span class="vi-ico">✓</span><div><b>Market Peeters</b><small data-i18n="m.order">Sipariş · €1.248</small></div></li>
+                <li class="done"><span class="vi-ico">✓</span><div><b>Épicerie Dubois</b><small data-i18n="m.collection">Tahsilat · €620</small></div></li>
+                <li class="active"><span class="vi-ico">➜</span><div><b>Bakkerij Janssens</b><small data-i18n="m.checkin">Check-in · 2 dk önce</small></div></li>
+                <li><span class="vi-ico">4</span><div><b>Groothandel Maes</b><small data-i18n="m.planned1">14:30 planlı</small></div></li>
+                <li><span class="vi-ico">5</span><div><b>Café Central</b><small data-i18n="m.planned2">15:10 planlı</small></div></li>
               </ul>
-              <div class="app-btn">+ Yeni Sipariş</div>
+              <div class="app-btn" data-i18n="m.newOrder">+ Yeni Sipariş</div>
             </div>
           </div>
 
           <div class="float-card float-card--kpi">
-            <div class="ring" style="--p:78"><span>%78</span></div>
-            <div><small>Günlük hedef</small><strong>€9.430</strong></div>
+            <div class="ring" style="--p:78"><span data-i18n="m.ring">%78</span></div>
+            <div><small data-i18n="m.dailyGoal">Günlük hedef</small><strong data-i18n="m.dailyGoalVal">€9.430</strong></div>
           </div>
 
           <div class="float-card float-card--chart">
-            <small>Haftalık satış</small>
+            <small data-i18n="m.weekly">Haftalık satış</small>
             <div class="mini-bars">
               <span style="--h:45%"></span><span style="--h:62%"></span><span style="--h:54%"></span>
               <span style="--h:78%"></span><span style="--h:70%"></span><span style="--h:92%"></span><span style="--h:66%"></span>
@@ -117,41 +155,41 @@
 
           <div class="float-card float-card--sync">
             <span class="sync-ico">⟳</span>
-            <div><small><img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196"> bağlantısı</small><strong>Canlı</strong></div>
+            <div><small data-i18n="m.odooConn"><img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196"> bağlantısı</small><strong data-i18n="m.live">Canlı</strong></div>
           </div>
         </div>
         </div>
 
         <!-- ===== SLIDE 2: Performans artırımı ===== -->
-        <div class="slide hero__inner" role="group" aria-roledescription="slide" aria-label="2 / 3: Performans artırımı" aria-hidden="true">
+        <div class="slide hero__inner" role="group" aria-roledescription="slide" aria-label="2 / 3: Performans artırımı" data-i18n-attr="aria-label:a.slide2" aria-hidden="true">
           <div class="hero__content">
-            <span class="eyebrow"><span class="dot"></span> Performans Artırımı</span>
-            <h2 class="hero__title">RubixB2 ve <img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196"> ile<br><span class="accent-text">performansınızı artırın.</span></h2>
-            <p class="lead">Hedef–gerçekleşme, ziyaret verimi ve ürün dağılımını anlık izleyin. Doğru veriyle hızlı karar verin, saha ekibinizin verimini her ay bir adım ileri taşıyın.</p>
+            <span class="eyebrow"><span class="dot"></span> <span data-i18n="s2.eyebrow">Performans Artırımı</span></span>
+            <h2 class="hero__title" data-i18n="s2.title">RubixB2 ve <img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196"> ile<br><span class="accent-text">performansınızı artırın.</span></h2>
+            <p class="lead" data-i18n="s2.lead">Hedef–gerçekleşme, ziyaret verimi ve ürün dağılımını anlık izleyin. Doğru veriyle hızlı karar verin, saha ekibinizin verimini her ay bir adım ileri taşıyın.</p>
             <div class="hero__ctas">
-              <a href="#iletisim" class="btn btn--primary btn--lg">Ücretsiz Demo Talep Et
+              <a href="#iletisim" class="btn btn--primary btn--lg"><span data-i18n="cta.freeDemo">Ücretsiz Demo Talep Et</span>
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
               </a>
-              <a href="#cozumler" class="btn btn--ghost btn--lg">KPI Özellikleri</a>
+              <a href="#cozumler" class="btn btn--ghost btn--lg" data-i18n="s2.cta2">KPI Özellikleri</a>
             </div>
             <ul class="chips">
-              <li>Hedef Takibi</li>
-              <li>Plasiyer Karşılaştırma</li>
-              <li>KPI Dashboard</li>
-              <li>Otomatik Raporlar</li>
+              <li data-i18n="chip.goal">Hedef Takibi</li>
+              <li data-i18n="chip.compare">Plasiyer Karşılaştırma</li>
+              <li data-i18n="chip.dash">KPI Dashboard</li>
+              <li data-i18n="chip.reports">Otomatik Raporlar</li>
             </ul>
           </div>
 
           <div class="hero__visual hero__visual--card" aria-hidden="true">
             <div class="dash">
               <div class="dash__head">
-                <div><small>Performans Paneli</small><strong>Ekim 2026</strong></div>
-                <span class="pill">Örnek veri</span>
+                <div><small data-i18n="d.panel">Performans Paneli</small><strong data-i18n="d.month">Ekim 2026</strong></div>
+                <span class="pill" data-i18n="d.sample">Örnek veri</span>
               </div>
               <div class="dash__kpis">
-                <div class="kpi"><small>Ciro</small><strong>€184.200</strong><span class="up">▲ %18</span></div>
-                <div class="kpi"><small>Ziyaret başarısı</small><strong>%86</strong><span class="up">▲ %6</span></div>
-                <div class="kpi"><small>Sipariş / ziyaret</small><strong>0,74</strong><span class="up">▲ 0,09</span></div>
+                <div class="kpi"><small data-i18n="d.revenue">Ciro</small><strong data-i18n="d.revVal">€184.200</strong><span class="up" data-i18n="d.revUp">▲ %18</span></div>
+                <div class="kpi"><small data-i18n="d.visitSuccess">Ziyaret başarısı</small><strong data-i18n="d.visitVal">%86</strong><span class="up" data-i18n="d.visitUp">▲ %6</span></div>
+                <div class="kpi"><small data-i18n="d.opv">Sipariş / ziyaret</small><strong data-i18n="d.opvVal">0,74</strong><span class="up" data-i18n="d.opvUp">▲ 0,09</span></div>
               </div>
               <div class="dash__chart">
                 <svg viewBox="0 0 320 140" preserveAspectRatio="none">
@@ -167,54 +205,54 @@
                   <path class="chart__line" d="M0 110 L40 98 L80 102 L120 80 L160 84 L200 60 L240 52 L280 38 L320 26"/>
                   <circle class="chart__dot" cx="314" cy="28" r="5"/>
                 </svg>
-                <div class="dash__legend"><span><i class="lg lg--line"></i>Gerçekleşen</span><span><i class="lg lg--target"></i>Hedef</span></div>
+                <div class="dash__legend"><span><i class="lg lg--line"></i><span data-i18n="d.actual">Gerçekleşen</span></span><span><i class="lg lg--target"></i><span data-i18n="d.target">Hedef</span></span></div>
               </div>
             </div>
 
             <div class="float-card float-card--goal">
-              <div class="ring ring--orange" style="--p:100"><span>%112</span></div>
-              <div><small>Hedef gerçekleşme</small><strong>Bölge Brüksel</strong></div>
+              <div class="ring ring--orange" style="--p:100"><span data-i18n="d.goalPct">%112</span></div>
+              <div><small data-i18n="d.goalLabel">Hedef gerçekleşme</small><strong data-i18n="d.region">Bölge Brüksel</strong></div>
             </div>
           </div>
         </div>
 
         <!-- ===== SLIDE 3: Uçtan uca yönetim ===== -->
-        <div class="slide hero__inner" role="group" aria-roledescription="slide" aria-label="3 / 3: Uçtan uca yönetim" aria-hidden="true">
+        <div class="slide hero__inner" role="group" aria-roledescription="slide" aria-label="3 / 3: Uçtan uca yönetim" data-i18n-attr="aria-label:a.slide3" aria-hidden="true">
           <div class="hero__content">
-            <span class="eyebrow"><span class="dot"></span> Uçtan Uca Yönetim</span>
-            <h2 class="hero__title">Siparişten tahsilata<br><span class="accent-text">şirketinizi tek yerden yönetin.</span></h2>
-            <p class="lead">Satış, stok, sevkiyat, faturalama ve muhasebe tek Odoo veritabanında buluşur. NameTech Solutions olarak kurulumdan eğitime, uyarlamadan desteğe kadar yanınızdayız.</p>
+            <span class="eyebrow"><span class="dot"></span> <span data-i18n="s3.eyebrow">Uçtan Uca Yönetim</span></span>
+            <h2 class="hero__title" data-i18n="s3.title">Siparişten tahsilata<br><span class="accent-text">şirketinizi tek yerden yönetin.</span></h2>
+            <p class="lead" data-i18n="s3.lead">Satış, stok, sevkiyat, faturalama ve muhasebe tek Odoo veritabanında buluşur. NameTech Solutions olarak kurulumdan eğitime, uyarlamadan desteğe kadar yanınızdayız.</p>
             <div class="hero__ctas">
-              <a href="#iletisim" class="btn btn--primary btn--lg">Bizimle Görüşün
+              <a href="#iletisim" class="btn btn--primary btn--lg"><span data-i18n="s3.cta1">Bizimle Görüşün</span>
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
               </a>
-              <a href="#odoo" class="btn btn--ghost btn--lg">Odoo Entegrasyonu</a>
+              <a href="#odoo" class="btn btn--ghost btn--lg" data-i18n="nav.odoo">Odoo Entegrasyonu</a>
             </div>
             <ul class="chips">
-              <li>Satış</li>
-              <li>Stok &amp; Depo</li>
-              <li>Sevkiyat</li>
-              <li>Muhasebe</li>
+              <li data-i18n="chip.sales">Satış</li>
+              <li data-i18n="chip.stock">Stok &amp; Depo</li>
+              <li data-i18n="chip.ship">Sevkiyat</li>
+              <li data-i18n="chip.acc">Muhasebe</li>
               <li>CRM</li>
             </ul>
           </div>
 
           <div class="hero__visual hero__visual--card" aria-hidden="true">
             <div class="flow">
-              <div class="flow__head"><img src="assets/img/rubixb2-icon.png" alt="" width="36" height="41"><div><small>Tek akış, tek veri</small><strong>RubixB2 + <img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196"></strong></div></div>
+              <div class="flow__head"><img src="assets/img/rubixb2-icon.png" alt="" width="36" height="41"><div><small data-i18n="f.oneflow">Tek akış, tek veri</small><strong>RubixB2 + <img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196"></strong></div></div>
               <ol class="flow__steps">
-                <li class="is-done"><span class="flow__ico">🛒</span><div><b>Sipariş</b><small>Saha · RubixB2</small></div><span class="flow__tag">Tamam</span></li>
-                <li class="is-done"><span class="flow__ico">📦</span><div><b>Depo &amp; Stok</b><small><img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196"> Stok</small></div><span class="flow__tag">Tamam</span></li>
-                <li class="is-done"><span class="flow__ico">🚚</span><div><b>Sevkiyat</b><small>Rut · Teslimat</small></div><span class="flow__tag">Tamam</span></li>
-                <li class="is-active"><span class="flow__ico">🧾</span><div><b>Fatura</b><small><img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196"> Muhasebe</small></div><span class="flow__tag">İşleniyor</span></li>
-                <li><span class="flow__ico">💶</span><div><b>Tahsilat</b><small>Cari hesap</small></div><span class="flow__tag">Bekliyor</span></li>
-                <li><span class="flow__ico">📊</span><div><b>Rapor &amp; KPI</b><small>Yönetim paneli</small></div><span class="flow__tag">Bekliyor</span></li>
+                <li class="is-done"><span class="flow__ico">🛒</span><div><b data-i18n="f.order">Sipariş</b><small data-i18n="f.field">Saha · RubixB2</small></div><span class="flow__tag" data-i18n="f.done">Tamam</span></li>
+                <li class="is-done"><span class="flow__ico">📦</span><div><b data-i18n="f.stock">Depo &amp; Stok</b><small data-i18n="f.odooStock"><img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196"> Stok</small></div><span class="flow__tag" data-i18n="f.done">Tamam</span></li>
+                <li class="is-done"><span class="flow__ico">🚚</span><div><b data-i18n="chip.ship">Sevkiyat</b><small data-i18n="f.routeDel">Rut · Teslimat</small></div><span class="flow__tag" data-i18n="f.done">Tamam</span></li>
+                <li class="is-active"><span class="flow__ico">🧾</span><div><b data-i18n="f.invoice">Fatura</b><small data-i18n="f.odooAcc"><img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196"> Muhasebe</small></div><span class="flow__tag" data-i18n="f.processing">İşleniyor</span></li>
+                <li><span class="flow__ico">💶</span><div><b data-i18n="chip.collect">Tahsilat</b><small data-i18n="f.account">Cari hesap</small></div><span class="flow__tag" data-i18n="f.waiting">Bekliyor</span></li>
+                <li><span class="flow__ico">📊</span><div><b data-i18n="f.report">Rapor &amp; KPI</b><small data-i18n="f.mgmt">Yönetim paneli</small></div><span class="flow__tag" data-i18n="f.waiting">Bekliyor</span></li>
               </ol>
             </div>
 
             <div class="float-card float-card--partner">
               <img src="assets/img/nametech-logo.png" alt="NameTech Solutions BV" width="600" height="203">
-              <small>Kurulum · Uyarlama · Destek</small>
+              <small data-i18n="f.partner">Kurulum · Uyarlama · Destek</small>
             </div>
           </div>
         </div>
@@ -223,15 +261,15 @@
 
         <!-- Slider kontrolleri -->
         <div class="slider__controls">
-          <button class="slider__arrow" data-dir="-1" aria-label="Önceki slayt">
+          <button class="slider__arrow" data-dir="-1" aria-label="Önceki slayt" data-i18n-attr="aria-label:a.prev">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
           </button>
-          <div class="slider__dots" role="tablist" aria-label="Slayt seç">
-            <button class="slider__dot is-active" role="tab" aria-selected="true" aria-label="Saha satışı"><span></span></button>
-            <button class="slider__dot" role="tab" aria-selected="false" aria-label="Performans artırımı"><span></span></button>
-            <button class="slider__dot" role="tab" aria-selected="false" aria-label="Uçtan uca yönetim"><span></span></button>
+          <div class="slider__dots" role="tablist" aria-label="Slayt seç" data-i18n-attr="aria-label:a.choose">
+            <button class="slider__dot is-active" role="tab" aria-selected="true" aria-label="Saha satışı" data-i18n-attr="aria-label:s1.eyebrow"><span></span></button>
+            <button class="slider__dot" role="tab" aria-selected="false" aria-label="Performans artırımı" data-i18n-attr="aria-label:s2.eyebrow"><span></span></button>
+            <button class="slider__dot" role="tab" aria-selected="false" aria-label="Uçtan uca yönetim" data-i18n-attr="aria-label:s3.eyebrow"><span></span></button>
           </div>
-          <button class="slider__arrow" data-dir="1" aria-label="Sonraki slayt">
+          <button class="slider__arrow" data-dir="1" aria-label="Sonraki slayt" data-i18n-attr="aria-label:a.next">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
           </button>
           <button class="slider__pause" id="slider-pause" aria-label="Otomatik geçişi durdur" aria-pressed="false">
@@ -245,10 +283,10 @@
     <!-- ============ VALUE STRIP ============ -->
     <section class="strip">
       <div class="container strip__inner">
-        <div class="strip__item"><span class="strip__ico">⚡</span><div><b><img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196"> üzerinde</b><small>Ek ERP gerekmez</small></div></div>
-        <div class="strip__item"><span class="strip__ico">☁️</span><div><b>%100 online</b><small>Her yerden anlık erişim</small></div></div>
-        <div class="strip__item"><span class="strip__ico">🔄</span><div><b>Gerçek zamanlı veri</b><small>Stok, fiyat, cari her an güncel</small></div></div>
-        <div class="strip__item"><span class="strip__ico">📱</span><div><b>Mobil + Web</b><small>Saha ve merkez birlikte</small></div></div>
+        <div class="strip__item"><span class="strip__ico">⚡</span><div><b data-i18n="st.odoo"><img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196"> üzerinde</b><small data-i18n="st.odooSub">Ek ERP gerekmez</small></div></div>
+        <div class="strip__item"><span class="strip__ico">☁️</span><div><b data-i18n="st.online">%100 online</b><small data-i18n="st.onlineSub">Her yerden anlık erişim</small></div></div>
+        <div class="strip__item"><span class="strip__ico">🔄</span><div><b data-i18n="st.realtime">Gerçek zamanlı veri</b><small data-i18n="st.realtimeSub">Stok, fiyat, cari her an güncel</small></div></div>
+        <div class="strip__item"><span class="strip__ico">📱</span><div><b data-i18n="st.mobile">Mobil + Web</b><small data-i18n="st.mobileSub">Saha ve merkez birlikte</small></div></div>
       </div>
     </section>
 
@@ -256,23 +294,23 @@
     <section class="section" id="cozumler">
       <div class="container">
         <div class="section__head">
-          <span class="eyebrow">Çözümler</span>
-          <h2>Saha satışının her adımı için <span class="gradient-text">tek platform</span></h2>
-          <p>Araçtan satıştan ön siparişe, rut planlamadan performans analizine kadar tüm süreçler Odoo verinizle konuşur.</p>
+          <span class="eyebrow" data-i18n="nav.solutions">Çözümler</span>
+          <h2 data-i18n="sol.title">Saha satışının her adımı için <span class="gradient-text">tek platform</span></h2>
+          <p data-i18n="sol.lead">Araçtan satıştan ön siparişe, rut planlamadan performans analizine kadar tüm süreçler Odoo verinizle konuşur.</p>
         </div>
 
-        <div class="tabs" role="tablist" aria-label="Çözüm modülleri">
+        <div class="tabs" role="tablist" aria-label="Çözüm modülleri" data-i18n-attr="aria-label:a.tabs">
           <button class="tab is-active" role="tab" aria-selected="true" aria-controls="panel-sicak" id="tab-sicak">
-            <span class="tab__ico">🚚</span>Sıcak Satış
+            <span class="tab__ico">🚚</span><span data-i18n="chip.hot">Sıcak Satış</span>
           </button>
           <button class="tab" role="tab" aria-selected="false" aria-controls="panel-soguk" id="tab-soguk" tabindex="-1">
-            <span class="tab__ico">📝</span>Soğuk Satış
+            <span class="tab__ico">📝</span><span data-i18n="chip.cold">Soğuk Satış</span>
           </button>
           <button class="tab" role="tab" aria-selected="false" aria-controls="panel-rut" id="tab-rut" tabindex="-1">
-            <span class="tab__ico">🗺️</span>Rut Yönetimi
+            <span class="tab__ico">🗺️</span><span data-i18n="tab.route">Rut Yönetimi</span>
           </button>
           <button class="tab" role="tab" aria-selected="false" aria-controls="panel-kpi" id="tab-kpi" tabindex="-1">
-            <span class="tab__ico">📊</span>KPI &amp; Performans
+            <span class="tab__ico">📊</span><span data-i18n="tab.kpi">KPI &amp; Performans</span>
           </button>
         </div>
 
@@ -280,24 +318,24 @@
         <div class="panel is-active" role="tabpanel" id="panel-sicak" aria-labelledby="tab-sicak">
           <div class="panel__text">
             <span class="tag">Van Sales</span>
-            <h3>Araçtan anında satış, faturalama ve tahsilat</h3>
-            <p>Plasiyeriniz araç stoğundaki ürünü müşteriye satar, belgeyi sahada keser ve tahsilatı aynı ziyarette alır. Tüm hareketler Odoo'daki stok ve muhasebe kayıtlarına otomatik işlenir.</p>
+            <h3 data-i18n="hot.title">Araçtan anında satış, faturalama ve tahsilat</h3>
+            <p data-i18n="hot.text">Plasiyeriniz araç stoğundaki ürünü müşteriye satar, belgeyi sahada keser ve tahsilatı aynı ziyarette alır. Tüm hareketler Odoo'daki stok ve muhasebe kayıtlarına otomatik işlenir.</p>
             <ul class="checks">
-              <li>Araç deposu bazında anlık stok takibi</li>
-              <li>Sahada fatura / irsaliye oluşturma ve yazdırma</li>
-              <li>Nakit, kredi kartı ve çek ile tahsilat</li>
-              <li>İade ve değişim yönetimi</li>
-              <li>Gün sonu kasa ve araç sayım raporu</li>
+              <li data-i18n="hot.l1">Araç deposu bazında anlık stok takibi</li>
+              <li data-i18n="hot.l2">Sahada fatura / irsaliye oluşturma ve yazdırma</li>
+              <li data-i18n="hot.l3">Nakit, kredi kartı ve çek ile tahsilat</li>
+              <li data-i18n="hot.l4">İade ve değişim yönetimi</li>
+              <li data-i18n="hot.l5">Gün sonu kasa ve araç sayım raporu</li>
             </ul>
           </div>
           <div class="panel__visual">
             <div class="ui-card">
-              <div class="ui-card__head"><b>Araç Stoğu · 1-RBX-001</b><span class="pill">Güncel</span></div>
-              <div class="stock-row"><span>Su 0,5L (24'lü)</span><div class="bar"><span style="width:72%"></span></div><b>86</b></div>
-              <div class="stock-row"><span>Meyve Suyu 1L</span><div class="bar"><span style="width:45%"></span></div><b>54</b></div>
-              <div class="stock-row"><span>Gazlı İçecek 330ml</span><div class="bar bar--warn"><span style="width:18%"></span></div><b>21</b></div>
-              <div class="stock-row"><span>Soğuk Çay 500ml</span><div class="bar"><span style="width:60%"></span></div><b>72</b></div>
-              <div class="ui-card__foot"><span>Bugünkü tahsilat</span><b class="txt-green">€4.825</b></div>
+              <div class="ui-card__head"><b data-i18n="u.vanStock">Araç Stoğu · 1-RBX-001</b><span class="pill" data-i18n="u.current">Güncel</span></div>
+              <div class="stock-row"><span data-i18n="u.water">Su 0,5L (24'lü)</span><div class="bar"><span style="width:72%"></span></div><b>86</b></div>
+              <div class="stock-row"><span data-i18n="u.juice">Meyve Suyu 1L</span><div class="bar"><span style="width:45%"></span></div><b>54</b></div>
+              <div class="stock-row"><span data-i18n="u.soda">Gazlı İçecek 330ml</span><div class="bar bar--warn"><span style="width:18%"></span></div><b>21</b></div>
+              <div class="stock-row"><span data-i18n="u.tea">Soğuk Çay 500ml</span><div class="bar"><span style="width:60%"></span></div><b>72</b></div>
+              <div class="ui-card__foot"><span data-i18n="u.todayCollect">Bugünkü tahsilat</span><b class="txt-green" data-i18n="u.todayCollectVal">€4.825</b></div>
             </div>
           </div>
         </div>
@@ -306,24 +344,24 @@
         <div class="panel" role="tabpanel" id="panel-soguk" aria-labelledby="tab-soguk" hidden>
           <div class="panel__text">
             <span class="tag">Pre-Sales</span>
-            <h3>Ön sipariş topla, sevkiyatı merkez planlasın</h3>
-            <p>Satış temsilcisi müşteriye özel fiyat listesi ve kampanyalarla siparişi alır; sipariş anında Odoo'ya düşer, depo ve sevkiyat ekibi hazırlığa başlar.</p>
+            <h3 data-i18n="cold.title">Ön sipariş topla, sevkiyatı merkez planlasın</h3>
+            <p data-i18n="cold.text">Satış temsilcisi müşteriye özel fiyat listesi ve kampanyalarla siparişi alır; sipariş anında Odoo'ya düşer, depo ve sevkiyat ekibi hazırlığa başlar.</p>
             <ul class="checks">
-              <li>Müşteriye özel fiyat listeleri ve iskontolar</li>
-              <li>Kampanya, promosyon ve bedelsiz ürün kuralları</li>
-              <li>Cari bakiye, risk limiti ve geçmiş sipariş görüntüleme</li>
-              <li>Ürün görselli dijital katalog</li>
-              <li>Sipariş onay akışı ve durum takibi</li>
+              <li data-i18n="cold.l1">Müşteriye özel fiyat listeleri ve iskontolar</li>
+              <li data-i18n="cold.l2">Kampanya, promosyon ve bedelsiz ürün kuralları</li>
+              <li data-i18n="cold.l3">Cari bakiye, risk limiti ve geçmiş sipariş görüntüleme</li>
+              <li data-i18n="cold.l4">Ürün görselli dijital katalog</li>
+              <li data-i18n="cold.l5">Sipariş onay akışı ve durum takibi</li>
             </ul>
           </div>
           <div class="panel__visual">
             <div class="ui-card">
-              <div class="ui-card__head"><b>Sipariş #SO-2481</b><span class="pill pill--violet"><img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196">'ya aktarıldı</span></div>
-              <div class="order-row"><span>Çikolatalı Bisküvi × 40</span><b>€320,00</b></div>
-              <div class="order-row"><span>Kraker Paket × 25</span><b>€137,50</b></div>
-              <div class="order-row"><span>Kampanya: 10 al 1 bedava</span><b class="txt-green">−€32,00</b></div>
-              <div class="order-row"><span>Cari risk limiti</span><b>%42 kullanıldı</b></div>
-              <div class="ui-card__foot"><span>Toplam</span><b>€425,50</b></div>
+              <div class="ui-card__head"><b data-i18n="u.orderNo">Sipariş #SO-2481</b><span class="pill pill--violet" data-i18n="u.sentOdoo"><img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196">'ya aktarıldı</span></div>
+              <div class="order-row"><span data-i18n="u.biscuit">Çikolatalı Bisküvi × 40</span><b data-i18n="u.v1">€320,00</b></div>
+              <div class="order-row"><span data-i18n="u.cracker">Kraker Paket × 25</span><b data-i18n="u.v2">€137,50</b></div>
+              <div class="order-row"><span data-i18n="u.promo">Kampanya: 10 al 1 bedava</span><b class="txt-green" data-i18n="u.v3">−€32,00</b></div>
+              <div class="order-row"><span data-i18n="u.risk">Cari risk limiti</span><b data-i18n="u.riskVal">%42 kullanıldı</b></div>
+              <div class="ui-card__foot"><span data-i18n="u.total">Toplam</span><b data-i18n="u.totalVal">€425,50</b></div>
             </div>
           </div>
         </div>
@@ -332,19 +370,19 @@
         <div class="panel" role="tabpanel" id="panel-rut" aria-labelledby="tab-rut" hidden>
           <div class="panel__text">
             <span class="tag">Route Management</span>
-            <h3>Doğru müşteriye, doğru günde, doğru sırayla</h3>
-            <p>Haftalık ve günlük rutları planlayın, ziyaret frekanslarını belirleyin. Plasiyerlerin konumunu ve ziyaret durumunu harita üzerinden canlı izleyin.</p>
+            <h3 data-i18n="route.title">Doğru müşteriye, doğru günde, doğru sırayla</h3>
+            <p data-i18n="route.text">Haftalık ve günlük rutları planlayın, ziyaret frekanslarını belirleyin. Plasiyerlerin konumunu ve ziyaret durumunu harita üzerinden canlı izleyin.</p>
             <ul class="checks">
-              <li>Gün / hafta bazlı rut ve ziyaret frekansı planlama</li>
-              <li>GPS doğrulamalı check-in / check-out</li>
-              <li>Plan dışı ve atlanan ziyaret raporları</li>
-              <li>Harita üzerinde canlı ekip takibi</li>
-              <li>Ziyaret süresi ve ziyaret başına satış analizi</li>
+              <li data-i18n="route.l1">Gün / hafta bazlı rut ve ziyaret frekansı planlama</li>
+              <li data-i18n="route.l2">GPS doğrulamalı check-in / check-out</li>
+              <li data-i18n="route.l3">Plan dışı ve atlanan ziyaret raporları</li>
+              <li data-i18n="route.l4">Harita üzerinde canlı ekip takibi</li>
+              <li data-i18n="route.l5">Ziyaret süresi ve ziyaret başına satış analizi</li>
             </ul>
           </div>
           <div class="panel__visual">
             <div class="ui-card ui-card--map">
-              <svg viewBox="0 0 400 260" class="map" role="img" aria-label="Örnek rut haritası">
+              <svg viewBox="0 0 400 260" class="map" role="img" aria-label="Örnek rut haritası" data-i18n-attr="aria-label:a.routeMap">
                 <defs>
                   <pattern id="mapgrid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="currentColor" stroke-opacity=".08"/></pattern>
                 </defs>
@@ -359,7 +397,7 @@
                 <g class="map__pin"><circle cx="300" cy="140" r="9"/><text x="300" y="144">5</text></g>
                 <g class="map__pin"><circle cx="350" cy="70" r="9"/><text x="350" y="74">6</text></g>
               </svg>
-              <div class="ui-card__foot"><span>Rut tamamlanma</span><b>3 / 6 ziyaret · 42 km</b></div>
+              <div class="ui-card__foot"><span data-i18n="u.routeDone">Rut tamamlanma</span><b data-i18n="u.routeVal">3 / 6 ziyaret · 42 km</b></div>
             </div>
           </div>
         </div>
@@ -368,24 +406,24 @@
         <div class="panel" role="tabpanel" id="panel-kpi" aria-labelledby="tab-kpi" hidden>
           <div class="panel__text">
             <span class="tag">Analytics</span>
-            <h3>Saha performansını rakamlarla yönetin</h3>
-            <p>Plasiyer, bölge, kanal ve ürün bazında hedef–gerçekleşme analizleri. Yöneticiler sahada ne olduğunu raporu beklemeden, anlık görür.</p>
+            <h3 data-i18n="kpi.title">Saha performansını rakamlarla yönetin</h3>
+            <p data-i18n="kpi.text">Plasiyer, bölge, kanal ve ürün bazında hedef–gerçekleşme analizleri. Yöneticiler sahada ne olduğunu raporu beklemeden, anlık görür.</p>
             <ul class="checks">
-              <li>Hedef – gerçekleşme ve prim hesaplama altyapısı</li>
-              <li>Ziyaret başarı oranı, sipariş/ziyaret oranı</li>
-              <li>Ürün dağılımı (numerik / ağırlıklı distribüsyon)</li>
-              <li>Plasiyer karşılaştırma ve liderlik tablosu</li>
-              <li>Excel / PDF dışa aktarma ve zamanlanmış e-posta raporları</li>
+              <li data-i18n="kpi.l1">Hedef – gerçekleşme ve prim hesaplama altyapısı</li>
+              <li data-i18n="kpi.l2">Ziyaret başarı oranı, sipariş/ziyaret oranı</li>
+              <li data-i18n="kpi.l3">Ürün dağılımı (numerik / ağırlıklı distribüsyon)</li>
+              <li data-i18n="kpi.l4">Plasiyer karşılaştırma ve liderlik tablosu</li>
+              <li data-i18n="kpi.l5">Excel / PDF dışa aktarma ve zamanlanmış e-posta raporları</li>
             </ul>
           </div>
           <div class="panel__visual">
             <div class="ui-card">
-              <div class="ui-card__head"><b>Plasiyer Performansı · Ekim</b><span class="pill">Örnek veri</span></div>
-              <div class="leader-row"><span class="avatar">LP</span><span>Lucas P.</span><div class="bar"><span style="width:96%"></span></div><b>%96</b></div>
-              <div class="leader-row"><span class="avatar">ED</span><span>Emma D.</span><div class="bar"><span style="width:88%"></span></div><b>%88</b></div>
-              <div class="leader-row"><span class="avatar">NJ</span><span>Noah J.</span><div class="bar"><span style="width:74%"></span></div><b>%74</b></div>
-              <div class="leader-row"><span class="avatar">LM</span><span>Lina M.</span><div class="bar bar--warn"><span style="width:58%"></span></div><b>%58</b></div>
-              <div class="ui-card__foot"><span>Ekip ortalaması</span><b class="txt-green">%79 hedef</b></div>
+              <div class="ui-card__head"><b data-i18n="u.repPerf">Plasiyer Performansı · Ekim</b><span class="pill" data-i18n="d.sample">Örnek veri</span></div>
+              <div class="leader-row"><span class="avatar">LP</span><span>Lucas P.</span><div class="bar"><span style="width:96%"></span></div><b data-i18n="u.p96">%96</b></div>
+              <div class="leader-row"><span class="avatar">ED</span><span>Emma D.</span><div class="bar"><span style="width:88%"></span></div><b data-i18n="u.p88">%88</b></div>
+              <div class="leader-row"><span class="avatar">NJ</span><span>Noah J.</span><div class="bar"><span style="width:74%"></span></div><b data-i18n="u.p74">%74</b></div>
+              <div class="leader-row"><span class="avatar">LM</span><span>Lina M.</span><div class="bar bar--warn"><span style="width:58%"></span></div><b data-i18n="u.p58">%58</b></div>
+              <div class="ui-card__foot"><span data-i18n="u.teamAvg">Ekip ortalaması</span><b class="txt-green" data-i18n="u.teamAvgVal">%79 hedef</b></div>
             </div>
           </div>
         </div>
@@ -396,31 +434,31 @@
     <section class="section section--alt" id="nasil-calisir">
       <div class="container">
         <div class="section__head">
-          <span class="eyebrow">Nasıl Çalışır</span>
-          <h2>Planla, ziyaret et, sat, <span class="gradient-text">analiz et</span></h2>
-          <p>Merkez ve saha aynı veriyle çalışır; her adım bir sonrakini besler.</p>
+          <span class="eyebrow" data-i18n="nav.how">Nasıl Çalışır</span>
+          <h2 data-i18n="how.title">Planla, ziyaret et, sat, <span class="gradient-text">analiz et</span></h2>
+          <p data-i18n="how.lead">Merkez ve saha aynı veriyle çalışır; her adım bir sonrakini besler.</p>
         </div>
 
         <ol class="steps">
           <li class="step reveal">
             <span class="step__num">01</span>
-            <h3>Planla</h3>
-            <p>Merkez; rutları, hedefleri, fiyat listelerini ve kampanyaları Odoo üzerinden tanımlar.</p>
+            <h3 data-i18n="how.s1t">Planla</h3>
+            <p data-i18n="how.s1p">Merkez; rutları, hedefleri, fiyat listelerini ve kampanyaları Odoo üzerinden tanımlar.</p>
           </li>
           <li class="step reveal">
             <span class="step__num">02</span>
-            <h3>Ziyaret et</h3>
-            <p>Plasiyer günlük rutunu mobil uygulamada görür, GPS ile check-in yapar.</p>
+            <h3 data-i18n="how.s2t">Ziyaret et</h3>
+            <p data-i18n="how.s2p">Plasiyer günlük rutunu mobil uygulamada görür, GPS ile check-in yapar.</p>
           </li>
           <li class="step reveal">
             <span class="step__num">03</span>
-            <h3>Sat &amp; tahsil et</h3>
-            <p>Sıcak veya soğuk satış yapar, tahsilatı alır; her işlem anında Odoo'ya kaydedilir.</p>
+            <h3 data-i18n="how.s3t">Sat &amp; tahsil et</h3>
+            <p data-i18n="how.s3p">Sıcak veya soğuk satış yapar, tahsilatı alır; her işlem anında Odoo'ya kaydedilir.</p>
           </li>
           <li class="step reveal">
             <span class="step__num">04</span>
-            <h3>Analiz et</h3>
-            <p>Yönetici KPI panelinde ekip ve bölge performansını canlı izler, aksiyon alır.</p>
+            <h3 data-i18n="how.s4t">Analiz et</h3>
+            <p data-i18n="how.s4p">Yönetici KPI panelinde ekip ve bölge performansını canlı izler, aksiyon alır.</p>
           </li>
         </ol>
       </div>
@@ -430,50 +468,50 @@
     <section class="section" id="ozellikler">
       <div class="container">
         <div class="section__head">
-          <span class="eyebrow">Özellikler</span>
-          <h2>Sahanın ihtiyacı olan <span class="gradient-text">her şey</span></h2>
+          <span class="eyebrow" data-i18n="nav.features">Özellikler</span>
+          <h2 data-i18n="feat.title">Sahanın ihtiyacı olan <span class="gradient-text">her şey</span></h2>
         </div>
 
         <div class="features">
           <article class="feature reveal">
             <span class="feature__ico">☁️</span>
-            <h3>Online çalışma</h3>
-            <p>Sahada girilen her sipariş ve tahsilat anında Odoo'da görünür; merkez ve saha aynı güncel veriyle çalışır.</p>
+            <h3 data-i18n="ft1.t">Online çalışma</h3>
+            <p data-i18n="ft1.p">Sahada girilen her sipariş ve tahsilat anında Odoo'da görünür; merkez ve saha aynı güncel veriyle çalışır.</p>
           </article>
           <article class="feature reveal">
             <span class="feature__ico">📍</span>
-            <h3>GPS doğrulama</h3>
-            <p>Check-in konumu müşteri konumuyla eşleşir; sahte ziyaretlerin önüne geçilir.</p>
+            <h3 data-i18n="ft2.t">GPS doğrulama</h3>
+            <p data-i18n="ft2.p">Check-in konumu müşteri konumuyla eşleşir; sahte ziyaretlerin önüne geçilir.</p>
           </article>
           <article class="feature reveal">
             <span class="feature__ico">💳</span>
-            <h3>Tahsilat yönetimi</h3>
-            <p>Nakit, kart, çek ve senet tahsilatları; makbuz ve cari hesap güncellemesi.</p>
+            <h3 data-i18n="ft3.t">Tahsilat yönetimi</h3>
+            <p data-i18n="ft3.p">Nakit, kart, çek ve senet tahsilatları; makbuz ve cari hesap güncellemesi.</p>
           </article>
           <article class="feature reveal">
             <span class="feature__ico">🏷️</span>
-            <h3>Fiyat &amp; kampanya</h3>
-            <p>Müşteri grubu, bölge ve kanal bazlı fiyatlar; kademeli iskonto ve promosyon kuralları.</p>
+            <h3 data-i18n="ft4.t">Fiyat &amp; kampanya</h3>
+            <p data-i18n="ft4.p">Müşteri grubu, bölge ve kanal bazlı fiyatlar; kademeli iskonto ve promosyon kuralları.</p>
           </article>
           <article class="feature reveal">
             <span class="feature__ico">📦</span>
-            <h3>Araç deposu</h3>
-            <p>Yükleme, boşaltma, araç arası transfer ve gün sonu sayım işlemleri.</p>
+            <h3 data-i18n="ft5.t">Araç deposu</h3>
+            <p data-i18n="ft5.p">Yükleme, boşaltma, araç arası transfer ve gün sonu sayım işlemleri.</p>
           </article>
           <article class="feature reveal">
             <span class="feature__ico">📸</span>
-            <h3>Saha görevleri</h3>
-            <p>Raf fotoğrafı, anket ve kontrol listeleriyle mağaza içi uygulama denetimi.</p>
+            <h3 data-i18n="ft6.t">Saha görevleri</h3>
+            <p data-i18n="ft6.p">Raf fotoğrafı, anket ve kontrol listeleriyle mağaza içi uygulama denetimi.</p>
           </article>
           <article class="feature reveal">
             <span class="feature__ico">🎯</span>
-            <h3>Hedef takibi</h3>
-            <p>Plasiyer kendi hedefini ve gerçekleşmesini mobil uygulamada anlık görür.</p>
+            <h3 data-i18n="ft7.t">Hedef takibi</h3>
+            <p data-i18n="ft7.p">Plasiyer kendi hedefini ve gerçekleşmesini mobil uygulamada anlık görür.</p>
           </article>
           <article class="feature reveal">
             <span class="feature__ico">🔐</span>
-            <h3>Rol &amp; yetki</h3>
-            <p>Plasiyer, bölge müdürü ve yönetici için ayrı yetki ve görünürlük seviyeleri.</p>
+            <h3 data-i18n="ft8.t">Rol &amp; yetki</h3>
+            <p data-i18n="ft8.p">Plasiyer, bölge müdürü ve yönetici için ayrı yetki ve görünürlük seviyeleri.</p>
           </article>
         </div>
       </div>
@@ -483,15 +521,15 @@
     <section class="section section--alt" id="odoo">
       <div class="container odoo">
         <div class="odoo__text">
-          <span class="eyebrow"><img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196"> Entegrasyonu</span>
-          <h2><img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196">'nun gücü, <span class="gradient-text">sahanın hızıyla</span></h2>
-          <p>RubixB2 ayrı bir sistem değil, Odoo'nuzun sahadaki uzantısıdır. Ürün, stok, fiyat, cari ve muhasebe verileri tek kaynaktan yönetilir; çift veri girişi ve aktarım hataları ortadan kalkar.</p>
+          <span class="eyebrow" data-i18n="odoo.eyebrow"><img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196"> Entegrasyonu</span>
+          <h2 data-i18n="odoo.title"><img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196">'nun gücü, <span class="gradient-text">sahanın hızıyla</span></h2>
+          <p data-i18n="odoo.text">RubixB2 ayrı bir sistem değil, Odoo'nuzun sahadaki uzantısıdır. Ürün, stok, fiyat, cari ve muhasebe verileri tek kaynaktan yönetilir; çift veri girişi ve aktarım hataları ortadan kalkar.</p>
           <ul class="checks">
-            <li><img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196"> Satış, Stok, Muhasebe ve CRM modülleriyle yerleşik bağlantı</li>
-            <li>Tek veritabanı: sahadaki işlem anında merkezde</li>
-            <li><img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196"> Partner ekibimizle kurulum, uyarlama ve destek</li>
+            <li data-i18n="odoo.l1"><img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196"> Satış, Stok, Muhasebe ve CRM modülleriyle yerleşik bağlantı</li>
+            <li data-i18n="odoo.l2">Tek veritabanı: sahadaki işlem anında merkezde</li>
+            <li data-i18n="odoo.l3"><img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196"> Partner ekibimizle kurulum, uyarlama ve destek</li>
           </ul>
-          <a href="#iletisim" class="btn btn--primary">Entegrasyonu Konuşalım</a>
+          <a href="#iletisim" class="btn btn--primary" data-i18n="odoo.cta">Entegrasyonu Konuşalım</a>
         </div>
 
         <div class="odoo__diagram" aria-hidden="true">
@@ -501,12 +539,12 @@
               <small>ERP</small>
             </div>
             <div class="hub__ring"></div>
-            <div class="hub__node hub__node--1">🛒<small>Satış</small></div>
-            <div class="hub__node hub__node--2">📦<small>Stok</small></div>
-            <div class="hub__node hub__node--3">🧾<small>Muhasebe</small></div>
+            <div class="hub__node hub__node--1">🛒<small data-i18n="chip.sales">Satış</small></div>
+            <div class="hub__node hub__node--2">📦<small data-i18n="hub.stock">Stok</small></div>
+            <div class="hub__node hub__node--3">🧾<small data-i18n="chip.acc">Muhasebe</small></div>
             <div class="hub__node hub__node--4">🤝<small>CRM</small></div>
             <div class="hub__node hub__node--5 hub__node--rubix">📱<small>RubixB2</small></div>
-            <div class="hub__node hub__node--6">📊<small>Raporlar</small></div>
+            <div class="hub__node hub__node--6">📊<small data-i18n="hub.reports">Raporlar</small></div>
           </div>
         </div>
       </div>
@@ -516,25 +554,25 @@
     <section class="section">
       <div class="container">
         <div class="section__head">
-          <span class="eyebrow">Kimler İçin</span>
-          <h2>Sahada satış yapan <span class="gradient-text">her ekip için</span></h2>
+          <span class="eyebrow" data-i18n="aud.eyebrow">Kimler İçin</span>
+          <h2 data-i18n="aud.title">Sahada satış yapan <span class="gradient-text">her ekip için</span></h2>
         </div>
         <div class="audience">
           <article class="aud-card reveal">
-            <h3>Distribütörler</h3>
-            <p>Çok markalı portföy, geniş bayi ağı ve yoğun sevkiyat operasyonlarını tek ekrandan yönetin.</p>
+            <h3 data-i18n="aud1.t">Distribütörler</h3>
+            <p data-i18n="aud1.p">Çok markalı portföy, geniş bayi ağı ve yoğun sevkiyat operasyonlarını tek ekrandan yönetin.</p>
           </article>
           <article class="aud-card reveal">
-            <h3>Üretici Markalar</h3>
-            <p>Kendi satış ekibinizle pazara çıkın, distribüsyon ve raf görünürlüğünü ölçün.</p>
+            <h3 data-i18n="aud2.t">Üretici Markalar</h3>
+            <p data-i18n="aud2.p">Kendi satış ekibinizle pazara çıkın, distribüsyon ve raf görünürlüğünü ölçün.</p>
           </article>
           <article class="aud-card reveal">
-            <h3>FMCG · Gıda &amp; İçecek</h3>
-            <p>Yüksek ziyaret frekansı, kampanya yoğunluğu ve hızlı devir hızına uygun akışlar.</p>
+            <h3 data-i18n="aud3.t">FMCG · Gıda &amp; İçecek</h3>
+            <p data-i18n="aud3.p">Yüksek ziyaret frekansı, kampanya yoğunluğu ve hızlı devir hızına uygun akışlar.</p>
           </article>
           <article class="aud-card reveal">
-            <h3>Toptancılar</h3>
-            <p>Ön sipariş ve araçtan satışı birlikte yürütün, tahsilat riskini kontrol altında tutun.</p>
+            <h3 data-i18n="aud4.t">Toptancılar</h3>
+            <p data-i18n="aud4.p">Ön sipariş ve araçtan satışı birlikte yürütün, tahsilat riskini kontrol altında tutun.</p>
           </article>
         </div>
       </div>
@@ -544,34 +582,34 @@
     <section class="section section--alt" id="sss">
       <div class="container container--narrow">
         <div class="section__head">
-          <span class="eyebrow">SSS</span>
-          <h2>Sıkça sorulan sorular</h2>
+          <span class="eyebrow" data-i18n="nav.faq">SSS</span>
+          <h2 data-i18n="faq.title">Sıkça sorulan sorular</h2>
         </div>
 
         <div class="faq">
           <details>
-            <summary>Sıcak satış ile soğuk satış arasındaki fark nedir?</summary>
-            <p>Sıcak satışta (van sales) plasiyer ürünü araçtan anında teslim eder, belgeyi keser ve tahsilatı alır. Soğuk satışta (ön sipariş) temsilci yalnızca siparişi toplar; teslimat daha sonra depo ve sevkiyat ekibi tarafından yapılır. RubixB2 iki modeli ayrı ayrı veya birlikte destekler.</p>
+            <summary data-i18n="faq.q1">Sıcak satış ile soğuk satış arasındaki fark nedir?</summary>
+            <p data-i18n="faq.a1">Sıcak satışta (van sales) plasiyer ürünü araçtan anında teslim eder, belgeyi keser ve tahsilatı alır. Soğuk satışta (ön sipariş) temsilci yalnızca siparişi toplar; teslimat daha sonra depo ve sevkiyat ekibi tarafından yapılır. RubixB2 iki modeli ayrı ayrı veya birlikte destekler.</p>
           </details>
           <details>
-            <summary>Mevcut Odoo sistemimizle çalışır mı?</summary>
-            <p>Evet. RubixB2, Odoo üzerinde çalışacak şekilde tasarlanmıştır. Mevcut ürün, müşteri, fiyat ve stok verileriniz doğrudan kullanılır. Sürüm ve kurulum detaylarını demo görüşmesinde birlikte değerlendiriyoruz.</p>
+            <summary data-i18n="faq.q2">Mevcut Odoo sistemimizle çalışır mı?</summary>
+            <p data-i18n="faq.a2">Evet. RubixB2, Odoo üzerinde çalışacak şekilde tasarlanmıştır. Mevcut ürün, müşteri, fiyat ve stok verileriniz doğrudan kullanılır. Sürüm ve kurulum detaylarını demo görüşmesinde birlikte değerlendiriyoruz.</p>
           </details>
           <details>
-            <summary>İnternet bağlantısı gerekiyor mu?</summary>
-            <p>Evet. RubixB2 tamamen online çalışan bir sistemdir. Sahadaki her işlem anında Odoo'ya kaydedilir; böylece stok, fiyat ve cari bilgileri hem sahada hem merkezde her an günceldir. İnternet bağlantısı olan bir telefon veya tablet yeterlidir.</p>
+            <summary data-i18n="faq.q3">İnternet bağlantısı gerekiyor mu?</summary>
+            <p data-i18n="faq.a3">Evet. RubixB2 tamamen online çalışan bir sistemdir. Sahadaki her işlem anında Odoo'ya kaydedilir; böylece stok, fiyat ve cari bilgileri hem sahada hem merkezde her an günceldir. İnternet bağlantısı olan bir telefon veya tablet yeterlidir.</p>
           </details>
           <details>
-            <summary>Kurulum ne kadar sürer?</summary>
-            <p>Süre; ekip büyüklüğü, mevcut Odoo yapınız ve ihtiyaç duyulan uyarlamalara göre değişir. İhtiyaç analizinden sonra size net bir proje planı sunuyoruz.</p>
+            <summary data-i18n="faq.q4">Kurulum ne kadar sürer?</summary>
+            <p data-i18n="faq.a4">Süre; ekip büyüklüğü, mevcut Odoo yapınız ve ihtiyaç duyulan uyarlamalara göre değişir. İhtiyaç analizinden sonra size net bir proje planı sunuyoruz.</p>
           </details>
           <details>
-            <summary>Hangi raporları alabilirim?</summary>
-            <p>Hedef–gerçekleşme, ziyaret ve rut uyumu, ürün distribüsyonu, tahsilat, iade ve plasiyer karşılaştırma raporları hazır gelir. İhtiyaca özel KPI ve dashboard'lar da tasarlanabilir.</p>
+            <summary data-i18n="faq.q5">Hangi raporları alabilirim?</summary>
+            <p data-i18n="faq.a5">Hedef–gerçekleşme, ziyaret ve rut uyumu, ürün distribüsyonu, tahsilat, iade ve plasiyer karşılaştırma raporları hazır gelir. İhtiyaca özel KPI ve dashboard'lar da tasarlanabilir.</p>
           </details>
           <details>
-            <summary>Fiyatlandırma nasıl?</summary>
-            <p>Fiyatlandırma kullanıcı sayısına ve seçilen modüllere göre belirlenir. Size özel teklif için demo talep formunu doldurmanız yeterli.</p>
+            <summary data-i18n="faq.q6">Fiyatlandırma nasıl?</summary>
+            <p data-i18n="faq.a6">Fiyatlandırma kullanıcı sayısına ve seçilen modüllere göre belirlenir. Size özel teklif için demo talep formunu doldurmanız yeterli.</p>
           </details>
         </div>
       </div>
@@ -581,14 +619,14 @@
     <section class="section clients" id="musteriler">
       <div class="container">
         <div class="section__head">
-          <span class="eyebrow">Müşterilerimiz</span>
-          <h2>8 ülkede <span class="gradient-text">müşterilerimizle birlikte büyüyoruz</span></h2>
-          <p>Belçika merkezimizden, Avrupa'dan Amerika'ya uzanan müşteri ağımıza Odoo ve RubixB2 çözümleriyle hizmet veriyoruz.</p>
+          <span class="eyebrow" data-i18n="cl.eyebrow">Müşterilerimiz</span>
+          <h2 data-i18n="cl.title">8 ülkede <span class="gradient-text">müşterilerimizle birlikte büyüyoruz</span></h2>
+          <p data-i18n="cl.lead">Belçika merkezimizden, Avrupa'dan Amerika'ya uzanan müşteri ağımıza Odoo ve RubixB2 çözümleriyle hizmet veriyoruz.</p>
         </div>
 
         <div class="map-card reveal">
           <div class="map-wrap">
-            <svg class="world" role="img" aria-label="Müşterilerimizin bulunduğu ülkeleri gösteren harita" viewBox="0 0 1000 347.5" preserveAspectRatio="xMidYMid meet">
+            <svg class="world" role="img" data-i18n-attr="aria-label:a.worldMap" aria-label="Müşterilerimizin bulunduğu ülkeleri gösteren harita" viewBox="0 0 1000 347.5" preserveAspectRatio="xMidYMid meet">
 <path class="country" d="M670.4 278.8L670.4 279.2L670.3 280.4L670.3 289.5L651.9 289.2L652.0 304.5L646.8 305.0L645.4 308.1L646.5 316.6L624.5 316.5L623.2 318.5L623.5 316.0L623.6 316.0L636.2 315.5L636.9 313.4L639.2 310.8L641.1 302.6L648.9 296.2L651.5 288.6L653.3 288.2L655.1 283.5L659.8 282.8L661.9 283.6L664.4 283.6L666.2 282.2L669.7 282.0L669.6 278.8L670.4 278.8Z"/>
 <path class="country" d="M29.0 138.5L28.2 138.5L17.4 131.3L13.3 128.2L3.2 125.1L0.0 118.5L0.8 113.9L-6.4 110.7L-7.3 104.5L-14.1 98.9L-14.2 94.9L-11.1 91.2L-11.3 86.2L-20.8 81.2L-26.6 72.0L-30.1 66.1L-35.2 62.4L-39.0 59.0L-42.0 54.7L-47.6 57.4L-53.1 62.1L-58.1 56.6L-62.0 52.9L-67.5 50.6L-73.0 50.4L-73.0 0.0L-73.0 -35.7L-62.5 -33.3L-53.6 -28.6L-47.8 -27.7L-42.8 -31.8L-36.0 -34.9L-27.7 -33.7L-19.3 -38.1L-10.1 -40.6L-6.2 -36.4L-2.0 -38.8L-0.8 -43.5L3.1 -42.4L12.6 -33.4L20.1 -40.2L20.8 -32.6L27.7 -34.3L29.9 -37.2L36.7 -36.6L45.3 -32.4L58.4 -28.8L66.1 -27.1L71.7 -27.8L79.2 -22.8L71.3 -18.0L81.5 -15.9L96.6 -17.1L101.4 -18.7L107.4 -13.0L113.5 -17.9L107.8 -22.0L111.4 -25.3L118.2 -25.7L122.8 -26.7L127.3 -24.4L132.9 -19.1L139.2 -19.9L149.1 -15.5L157.8 -17.1L166.0 -16.8L165.4 -22.8L170.4 -24.5L179.1 -21.3L179.1 -12.2L182.6 -19.8L187.2 -19.5L189.7 -29.4L183.7 -35.5L177.1 -39.5L177.6 -50.8L184.2 -58.3L191.6 -56.6L197.3 -52.1L205.0 -40.6L200.0 -35.6L210.4 -33.6L210.4 -23.5L217.9 -31.2L224.6 -24.9L222.9 -17.7L228.4 -11.3L234.2 -18.2L238.3 -26.6L238.6 -37.5L246.6 -36.7L254.9 -35.2L262.5 -30.3L262.8 -25.4L258.6 -20.2L262.6 -15.1L261.9 -10.4L250.9 -3.8L243.1 -2.4L237.3 -5.2L235.6 -0.5L230.2 7.3L228.5 11.3L222.0 17.4L214.0 18.0L209.5 21.7L209.2 27.5L202.6 28.6L195.8 35.7L189.7 45.3L187.5 52.0L187.2 61.7L195.4 63.1L198.0 70.7L200.6 76.9L208.4 75.3L218.9 78.8L224.5 81.8L228.5 85.6L235.6 87.7L241.5 91.0L250.8 91.5L256.9 92.3L256.0 99.0L257.7 106.7L261.8 115.2L270.2 122.3L274.5 119.9L277.5 112.1L274.6 100.1L270.6 96.0L279.6 92.3L286.0 86.8L289.1 81.3L288.6 75.9L284.8 69.1L278.0 62.9L284.6 54.2L282.2 46.5L280.3 33.1L284.2 31.1L293.8 33.5L299.6 34.3L304.3 32.0L309.5 35.0L316.4 40.0L318.1 43.3L328.1 44.0L328.0 51.1L329.8 61.6L335.0 62.9L339.0 67.7L347.2 63.2L352.6 54.0L356.3 50.1L360.6 57.6L368.0 68.1L374.2 77.8L371.9 82.9L379.4 87.3L384.4 91.8L393.4 93.8L397.0 96.3L399.2 102.9L403.6 103.9L405.9 106.8L406.3 115.3L402.2 118.1L398.2 120.7L388.9 123.4L381.8 129.4L372.3 130.6L360.3 129.1L351.9 129.0L346.1 129.5L341.4 134.8L334.2 138.0L326.1 147.6L319.6 154.1L324.4 153.0L333.4 143.6L345.2 137.5L353.6 136.8L358.6 140.4L353.3 145.2L355.1 152.9L356.9 158.2L364.2 161.7L373.5 160.7L379.1 152.8L379.5 157.9L383.1 160.5L376.2 165.0L363.7 169.2L358.2 172.0L351.9 176.9L347.6 176.4L347.4 170.6L357.2 164.9L348.2 165.1L341.9 165.9L338.3 162.0L338.3 152.4L335.8 150.3L332.0 151.5L330.1 149.7L325.8 155.0L324.1 160.5L322.1 163.7L319.7 164.8L317.9 165.1L317.4 166.8L307.0 166.8L298.5 166.9L296.0 168.2L290.0 173.1L289.3 173.7L287.5 176.3L282.4 176.3L276.9 176.4L274.3 177.4L275.2 178.8L275.7 180.9L275.6 181.6L268.3 184.9L262.5 186.0L256.0 189.6L254.5 189.6L252.6 188.5L252.0 187.6L252.1 186.9L253.4 184.5L256.0 180.8L257.7 176.7L256.5 170.8L255.3 164.5L249.5 161.2L250.2 159.9L249.3 159.1L247.8 159.1L246.7 158.0L246.4 156.3L245.3 157.0L243.8 156.8L244.1 156.1L242.8 155.4L242.3 153.6L237.9 151.3L233.4 148.9L227.9 146.1L222.6 143.5L217.6 145.6L215.7 145.7L208.8 143.8L204.3 144.7L198.8 142.5L193.1 141.3L189.2 140.9L187.4 139.7L186.4 135.7L184.5 135.7L184.5 138.5L172.9 138.5L153.6 138.5L134.6 138.5L117.7 138.5L100.8 138.5L84.3 138.5L67.1 138.5L61.6 138.5L45.0 138.5L29.0 138.5ZM247.2 31.9L251.4 27.9L259.1 28.0L259.0 29.7L252.4 34.5L248.5 34.3L247.2 31.9ZM267.9 35.1L270.1 32.5L272.4 32.7L273.8 34.5L271.6 39.1L269.1 38.3L267.6 35.7L267.9 35.1ZM406.7 121.5L403.7 126.2L400.0 132.6L403.7 130.1L407.5 131.7L405.5 134.2L410.5 136.2L413.1 134.5L418.7 136.7L416.9 142.0L420.9 140.8L421.6 144.6L423.3 149.0L421.0 155.3L418.4 155.6L414.7 154.2L415.9 148.4L414.4 147.5L407.9 153.7L404.5 153.4L408.5 150.1L403.1 148.4L397.0 148.8L386.1 148.6L385.3 146.4L388.8 143.9L386.3 142.0L391.1 137.6L396.9 125.9L400.3 121.7L405.2 119.1L407.8 119.5L406.7 121.5ZM247.9 8.2L254.0 11.3L260.4 14.2L260.9 18.4L265.1 17.7L269.1 20.7L264.1 23.5L255.4 21.4L252.2 17.3L246.6 22.1L238.6 26.7L236.7 21.5L229.1 22.4L234.0 17.9L234.7 10.8L236.6 2.4L240.7 3.2L241.7 7.2L244.6 5.8L247.9 8.2ZM276.6 -62.9L281.9 -67.1L294.3 -61.7L302.1 -56.7L302.8 -52.2L313.2 -54.5L319.1 -48.0L332.7 -43.9L337.5 -39.9L342.9 -30.5L332.6 -25.9L345.8 -19.6L354.7 -17.5L362.8 -8.7L371.6 -8.1L369.9 -1.5L360.0 9.2L353.1 5.3L344.3 -3.6L337.0 -2.4L336.3 2.9L342.2 8.2L349.8 12.4L352.1 14.8L355.8 23.7L353.8 30.0L346.8 27.6L332.7 20.5L340.6 28.2L346.5 33.4L347.4 36.5L332.1 33.0L320.1 27.9L313.3 23.6L315.2 21.1L306.9 16.5L298.7 12.1L298.8 14.8L282.5 16.2L277.8 13.1L281.5 6.4L292.0 6.2L303.6 5.0L301.7 1.7L303.7 -2.9L311.0 -12.1L309.4 -16.3L307.2 -19.6L298.6 -24.3L287.2 -27.6L290.8 -30.1L284.9 -36.3L279.9 -36.9L275.5 -40.3L272.5 -37.3L262.3 -36.0L241.9 -38.3L230.0 -41.3L220.9 -42.8L216.2 -46.3L222.1 -51.0L214.1 -51.1L212.3 -61.6L216.6 -71.1L222.4 -75.5L236.9 -78.5L232.8 -71.5L237.2 -64.8L242.4 -73.4L256.6 -77.9L266.3 -66.7L265.4 -59.8L276.6 -62.9ZM-26.5 100.9L-21.1 100.2L-22.8 108.9L-17.9 115.0L-20.1 115.0L-23.5 111.6L-25.6 108.1L-28.4 105.7L-29.4 102.3L-29.1 99.9L-26.5 100.9ZM25.2 142.1L22.4 143.1L13.2 139.8L11.5 137.2L6.5 134.7L5.5 132.6L-0.3 131.3L-2.5 127.3L-2.0 125.5L3.9 127.2L7.3 128.3L12.6 129.1L14.5 131.6L17.3 135.1L22.9 138.1L25.2 142.1ZM296.5 -13.6L292.9 -10.8L286.6 -10.3L285.2 -15.0L287.6 -20.4L292.7 -21.7L297.1 -19.0L297.2 -14.9L296.5 -13.6ZM356.6 132.2L358.6 131.5L366.0 133.4L371.7 136.4L371.9 137.8L369.1 137.9L361.9 135.6L356.6 132.2ZM359.5 152.6L361.4 156.0L365.5 157.0L370.7 156.8L367.9 159.7L365.9 160.1L358.7 157.2L357.3 154.8L359.5 152.6Z"/>
 <path class="country is-client" data-c="us" d="M29.0 138.5L45.0 138.5L61.6 138.5L67.1 138.5L84.3 138.5L100.8 138.5L117.7 138.5L134.6 138.5L153.6 138.5L172.9 138.5L184.5 138.5L184.5 135.7L186.4 135.7L187.4 139.7L189.2 140.9L193.1 141.3L198.8 142.5L204.3 144.7L208.8 143.8L215.7 145.7L217.6 145.6L222.6 143.5L227.9 146.1L233.4 148.9L237.9 151.3L242.3 153.6L242.8 155.4L244.1 156.1L243.8 156.8L245.3 157.0L246.4 156.3L246.7 158.0L247.8 159.1L249.3 159.1L250.2 159.9L249.5 161.2L255.3 164.5L256.5 170.8L257.7 176.7L256.0 180.8L253.4 184.5L252.1 186.9L252.0 187.6L252.6 188.5L254.5 189.6L256.0 189.6L262.5 186.0L268.3 184.9L275.6 181.6L275.7 180.9L275.2 178.8L274.3 177.4L276.9 176.4L282.4 176.3L287.5 176.3L289.3 173.7L290.0 173.1L296.0 168.2L298.5 166.9L307.0 166.8L317.4 166.8L317.9 165.1L319.7 164.8L322.1 163.7L324.1 160.5L325.8 155.0L330.1 149.7L332.0 151.5L335.8 150.3L338.3 152.4L338.3 162.0L341.9 165.9L342.9 168.2L336.9 171.6L331.1 173.9L325.2 176.0L322.2 180.0L321.3 181.6L321.2 185.2L323.1 188.7L325.4 188.9L324.8 186.4L326.5 187.9L326.0 189.9L322.2 190.9L319.5 190.8L315.4 192.0L313.0 192.3L309.7 192.6L305.0 194.6L313.3 193.3L314.9 194.6L307.0 196.6L303.5 196.6L303.6 195.8L301.9 197.6L303.6 197.9L302.4 202.7L298.3 207.8L297.9 206.1L296.6 205.8L294.8 204.1L295.9 207.6L297.3 208.8L297.4 211.3L295.6 213.8L292.5 219.0L292.0 218.7L293.7 214.3L290.8 211.8L290.2 206.4L289.1 209.2L290.3 213.4L286.6 212.4L290.4 214.5L290.7 220.6L292.3 221.1L292.9 223.3L293.7 229.7L290.1 234.4L284.3 236.3L280.6 240.0L277.8 240.4L274.9 242.8L274.1 244.9L268.0 248.9L264.8 251.9L262.1 255.6L261.3 260.0L262.3 264.3L264.2 269.5L266.7 273.8L266.7 276.5L269.3 283.5L269.2 287.6L268.9 289.9L267.5 293.6L265.9 294.3L263.1 293.6L262.2 291.0L260.1 289.6L257.1 284.4L254.5 279.8L253.6 277.4L254.8 273.4L253.2 270.0L248.8 264.9L246.6 263.9L241.0 266.7L240.0 266.4L237.2 263.6L233.7 262.0L227.4 262.8L222.4 262.1L218.1 262.5L215.8 263.5L216.8 265.1L216.7 267.6L217.9 268.8L216.8 269.6L214.7 268.7L212.6 269.9L208.5 269.7L204.3 266.5L199.5 267.2L195.4 265.8L191.9 266.3L187.1 267.7L182.0 272.2L176.4 274.8L173.4 277.8L172.1 280.5L172.0 284.6L172.3 287.5L173.4 289.6L171.2 289.8L167.2 288.4L162.8 286.6L161.2 283.7L160.0 279.5L156.7 276.0L154.7 272.5L151.9 268.3L148.0 265.8L143.4 266.0L139.8 270.8L135.2 269.0L132.3 267.1L130.9 263.7L129.0 260.5L125.7 257.8L122.8 255.8L120.7 253.6L111.0 253.6L111.0 256.2L106.5 256.2L95.4 256.2L82.6 251.9L74.1 248.8L74.6 247.6L67.5 248.3L61.1 248.8L60.1 245.6L56.5 242.0L53.9 241.2L53.3 239.4L50.1 239.1L48.1 237.4L42.9 236.7L41.4 235.7L40.8 232.2L35.3 225.8L30.6 216.8L30.8 215.3L28.3 213.2L24.0 207.7L23.2 202.3L20.2 198.7L21.5 193.2L21.3 187.4L19.5 182.2L21.7 175.8L22.4 169.5L23.0 163.2L22.0 153.8L20.2 147.7L18.6 144.4L19.3 143.0L27.4 145.4L30.4 152.2L31.8 150.3L30.9 144.4L29.0 138.5ZM-73.0 -35.7L-73.0 0.0L-73.0 50.4L-67.5 50.6L-62.0 52.9L-58.1 56.6L-53.1 62.1L-47.6 57.4L-42.0 54.7L-39.0 59.0L-35.2 62.4L-30.1 66.1L-26.6 72.0L-20.8 81.2L-11.3 86.2L-11.1 91.2L-14.2 94.9L-17.3 92.0L-22.3 89.5L-23.9 82.6L-31.1 76.1L-34.1 68.5L-39.5 68.0L-48.5 67.7L-55.1 65.4L-66.7 56.8L-72.0 55.2L-81.9 52.2L-89.7 53.0L-100.7 49.1L-107.4 45.5L-113.6 47.3L-112.5 53.1L-115.6 53.7L-122.1 55.4L-127.0 58.2L-133.2 60.0L-134.0 55.1L-131.5 46.8L-125.5 44.2L-127.1 42.0L-134.2 46.8L-138.1 52.4L-146.2 58.4L-142.1 62.4L-147.4 68.3L-153.4 71.7L-159.0 74.2L-160.4 77.7L-169.2 81.9L-171.0 85.6L-177.5 89.0L-181.4 88.4L-186.6 90.6L-192.3 93.2L-197.0 95.8L-206.7 98.0L-207.5 96.7L-201.4 93.1L-195.9 90.7L-189.9 86.4L-182.9 85.5L-180.2 82.2L-172.4 77.4L-171.1 75.8L-167.0 73.0L-166.0 66.8L-163.2 61.9L-169.6 64.4L-171.5 63.0L-174.5 66.0L-178.1 61.8L-179.7 64.8L-181.8 60.7L-187.4 64.0L-190.8 64.0L-191.3 59.1L-190.3 56.0L-193.9 53.0L-201.2 54.6L-206.0 50.7L-209.8 48.7L-209.8 43.9L-214.2 40.2L-212.0 35.2L-207.4 30.4L-205.4 25.8L-200.9 25.2L-197.0 26.6L-192.5 22.3L-188.4 23.1L-184.1 20.3L-185.2 16.2L-188.3 14.6L-184.2 11.1L-187.6 11.2L-193.6 13.2L-195.3 15.2L-199.7 13.2L-207.6 14.2L-215.9 12.1L-218.2 8.4L-225.3 3.1L-217.4 -0.8L-204.9 -5.4L-200.3 -5.4L-201.1 -0.7L-189.2 -1.1L-193.8 -6.9L-200.7 -10.5L-204.7 -15.3L-210.1 -19.4L-217.8 -22.4L-214.6 -27.5L-204.7 -27.8L-197.6 -32.4L-196.2 -37.2L-190.5 -42.0L-185.0 -43.2L-174.4 -47.7L-169.2 -47.0L-160.6 -52.5L-152.1 -50.3L-148.0 -45.7L-145.5 -47.7L-136.0 -47.0L-136.3 -44.7L-127.7 -43.0L-122.0 -44.0L-110.2 -40.8L-99.4 -39.8L-95.1 -38.5L-87.6 -40.2L-79.1 -37.1L-73.0 -35.7Z"/>
@@ -706,25 +744,25 @@
             <span class="pin" style="left:91.29%;top:59.30%"></span>
             <span class="pin" style="left:16.57%;top:59.68%"></span>
 
-            <span class="map-label" style="left:62.0%;top:17.27%"><img src="assets/img/rubixb2-icon.png" alt="">İngiltere</span>
-            <span class="map-label" style="left:74.5%;top:11.51%"><img src="assets/img/rubixb2-icon.png" alt="">Hollanda</span>
-            <span class="map-label map-label--hq" style="left:64.0%;top:47.48%"><img src="assets/img/rubixb2-icon.png" alt="">Belçika<small>Merkez</small></span>
-            <span class="map-label" style="left:86.0%;top:20.14%"><img src="assets/img/rubixb2-icon.png" alt="">Almanya</span>
-            <span class="map-label" style="left:89.0%;top:43.17%"><img src="assets/img/rubixb2-icon.png" alt="">Avusturya</span>
-            <span class="map-label" style="left:61.0%;top:71.94%"><img src="assets/img/rubixb2-icon.png" alt="">İspanya</span>
-            <span class="map-label" style="left:92.5%;top:79.14%"><img src="assets/img/rubixb2-icon.png" alt="">Türkiye</span>
-            <span class="map-label" style="left:16.5%;top:83.45%"><img src="assets/img/rubixb2-icon.png" alt="">ABD</span>
+            <span class="map-label" style="left:62.0%;top:17.27%"><img src="assets/img/rubixb2-icon.png" alt=""><span data-i18n="c.uk">İngiltere</span></span>
+            <span class="map-label" style="left:74.5%;top:11.51%"><img src="assets/img/rubixb2-icon.png" alt=""><span data-i18n="c.nl">Hollanda</span></span>
+            <span class="map-label map-label--hq" style="left:64.0%;top:47.48%"><img src="assets/img/rubixb2-icon.png" alt=""><span data-i18n="c.be">Belçika</span><small data-i18n="c.hq">Merkez</small></span>
+            <span class="map-label" style="left:86.0%;top:20.14%"><img src="assets/img/rubixb2-icon.png" alt=""><span data-i18n="c.de">Almanya</span></span>
+            <span class="map-label" style="left:89.0%;top:43.17%"><img src="assets/img/rubixb2-icon.png" alt=""><span data-i18n="c.at">Avusturya</span></span>
+            <span class="map-label" style="left:61.0%;top:71.94%"><img src="assets/img/rubixb2-icon.png" alt=""><span data-i18n="c.es">İspanya</span></span>
+            <span class="map-label" style="left:92.5%;top:79.14%"><img src="assets/img/rubixb2-icon.png" alt=""><span data-i18n="c.tr">Türkiye</span></span>
+            <span class="map-label" style="left:16.5%;top:83.45%"><img src="assets/img/rubixb2-icon.png" alt=""><span data-i18n="c.us">ABD</span></span>
           </div>
 
-          <ul class="country-list" aria-label="Müşterisi bulunan ülkeler">
-            <li class="is-hq"><img src="assets/img/rubixb2-icon.png" alt="">Belçika <small>Merkez</small></li>
-            <li><img src="assets/img/rubixb2-icon.png" alt="">Hollanda</li>
-            <li><img src="assets/img/rubixb2-icon.png" alt="">Almanya</li>
-            <li><img src="assets/img/rubixb2-icon.png" alt="">Avusturya</li>
-            <li><img src="assets/img/rubixb2-icon.png" alt="">İngiltere</li>
-            <li><img src="assets/img/rubixb2-icon.png" alt="">İspanya</li>
-            <li><img src="assets/img/rubixb2-icon.png" alt="">Türkiye</li>
-            <li><img src="assets/img/rubixb2-icon.png" alt="">ABD</li>
+          <ul class="country-list" aria-label="Müşterisi bulunan ülkeler" data-i18n-attr="aria-label:a.countries">
+            <li class="is-hq"><img src="assets/img/rubixb2-icon.png" alt=""><span data-i18n="c.be">Belçika</span> <small data-i18n="c.hq">Merkez</small></li>
+            <li><img src="assets/img/rubixb2-icon.png" alt=""><span data-i18n="c.nl">Hollanda</span></li>
+            <li><img src="assets/img/rubixb2-icon.png" alt=""><span data-i18n="c.de">Almanya</span></li>
+            <li><img src="assets/img/rubixb2-icon.png" alt=""><span data-i18n="c.at">Avusturya</span></li>
+            <li><img src="assets/img/rubixb2-icon.png" alt=""><span data-i18n="c.uk">İngiltere</span></li>
+            <li><img src="assets/img/rubixb2-icon.png" alt=""><span data-i18n="c.es">İspanya</span></li>
+            <li><img src="assets/img/rubixb2-icon.png" alt=""><span data-i18n="c.tr">Türkiye</span></li>
+            <li><img src="assets/img/rubixb2-icon.png" alt=""><span data-i18n="c.us">ABD</span></li>
           </ul>
         </div>
       </div>
@@ -734,9 +772,9 @@
     <section class="section cta" id="iletisim">
       <div class="container cta__inner">
         <div class="cta__text">
-          <span class="eyebrow">Demo Talebi</span>
-          <h2>Her rutta <span class="gradient-text">daha fazla satış</span></h2>
-          <p>Ekibinizin ihtiyaçlarını dinleyelim, RubixB2'yi kendi süreçleriniz üzerinde gösterelim.</p>
+          <span class="eyebrow" data-i18n="cta.eyebrow">Demo Talebi</span>
+          <h2 data-i18n="cta.title">Akıllı Rotalar, <span class="gradient-text">Güçlü Satışlar</span></h2>
+          <p data-i18n="cta.lead">Ekibinizin ihtiyaçlarını dinleyelim, RubixB2'yi kendi süreçleriniz üzerinde gösterelim.</p>
           <ul class="contact-list">
             <li><span>🏢</span> NameTech Solutions BV</li>
             <li><span>✉️</span> <a href="mailto:info@nametech.be">info@nametech.be</a></li>
@@ -750,38 +788,39 @@
           <input type="hidden" name="_subject" value="Yeni demo talebi — RubixB2">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="language" value="TR">
 
           <div class="form__row">
-            <label>Ad Soyad *<input type="text" name="name" required autocomplete="name" maxlength="100"></label>
-            <label>Firma *<input type="text" name="company" required autocomplete="organization" maxlength="120"></label>
+            <label><span data-i18n="fm.name">Ad Soyad *</span><input type="text" name="name" required autocomplete="name" maxlength="100"></label>
+            <label><span data-i18n="fm.company">Firma *</span><input type="text" name="company" required autocomplete="organization" maxlength="120"></label>
           </div>
           <div class="form__row">
-            <label>E-posta *<input type="email" name="email" required autocomplete="email" maxlength="160"></label>
-            <label>Telefon<input type="tel" name="phone" autocomplete="tel" maxlength="40"></label>
+            <label><span data-i18n="fm.email">E-posta *</span><input type="email" name="email" required autocomplete="email" maxlength="160"></label>
+            <label><span data-i18n="fm.phone">Telefon</span><input type="tel" name="phone" autocomplete="tel" maxlength="40"></label>
           </div>
           <div class="form__row">
-            <label>İlgilendiğiniz konu
+            <label><span data-i18n="fm.interest">İlgilendiğiniz konu</span>
               <select name="interest">
-                <option>Genel bilgi</option>
-                <option>Sıcak Satış</option>
-                <option>Soğuk Satış</option>
-                <option>Rut Yönetimi</option>
-                <option>KPI &amp; Raporlama</option>
-                <option>Odoo Entegrasyonu</option>
-                <option>İş Ortaklığı</option>
+                <option value="Genel bilgi" data-i18n="o.general">Genel bilgi</option>
+                <option value="Sıcak Satış" data-i18n="chip.hot">Sıcak Satış</option>
+                <option value="Soğuk Satış" data-i18n="chip.cold">Soğuk Satış</option>
+                <option value="Rut Yönetimi" data-i18n="tab.route">Rut Yönetimi</option>
+                <option value="KPI &amp; Raporlama" data-i18n="o.kpi">KPI &amp; Raporlama</option>
+                <option value="Odoo Entegrasyonu" data-i18n="nav.odoo">Odoo Entegrasyonu</option>
+                <option value="İş Ortaklığı" data-i18n="o.partner">İş Ortaklığı</option>
               </select>
             </label>
-            <label>Saha ekibi büyüklüğü
+            <label><span data-i18n="fm.team">Saha ekibi büyüklüğü</span>
               <select name="team">
-                <option>1–5 plasiyer</option>
-                <option>6–20 plasiyer</option>
-                <option>21–50 plasiyer</option>
-                <option>50+ plasiyer</option>
+                <option value="1–5" data-i18n="o.t1">1–5 plasiyer</option>
+                <option value="6–20" data-i18n="o.t2">6–20 plasiyer</option>
+                <option value="21–50" data-i18n="o.t3">21–50 plasiyer</option>
+                <option value="50+" data-i18n="o.t4">50+ plasiyer</option>
               </select>
             </label>
           </div>
           <p class="form__context" id="form-context">Ekibimiz size en uygun çözümü bulmanıza yardımcı olur.</p>
-          <label>Mesajınız *<textarea name="message" rows="4" required maxlength="3000" placeholder="Kısaca ihtiyacınızdan bahsedin"></textarea></label>
+          <label><span data-i18n="fm.message">Mesajınız *</span><textarea name="message" rows="4" required maxlength="3000" placeholder="Kısaca ihtiyacınızdan bahsedin" data-i18n-attr="placeholder:fm.ph"></textarea></label>
 
           <!-- Spam botları için tuzak alan: gerçek kullanıcılar görmez -->
           <div class="form__honeypot" aria-hidden="true">
@@ -789,8 +828,8 @@
             <input type="text" id="demo-website" name="_honey" tabindex="-1" autocomplete="off">
           </div>
 
-          <p class="form__privacy">Bilgilerinizi yalnızca talebinize yanıt vermek için kullanırız. Form, FormSubmit servisi aracılığıyla iletilir; sizi pazarlama listelerine eklemez.</p>
-          <button type="submit" class="btn btn--primary btn--lg btn--block">Demo Talep Et</button>
+          <p class="form__privacy" data-i18n="fm.privacy">Bilgilerinizi yalnızca talebinize yanıt vermek için kullanırız. Form, FormSubmit servisi aracılığıyla iletilir; sizi pazarlama listelerine eklemez.</p>
+          <button type="submit" class="btn btn--primary btn--lg btn--block" data-i18n="cta.demo">Demo Talep Et</button>
           <p class="form__note" id="form-note" role="status" aria-live="polite"></p>
         </form>
       </div>
@@ -804,40 +843,41 @@
         <a href="#top" class="logo logo--stacked">
           <img src="assets/img/rubixb2-logo-stacked.png" alt="RubixB2" width="360" height="524">
         </a>
-        <p>Odoo ile plasiyer satış, rut yönetimi ve KPI analizi.</p>
+        <p data-i18n="ftr.tagline">Odoo ile plasiyer satış, rut yönetimi ve KPI analizi.</p>
         <div class="footer__maker">
-          <small>Geliştirici</small>
+          <small data-i18n="ftr.dev">Geliştirici</small>
           <img src="assets/img/nametech-logo.png" alt="NameTech Solutions BV" width="600" height="203">
         </div>
         <span class="badge-odoo"><img src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196"> Partner</span>
       </div>
       <div class="footer__col">
-        <h4>Çözümler</h4>
-        <a href="#cozumler">Sıcak Satış</a>
-        <a href="#cozumler">Soğuk Satış</a>
-        <a href="#cozumler">Rut Yönetimi</a>
-        <a href="#cozumler">KPI &amp; Performans</a>
+        <h4 data-i18n="nav.solutions">Çözümler</h4>
+        <a href="#cozumler" data-i18n="chip.hot">Sıcak Satış</a>
+        <a href="#cozumler" data-i18n="chip.cold">Soğuk Satış</a>
+        <a href="#cozumler" data-i18n="tab.route">Rut Yönetimi</a>
+        <a href="#cozumler" data-i18n="tab.kpi">KPI &amp; Performans</a>
       </div>
       <div class="footer__col">
-        <h4>Ürün</h4>
-        <a href="#ozellikler">Özellikler</a>
-        <a href="#odoo">Odoo Entegrasyonu</a>
-        <a href="#nasil-calisir">Nasıl Çalışır</a>
-        <a href="#sss">SSS</a>
+        <h4 data-i18n="ftr.product">Ürün</h4>
+        <a href="#ozellikler" data-i18n="nav.features">Özellikler</a>
+        <a href="#odoo" data-i18n="nav.odoo">Odoo Entegrasyonu</a>
+        <a href="#nasil-calisir" data-i18n="nav.how">Nasıl Çalışır</a>
+        <a href="#sss" data-i18n="nav.faq">SSS</a>
       </div>
       <div class="footer__col">
-        <h4>İletişim</h4>
+        <h4 data-i18n="ftr.contact">İletişim</h4>
         <address>NameTech Solutions BV<br>Excelsiorlaan 44<br>1930 Zaventem, Belgium</address>
         <a href="mailto:info@nametech.be">info@nametech.be</a>
-        <a href="#iletisim">Demo Talep Et</a>
+        <a href="#iletisim" data-i18n="cta.demo">Demo Talep Et</a>
       </div>
     </div>
     <div class="container footer__bottom">
-      <span>© <span id="year"></span> NameTech Solutions BV. Tüm hakları saklıdır.</span>
-      <span>Odoo, Odoo S.A.'nın tescilli markasıdır.</span>
+      <span>© <span id="year"></span> <span data-i18n="ftr.rights">NameTech Solutions BV. Tüm hakları saklıdır.</span></span>
+      <span data-i18n="ftr.tm">Odoo, Odoo S.A.'nın tescilli markasıdır.</span>
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=20261015c"></script>
+  <script src="assets/js/i18n.js?v=20261015d"></script>
+  <script src="assets/js/main.js?v=20261015d"></script>
 </body>
 </html>
