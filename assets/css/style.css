@@ -608,6 +608,42 @@ body { transition: opacity .2s; }
 .contact-list li { display: flex; align-items: flex-start; gap: 12px; color: var(--muted); }
 .contact-list a:hover { color: var(--orange-2); }
 
+/* Ofis konumu haritası (tıklayınca yüklenir) */
+.office-map {
+  position: relative; width: 100%; aspect-ratio: 16 / 9; margin-top: 8px; overflow: hidden;
+  border-radius: var(--radius); border: 1px solid var(--border); background: #e9eef0; box-shadow: var(--shadow-sm);
+}
+.office-map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.office-map__placeholder { position: absolute; inset: 0; }
+.office-map__streets { width: 100%; height: 100%; }
+.office-map__streets path { fill: none; stroke: #fff; stroke-width: 12; stroke-linecap: round; }
+.office-map__streets path.minor { stroke-width: 5; stroke: rgba(255,255,255,.75); }
+.office-map__pin {
+  position: absolute; left: 50%; top: 34%; transform: translate(-50%, -50%);
+  width: 48px; height: 48px; border-radius: 50% 50% 50% 0; rotate: -45deg;
+  display: grid; place-items: center; background: var(--orange); box-shadow: 0 8px 18px -6px rgba(242,131,35,.8);
+}
+.office-map__pin img { width: 26px; rotate: 45deg; background: #fff; border-radius: 50%; padding: 3px; }
+.office-map__overlay {
+  position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 12px 14px; border-radius: 14px;
+  display: grid; grid-template-columns: 1fr auto; column-gap: 12px; row-gap: 2px; align-items: center;
+  background: rgba(252,251,248,.94); border: 1px solid var(--border);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.office-map__overlay b { font-size: 14px; color: var(--navy-2); }
+.office-map__overlay span { font-size: 13px; color: var(--muted); grid-column: 1; }
+.office-map__overlay .btn { grid-column: 2; grid-row: 1 / span 2; }
+.office-map__overlay small { grid-column: 1 / -1; font-size: 11.5px; color: var(--muted); margin-top: 6px; }
+.office-map.is-loaded .office-map__placeholder, .office-map.is-loaded .office-map__overlay { display: none; }
+.office-map__dir { display: inline-flex; align-items: center; gap: 8px; margin-top: 4px; font-weight: 600; font-size: 14px; color: var(--teal-2); }
+.office-map__dir:hover { color: var(--orange-2); }
+.office-map__dir svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round; }
+@media (max-width: 600px) {
+  .office-map { aspect-ratio: 4 / 3; }
+  .office-map__overlay { grid-template-columns: 1fr; }
+  .office-map__overlay .btn { grid-column: 1; grid-row: auto; margin-top: 8px; justify-self: start; }
+}
+
 .form {
   display: flex; flex-direction: column; gap: 16px; padding: 32px; border-radius: var(--radius-lg);
   background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow);

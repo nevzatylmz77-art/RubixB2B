@@ -256,6 +256,23 @@
       });
   });
 
+  // Ofis haritası: Google Maps yalnızca ziyaretçi butona basınca yüklenir (GDPR)
+  var officeMap = document.getElementById('office-map');
+  var officeMapBtn = document.getElementById('office-map-load');
+  if (officeMap && officeMapBtn) {
+    officeMapBtn.addEventListener('click', function () {
+      var iframe = document.createElement('iframe');
+      iframe.src = officeMap.dataset.embed + '&hl=' + lang;
+      iframe.title = 'NameTech Solutions BV – Google Maps';
+      iframe.loading = 'lazy';
+      iframe.referrerPolicy = 'no-referrer-when-downgrade';
+      iframe.allowFullscreen = true;
+      officeMap.appendChild(iframe);
+      officeMap.classList.add('is-loaded');
+      iframe.focus();
+    });
+  }
+
   // Hero slider
   var slider = document.getElementById('hero-slider');
   if (slider) {
