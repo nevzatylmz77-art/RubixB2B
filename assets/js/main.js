@@ -114,7 +114,7 @@
       d.get('message')
     ].join('\n');
     window.location.href = 'mailto:' + CONTACT_EMAIL +
-      '?subject=' + encodeURIComponent('RubixB2B Demo Talebi - ' + d.get('company')) +
+      '?subject=' + encodeURIComponent('RubixB2 Demo Talebi - ' + d.get('company')) +
       '&body=' + encodeURIComponent(body);
     note.classList.remove('is-error');
     note.textContent = 'Teşekkürler! E-posta uygulamanız açılıyor.';
