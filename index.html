@@ -30,9 +30,44 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261016e">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261016f">
 </head>
 <body>
+
+  <!-- Dil seçici bayrakları (SVG; Windows emoji bayrak göstermediği için) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <clipPath id="uk-s"><rect width="60" height="30"/></clipPath>
+      <clipPath id="uk-t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath>
+    </defs>
+    <symbol id="flag-tr" viewBox="0 0 30 20">
+      <rect width="30" height="20" fill="#E30A17"/>
+      <circle cx="11" cy="10" r="5" fill="#fff"/>
+      <circle cx="12.25" cy="10" r="4" fill="#E30A17"/>
+      <polygon fill="#fff" points="14.1,10 15.82,9.44 15.83,7.62 16.9,9.09 18.62,8.53 17.56,10 18.62,11.47 16.9,10.91 15.83,12.38 15.82,10.56"/>
+    </symbol>
+    <symbol id="flag-en" viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice">
+      <g clip-path="url(#uk-s)">
+        <rect width="60" height="30" fill="#012169"/>
+        <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+        <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#uk-t)" stroke="#C8102E" stroke-width="4"/>
+        <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
+        <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+      </g>
+    </symbol>
+    <symbol id="flag-fr" viewBox="0 0 30 20">
+      <rect width="10" height="20" fill="#002654"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#CE1126"/>
+    </symbol>
+    <symbol id="flag-nl" viewBox="0 0 30 20">
+      <rect width="10" height="20" fill="#000"/><rect x="10" width="10" height="20" fill="#FDDA24"/><rect x="20" width="10" height="20" fill="#EF3340"/>
+    </symbol>
+    <symbol id="flag-de" viewBox="0 0 30 20">
+      <rect width="30" height="6.67" fill="#000"/><rect y="6.67" width="30" height="6.67" fill="#DD0000"/><rect y="13.33" width="30" height="6.67" fill="#FFCE00"/>
+    </symbol>
+    <symbol id="flag-es" viewBox="0 0 30 20">
+      <rect width="30" height="20" fill="#AA151B"/><rect y="5" width="30" height="10" fill="#F1BF00"/>
+    </symbol>
+  </svg>
 
   <!-- ============ HEADER ============ -->
   <header class="header" id="top">
@@ -54,17 +89,16 @@
       <div class="header__actions">
         <div class="lang" id="lang">
           <button type="button" class="lang__btn" id="lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Dil seçin" data-i18n-attr="aria-label:a.lang">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3C9.5 5.6 8.2 8.6 8.2 12s1.3 6.4 3.8 9"/></svg>
-            <span class="lang__code" id="lang-code">TR</span>
+            <svg class="flag" id="lang-flag" aria-hidden="true"><use href="#flag-tr"/></svg>
             <svg class="lang__caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <ul class="lang__menu" id="lang-menu" role="listbox" aria-label="Dil seçin" data-i18n-attr="aria-label:a.lang" hidden>
-            <li role="option" data-lang="tr" lang="tr"><span>TR</span>Türkçe</li>
-            <li role="option" data-lang="en" lang="en"><span>EN</span>English</li>
-            <li role="option" data-lang="fr" lang="fr"><span>FR</span>Français</li>
-            <li role="option" data-lang="nl" lang="nl"><span>NL</span>Nederlands (Vlaams)</li>
-            <li role="option" data-lang="de" lang="de"><span>DE</span>Deutsch</li>
-            <li role="option" data-lang="es" lang="es"><span>ES</span>Español</li>
+            <li role="option" data-lang="tr" lang="tr"><svg class="flag" aria-hidden="true"><use href="#flag-tr"/></svg>Türkçe</li>
+            <li role="option" data-lang="en" lang="en"><svg class="flag" aria-hidden="true"><use href="#flag-en"/></svg>English</li>
+            <li role="option" data-lang="fr" lang="fr"><svg class="flag" aria-hidden="true"><use href="#flag-fr"/></svg>Français</li>
+            <li role="option" data-lang="nl" lang="nl"><svg class="flag" aria-hidden="true"><use href="#flag-nl"/></svg>Nederlands (Vlaams)</li>
+            <li role="option" data-lang="de" lang="de"><svg class="flag" aria-hidden="true"><use href="#flag-de"/></svg>Deutsch</li>
+            <li role="option" data-lang="es" lang="es"><svg class="flag" aria-hidden="true"><use href="#flag-es"/></svg>Español</li>
           </ul>
         </div>
         <!-- Login: henüz bir hedefe bağlı değil -->
@@ -909,7 +943,7 @@
     </div>
   </footer>
 
-  <script src="assets/js/i18n.js?v=20261016e"></script>
-  <script src="assets/js/main.js?v=20261016e"></script>
+  <script src="assets/js/i18n.js?v=20261016f"></script>
+  <script src="assets/js/main.js?v=20261016f"></script>
 </body>
 </html>

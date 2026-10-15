@@ -10,6 +10,7 @@ window.I18N = {
   tr: {
     'meta.title': `RubixB2 | Odoo ile Plasiyer Satış, Rut Yönetim Sistemi ve KPI Analizi`,
     'meta.desc': `RubixB2; Odoo üzerinde çalışan sıcak ve soğuk satış, rut yönetim sistemi ve KPI performans raporlama platformu. Saha ekibinizi tek ekrandan yönetin.`,
+    'a.lang': `Dil seçin`,
     'js.menuOpen': `Menüyü aç`,
     'js.menuClose': `Menüyü kapat`,
     'js.pause': `Otomatik geçişi durdur`,

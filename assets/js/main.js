@@ -49,7 +49,10 @@
     document.title = t('meta.title');
     var desc = document.querySelector('meta[name="description"]');
     if (desc) desc.setAttribute('content', t('meta.desc'));
-    langCode.textContent = lang.toUpperCase();
+    langFlag.querySelector('use').setAttribute('href', '#flag-' + lang);
+    var current = langMenu.querySelector('[data-lang="' + lang + '"]');
+    langBtn.setAttribute('aria-label', t('a.lang') + ': ' + current.textContent.trim());
+    langBtn.title = current.textContent.trim();
     langMenu.querySelectorAll('[data-lang]').forEach(function (li) {
       li.setAttribute('aria-selected', String(li.dataset.lang === lang));
     });
@@ -62,7 +65,7 @@
   var langBox = document.getElementById('lang');
   var langBtn = document.getElementById('lang-btn');
   var langMenu = document.getElementById('lang-menu');
-  var langCode = document.getElementById('lang-code');
+  var langFlag = document.getElementById('lang-flag');
   var langItems = Array.prototype.slice.call(langMenu.querySelectorAll('[data-lang]'));
   langItems.forEach(function (li) { li.tabIndex = -1; });
 
