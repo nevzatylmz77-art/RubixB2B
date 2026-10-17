@@ -40,7 +40,8 @@
     { path: 'faq/', root: '../../' },
     { path: 'field-route-management/', root: '../../', product: 'field-route-management', productName: 'RubixB2 Saha ve Rota Yönetim Sistemi', interest: 'Rut Yönetim Sistemi' },
     { path: 'mobile-sales/', root: '../../', product: 'mobile-sales', prefix: 'RubixB2 Plus', interest: 'Mobil Plasiyer Satış Sistemi' },
-    { path: 'warehouse/', root: '../../', product: 'warehouse', prefix: 'RubixB2 WMS', interest: 'Mobil Depo ve Stok Yönetim Sistemi' }
+    { path: 'warehouse/', root: '../../', product: 'warehouse', prefix: 'RubixB2 WMS', interest: 'Mobil Depo ve Stok Yönetim Sistemi' },
+    { path: 'b2b-app/', root: '../../', product: 'b2b-app', prefix: '', interest: 'Kurumsal B2B Mobil Uygulama' }
   ];
   var PRODUCT_HTML = {};
   for (var pp = 0; pp < PAGES.length; pp++) {
@@ -176,7 +177,8 @@
         ]
       });
     } else if (isProduct) {
-      var prodName = (PG.prefix || 'RubixB2') + ' ' + doc.querySelector('.p-hero h1').textContent.replace(/­/g, '').trim();
+      var prodPrefix = PG.prefix === '' ? '' : (PG.prefix || 'RubixB2') + ' ';
+      var prodName = prodPrefix + doc.querySelector('.p-hero h1').textContent.replace(/­/g, '').trim();
       graph.push({
         '@type': 'WebPage', '@id': pageUrl + '#webpage', url: pageUrl, name: title, description: desc,
         inLanguage: HREFLANG[lang], isPartOf: { '@id': BASE + '#website' }, about: { '@id': BASE + '#' + PG.product },
@@ -335,7 +337,7 @@
       return '  <url>\n    <loc>' + BASE + l + '/' + path + '</loc>\n    <lastmod>' + today + '</lastmod>\n' + alts + '\n  </url>';
     }).join('\n');
   };
-  var urls = [sitemapEntry('', BASE), sitemapEntry('field-route-management/', BASE + 'en/field-route-management/'), sitemapEntry('mobile-sales/', BASE + 'en/mobile-sales/'), sitemapEntry('warehouse/', BASE + 'en/warehouse/'), sitemapEntry('faq/', BASE + 'en/faq/'), sitemapEntry('privacy/', BASE + 'en/privacy/'), sitemapEntry('cookies/', BASE + 'en/cookies/')].join('\n');
+  var urls = [sitemapEntry('', BASE), sitemapEntry('field-route-management/', BASE + 'en/field-route-management/'), sitemapEntry('mobile-sales/', BASE + 'en/mobile-sales/'), sitemapEntry('warehouse/', BASE + 'en/warehouse/'), sitemapEntry('b2b-app/', BASE + 'en/b2b-app/'), sitemapEntry('faq/', BASE + 'en/faq/'), sitemapEntry('privacy/', BASE + 'en/privacy/'), sitemapEntry('cookies/', BASE + 'en/cookies/')].join('\n');
   await save('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + urls + '\n</urlset>\n');
 
   log('\nBuild tamamlandı.');

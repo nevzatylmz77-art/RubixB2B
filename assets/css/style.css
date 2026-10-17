@@ -938,6 +938,40 @@ body { transition: opacity .2s; }
 .qty { font-family: var(--mono); font-size: 12px; padding: 3px 8px; border-radius: 8px; background: rgba(255,255,255,.06); color: var(--muted); white-space: nowrap; }
 .qty--ok { background: rgba(52,211,153,.15); color: #34d399; }
 
+/* Markaya özel B2B uygulama ekranı (açık tema) */
+.p-hero__sub { font-size: clamp(16px, 1.6vw, 19px); font-weight: 600; color: var(--teal-2); margin: -2px 0 10px; }
+.phone--brand { --text: #13213f; --muted: #6b7385; --border: rgba(19,33,63,.10); background: linear-gradient(160deg, #e9edf3, #c9d1dc); }
+.phone--brand .phone__screen { background: #fff; }
+.b2b-top { display: flex; justify-content: space-between; align-items: center; }
+.b2b-logo { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; font-size: 15px; color: var(--text); }
+.b2b-logo i { width: 26px; height: 26px; border-radius: 8px; background: linear-gradient(135deg, var(--orange), #f8b06a); }
+.b2b-cart { position: relative; font-size: 18px; }
+.b2b-cart b { position: absolute; top: -6px; right: -8px; min-width: 16px; height: 16px; border-radius: 8px; background: var(--orange); color: #fff; font-size: 10px; display: grid; place-items: center; }
+.b2b-slider { flex: none; position: relative; padding: 16px 14px 22px; border-radius: 14px; color: #fff; background: linear-gradient(135deg, #14366a, #027ba0); overflow: hidden; }
+.b2b-slider::after { content: ""; position: absolute; right: -24px; top: -24px; width: 90px; height: 90px; border-radius: 50%; background: rgba(242,131,35,.55); }
+.b2b-slider small { display: block; font-size: 11px; opacity: .85; position: relative; }
+.b2b-slider strong { display: block; font-size: 16px; position: relative; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-right: 40px; }
+.b2b-slider small, .b2b-prod small { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.b2b-prod small { display: block; }
+.b2b-slider__dots { position: absolute; left: 14px; bottom: 8px; display: flex; gap: 4px; }
+.b2b-slider__dots i { width: 6px; height: 6px; border-radius: 3px; background: rgba(255,255,255,.45); }
+.b2b-slider__dots i.is-on { width: 16px; background: #fff; }
+.b2b-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.b2b-prod { position: relative; padding: 10px; border-radius: 12px; border: 1px solid var(--border); background: #f7f8fa; min-width: 0; }
+.b2b-prod__img { display: grid; place-items: center; height: 46px; border-radius: 9px; background: #fff; font-size: 24px; margin-bottom: 6px; }
+.b2b-prod b { display: block; font-size: 11.5px; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.b2b-prod small { font-size: 10.5px; color: var(--teal-2); font-weight: 600; }
+.b2b-fav { position: absolute; top: 12px; right: 12px; font-size: 13px; color: var(--orange); }
+.b2b-fav--off { color: #b3bac7; }
+.b2b-tabs { margin-top: auto; display: grid; grid-template-columns: repeat(4, 1fr); padding: 10px 4px 2px; border-top: 1px solid var(--border); text-align: center; font-size: 17px; filter: grayscale(1); opacity: .6; }
+.b2b-tabs .is-on { filter: none; opacity: 1; }
+.p-float--push { top: -18px; right: -14px; animation-delay: .3s; }
+.p-float--reorder { top: 46%; left: -26px; animation-delay: 1s; }
+.p-float--stores { bottom: 26px; right: -10px; gap: 6px; padding: 10px; animation-delay: 1.6s; }
+.store-pill { display: inline-flex; align-items: center; padding: 7px 11px; border-radius: 9px; background: var(--navy-2); color: #fff; font-size: 12px; font-weight: 700; white-space: nowrap; }
+.flow__brand { flex: none; width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; font-size: 18px; background: linear-gradient(135deg, var(--orange), #f8b06a); }
+.p-benefits--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
 /* Özellik listesi (yatay kartlar, 2 sütun) */
 .p-features--list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .p-features--list .p-feature { display: flex; gap: 18px; align-items: flex-start; padding: 24px; }
@@ -996,6 +1030,9 @@ body { transition: opacity .2s; }
   .m-actions .app-btn { font-size: 13px; padding: 11px 6px; }
   .p-float--os { display: none; }
   .p-float--sign { top: -16px; bottom: auto; left: 4px; }
+  .p-float--reorder, .p-float--stores { display: none; }
+  .p-float--push { top: -16px; right: 4px; }
+  .p-benefits--3 { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* ---------- SSS alt sayfası ---------- */

@@ -8,7 +8,7 @@ $types = @{
   '.svg' = 'image/svg+xml'; '.png' = 'image/png'; '.jpg' = 'image/jpeg'; '.ico' = 'image/x-icon'
   '.xml' = 'application/xml; charset=utf-8'; '.txt' = 'text/plain; charset=utf-8'
 }
-$allowedSave = '^((tr|en|fr|nl|de|es)/((privacy|cookies|faq|field-route-management|mobile-sales|warehouse)/)?index\.html|sitemap\.xml)$'
+$allowedSave = '^((tr|en|fr|nl|de|es)/((privacy|cookies|faq|field-route-management|mobile-sales|warehouse|b2b-app)/)?index\.html|sitemap\.xml)$'
 $Root = [IO.Path]::GetFullPath($Root)
 
 $l = New-Object System.Net.HttpListener
