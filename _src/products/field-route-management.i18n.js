@@ -1,18 +1,18 @@
-/* RubixB2Plus ürün sayfası çevirileri. Türkçe metinler rubixb2plus.html içindedir;
+/* RubixB2 ürün sayfası çevirileri. Türkçe metinler field-route-management.html içindedir;
    burada Türkçe yalnızca sayfa başlığı ve iletişim bölümü metinleri için var. */
 window.PRODUCT_I18N = window.PRODUCT_I18N || {};
-window.PRODUCT_I18N.rubixb2plus = {
+window.PRODUCT_I18N['field-route-management'] = {
 
   tr: {
-    'meta.title': `RubixB2Plus | Saha ve Rota Yönetim Sistemi — Odoo ile Entegre`,
-    'meta.desc': `RubixB2Plus ile saha satış ekiplerinizin rotalarını ve ziyaretlerini planlayın, cihazları yönetin, gün sonu ve KPI raporlarıyla performansı ölçün.`,
+    'meta.title': `RubixB2 Saha ve Rota Yönetim Sistemi | Odoo ile Entegre`,
+    'meta.desc': `RubixB2 ile saha satış ekiplerinizin rotalarını ve ziyaretlerini planlayın, cihazları yönetin, gün sonu ve KPI raporlarıyla performansı ölçün.`,
     'p.ctaTitle': `Saha operasyonlarınızı <span class="gradient-text">dijitalleştirin</span>`,
-    'p.ctaLead': `RubixB2Plus ile her ziyareti planlayın, her performansı ölçün, saha satış süreçlerinizi daha etkin yönetin.`
+    'p.ctaLead': `RubixB2 ile her ziyareti planlayın, her performansı ölçün, saha satış süreçlerinizi daha etkin yönetin.`
   },
 
   en: {
-    'meta.title': `RubixB2Plus | Field & Route Management System — Integrated with Odoo`,
-    'meta.desc': `Plan your field sales team's routes and visits, manage devices and measure performance with end-of-day and KPI reports — RubixB2Plus on Odoo.`,
+    'meta.title': `RubixB2 Field & Route Management System | Integrated with Odoo`,
+    'meta.desc': `Plan your field sales team's routes and visits, manage devices and measure performance with end-of-day and KPI reports — RubixB2 on Odoo.`,
     'p.bcLabel': `Breadcrumb`, 'p.bcHome': `Home`,
     'p.title': `Field & Route Management System`,
     'p.slogan': `Smart Routes, <span class="accent-text">Strong Sales.</span>`,
@@ -22,7 +22,7 @@ window.PRODUCT_I18N.rubixb2plus = {
     'p.vPlan': `Visit plan`, 'p.vWeek': `Week 42`, 'p.vMon': `Mon`, 'p.vTue': `Tue`, 'p.vWed': `Wed`, 'p.vThu': `Thu`, 'p.vFri': `Fri`,
     'p.vDaily': `Daily`, 'p.vWeekly': `Weekly`, 'p.vMonthly': `Monthly`, 'p.vYearly': `Yearly`,
     'p.vDevice': `Authorised device`, 'p.vDeviceOk': `Access approved`,
-    'p.introEyebrow': `What is RubixB2Plus?`,
+    'p.introEyebrow': `What is RubixB2?`,
     'p.intro1': `RubixB2 is a comprehensive field and route management solution integrated with {odoo} ERP that lets businesses plan, manage and analyse their field sales operations digitally.`,
     'p.intro2': `Using the customer data stored in Odoo, it builds your field teams' daily visit routes, plans visit frequencies and makes it possible to measure sales performance.`,
     'p.pt1t': `Odoo customer data`, 'p.pt1p': `Customer records come straight from Odoo`,
@@ -39,7 +39,7 @@ window.PRODUCT_I18N.rubixb2plus = {
     'p.odoo1': `RubixB2 uses the customer data in your Odoo ERP system to connect your field operations seamlessly with your central business processes.`,
     'p.odoo2': `This reduces the need to re-create data in different systems and makes it easier for field teams and managers to work from the same data.`,
     'p.flowSub': `Data flow`,
-    'p.fl1': `Customer records`, 'p.fl1s': `Odoo`, 'p.fl2': `Route & visit plan`, 'p.fl2s': `Office · RubixB2Plus`,
+    'p.fl1': `Customer records`, 'p.fl1s': `Odoo`, 'p.fl2': `Route & visit plan`, 'p.fl2s': `Office · RubixB2`,
     'p.fl3': `Field visit`, 'p.fl3s': `Authorised device`, 'p.fl4': `End-of-day report`, 'p.fl4s': `Manager`, 'p.fl5': `KPI & performance`, 'p.fl5s': `Analysis`,
     'p.benEyebrow': `Benefits`, 'p.benTitle': `What does RubixB2 <span class="gradient-text">bring to your business?</span>`,
     'p.b1t': `Planned Field Operations`, 'p.b1p': `Structured management of daily and periodic visits.`,
@@ -48,12 +48,12 @@ window.PRODUCT_I18N.rubixb2plus = {
     'p.b4t': `Measurable Performance`, 'p.b4p': `Data-driven decisions with KPI and sales reports.`,
     'p.b5t': `Odoo Integration`, 'p.b5p': `Integrated operations management that fits your existing ERP infrastructure.`,
     'p.ctaTitle': `Digitalise your <span class="gradient-text">field operations</span>`,
-    'p.ctaLead': `With RubixB2Plus, plan every visit, measure every result and manage your field sales processes more effectively.`
+    'p.ctaLead': `With RubixB2, plan every visit, measure every result and manage your field sales processes more effectively.`
   },
 
   fr: {
-    'meta.title': `RubixB2Plus | Système de gestion terrain et des tournées — intégré à Odoo`,
-    'meta.desc': `Planifiez tournées et visites de vos commerciaux, gérez les appareils et mesurez la performance avec les rapports de fin de journée et KPI. RubixB2Plus sur Odoo.`,
+    'meta.title': `RubixB2 Système de gestion terrain et des tournées | intégré à Odoo`,
+    'meta.desc': `Planifiez tournées et visites de vos commerciaux, gérez les appareils et mesurez la performance avec les rapports de fin de journée et KPI. RubixB2 sur Odoo.`,
     'p.bcLabel': `Fil d'Ariane`, 'p.bcHome': `Accueil`,
     'p.title': `Système de gestion terrain et des tournées`,
     'p.slogan': `Itinéraires intelligents, <span class="accent-text">ventes performantes.</span>`,
@@ -63,7 +63,7 @@ window.PRODUCT_I18N.rubixb2plus = {
     'p.vPlan': `Plan de visites`, 'p.vWeek': `Semaine 42`, 'p.vMon': `Lun`, 'p.vTue': `Mar`, 'p.vWed': `Mer`, 'p.vThu': `Jeu`, 'p.vFri': `Ven`,
     'p.vDaily': `Quotidien`, 'p.vWeekly': `Hebdomadaire`, 'p.vMonthly': `Mensuel`, 'p.vYearly': `Annuel`,
     'p.vDevice': `Appareil autorisé`, 'p.vDeviceOk': `Accès validé`,
-    'p.introEyebrow': `Qu'est-ce que RubixB2Plus ?`,
+    'p.introEyebrow': `Qu'est-ce que RubixB2 ?`,
     'p.intro1': `RubixB2 est une solution complète de gestion terrain et des tournées, intégrée à l'ERP {odoo}, qui permet aux entreprises de planifier, gérer et analyser leurs opérations de vente terrain de manière numérique.`,
     'p.intro2': `À partir des données clients enregistrées dans Odoo, elle crée les tournées de visites quotidiennes de vos équipes, planifie les fréquences de visite et permet de mesurer les performances commerciales.`,
     'p.pt1t': `Données clients Odoo`, 'p.pt1p': `Les fiches clients proviennent directement d'Odoo`,
@@ -80,7 +80,7 @@ window.PRODUCT_I18N.rubixb2plus = {
     'p.odoo1': `RubixB2 utilise les données clients de votre ERP Odoo pour assurer la cohérence entre vos opérations terrain et vos processus centraux.`,
     'p.odoo2': `Vous réduisez ainsi la ressaisie de données dans différents systèmes et permettez aux équipes terrain et aux managers de travailler sur les mêmes données.`,
     'p.flowSub': `Flux de données`,
-    'p.fl1': `Fiches clients`, 'p.fl1s': `Odoo`, 'p.fl2': `Plan de tournée et de visites`, 'p.fl2s': `Siège · RubixB2Plus`,
+    'p.fl1': `Fiches clients`, 'p.fl1s': `Odoo`, 'p.fl2': `Plan de tournée et de visites`, 'p.fl2s': `Siège · RubixB2`,
     'p.fl3': `Visite terrain`, 'p.fl3s': `Appareil autorisé`, 'p.fl4': `Rapport de fin de journée`, 'p.fl4s': `Manager`, 'p.fl5': `KPI et performance`, 'p.fl5s': `Analyse`,
     'p.benEyebrow': `Bénéfices`, 'p.benTitle': `Ce que RubixB2 <span class="gradient-text">apporte à votre entreprise</span>`,
     'p.b1t': `Opérations terrain planifiées`, 'p.b1p': `Gestion structurée des visites quotidiennes et périodiques.`,
@@ -89,12 +89,12 @@ window.PRODUCT_I18N.rubixb2plus = {
     'p.b4t': `Performance mesurable`, 'p.b4p': `Des décisions fondées sur les données grâce aux rapports KPI et de vente.`,
     'p.b5t': `Intégration Odoo`, 'p.b5p': `Une gestion des opérations intégrée et compatible avec votre ERP existant.`,
     'p.ctaTitle': `Digitalisez vos <span class="gradient-text">opérations terrain</span>`,
-    'p.ctaLead': `Avec RubixB2Plus, planifiez chaque visite, mesurez chaque performance et gérez plus efficacement vos processus de vente terrain.`
+    'p.ctaLead': `Avec RubixB2, planifiez chaque visite, mesurez chaque performance et gérez plus efficacement vos processus de vente terrain.`
   },
 
   nl: {
-    'meta.title': `RubixB2Plus | Terrein- en routebeheersysteem — geïntegreerd met Odoo`,
-    'meta.desc': `Plan routes en bezoeken van uw buitendienst, beheer toestellen en meet prestaties met dagrapporten en KPI-rapporten. RubixB2Plus op Odoo.`,
+    'meta.title': `RubixB2 Terrein- en routebeheersysteem | geïntegreerd met Odoo`,
+    'meta.desc': `Plan routes en bezoeken van uw buitendienst, beheer toestellen en meet prestaties met dagrapporten en KPI-rapporten. RubixB2 op Odoo.`,
     'p.bcLabel': `Kruimelpad`, 'p.bcHome': `Startpagina`,
     'p.title': `Terrein- en routebeheersysteem`,
     'p.slogan': `Slimme routes, <span class="accent-text">sterke verkoop.</span>`,
@@ -104,7 +104,7 @@ window.PRODUCT_I18N.rubixb2plus = {
     'p.vPlan': `Bezoekplanning`, 'p.vWeek': `Week 42`, 'p.vMon': `Ma`, 'p.vTue': `Di`, 'p.vWed': `Wo`, 'p.vThu': `Do`, 'p.vFri': `Vr`,
     'p.vDaily': `Dagelijks`, 'p.vWeekly': `Wekelijks`, 'p.vMonthly': `Maandelijks`, 'p.vYearly': `Jaarlijks`,
     'p.vDevice': `Geautoriseerd toestel`, 'p.vDeviceOk': `Toegang goedgekeurd`,
-    'p.introEyebrow': `Wat is RubixB2Plus?`,
+    'p.introEyebrow': `Wat is RubixB2?`,
     'p.intro1': `RubixB2 is een volledige terrein- en routebeheeroplossing, geïntegreerd met {odoo} ERP, waarmee bedrijven hun verkoopactiviteiten op het terrein digitaal plannen, beheren en analyseren.`,
     'p.intro2': `Op basis van de klantgegevens in Odoo stelt het de dagelijkse bezoekroutes van uw buitendienst op, plant het de bezoekfrequenties en maakt het verkoopprestaties meetbaar.`,
     'p.pt1t': `Odoo-klantgegevens`, 'p.pt1p': `Klantfiches komen rechtstreeks uit Odoo`,
@@ -121,7 +121,7 @@ window.PRODUCT_I18N.rubixb2plus = {
     'p.odoo1': `RubixB2 gebruikt de klantgegevens uit uw Odoo ERP-systeem en brengt zo samenhang tussen uw terreinactiviteiten en uw centrale bedrijfsprocessen.`,
     'p.odoo2': `Dat beperkt het opnieuw invoeren van gegevens in verschillende systemen en laat buitendienst en managers met dezelfde gegevens werken.`,
     'p.flowSub': `Gegevensstroom`,
-    'p.fl1': `Klantfiches`, 'p.fl1s': `Odoo`, 'p.fl2': `Route- en bezoekplanning`, 'p.fl2s': `Kantoor · RubixB2Plus`,
+    'p.fl1': `Klantfiches`, 'p.fl1s': `Odoo`, 'p.fl2': `Route- en bezoekplanning`, 'p.fl2s': `Kantoor · RubixB2`,
     'p.fl3': `Bezoek op het terrein`, 'p.fl3s': `Geautoriseerd toestel`, 'p.fl4': `Dagrapport`, 'p.fl4s': `Manager`, 'p.fl5': `KPI en prestaties`, 'p.fl5s': `Analyse`,
     'p.benEyebrow': `Voordelen`, 'p.benTitle': `Wat levert RubixB2 <span class="gradient-text">uw bedrijf op?</span>`,
     'p.b1t': `Geplande terreinwerking`, 'p.b1p': `Gestructureerd beheer van dagelijkse en periodieke bezoeken.`,
@@ -130,12 +130,12 @@ window.PRODUCT_I18N.rubixb2plus = {
     'p.b4t': `Meetbare prestaties`, 'p.b4p': `Datagedreven beslissingen met KPI- en verkooprapporten.`,
     'p.b5t': `Odoo-integratie`, 'p.b5p': `Geïntegreerd operationeel beheer dat aansluit op uw bestaande ERP-infrastructuur.`,
     'p.ctaTitle': `Digitaliseer uw <span class="gradient-text">terreinwerking</span>`,
-    'p.ctaLead': `Plan met RubixB2Plus elk bezoek, meet elk resultaat en beheer uw verkoopprocessen op het terrein efficiënter.`
+    'p.ctaLead': `Plan met RubixB2 elk bezoek, meet elk resultaat en beheer uw verkoopprocessen op het terrein efficiënter.`
   },
 
   de: {
-    'meta.title': `RubixB2Plus | Außendienst- und Tourenmanagementsystem — integriert mit Odoo`,
-    'meta.desc': `Touren und Besuche Ihres Außendienstes planen, Geräte verwalten und Leistung mit Tagesabschluss- und KPI-Berichten messen – RubixB2Plus auf Odoo.`,
+    'meta.title': `RubixB2 Außendienst- und Tourenmanagementsystem | integriert mit Odoo`,
+    'meta.desc': `Touren und Besuche Ihres Außendienstes planen, Geräte verwalten und Leistung mit Tagesabschluss- und KPI-Berichten messen – RubixB2 auf Odoo.`,
     'p.bcLabel': `Brotkrumennavigation`, 'p.bcHome': `Startseite`,
     'p.title': `Außendienst- und Touren&shy;management&shy;system`,
     'p.slogan': `Smarte Routen, <span class="accent-text">starker Verkauf.</span>`,
@@ -145,7 +145,7 @@ window.PRODUCT_I18N.rubixb2plus = {
     'p.vPlan': `Besuchsplan`, 'p.vWeek': `KW 42`, 'p.vMon': `Mo`, 'p.vTue': `Di`, 'p.vWed': `Mi`, 'p.vThu': `Do`, 'p.vFri': `Fr`,
     'p.vDaily': `Täglich`, 'p.vWeekly': `Wöchentlich`, 'p.vMonthly': `Monatlich`, 'p.vYearly': `Jährlich`,
     'p.vDevice': `Autorisiertes Gerät`, 'p.vDeviceOk': `Zugriff freigegeben`,
-    'p.introEyebrow': `Was ist RubixB2Plus?`,
+    'p.introEyebrow': `Was ist RubixB2?`,
     'p.intro1': `RubixB2 ist eine umfassende Lösung für Außendienst- und Tourenmanagement, integriert mit {odoo} ERP, mit der Unternehmen ihre Vertriebsaktivitäten im Außendienst digital planen, steuern und analysieren.`,
     'p.intro2': `Auf Basis der in Odoo gespeicherten Kundendaten erstellt sie die täglichen Besuchstouren Ihrer Außendienstteams, plant Besuchsfrequenzen und macht die Verkaufsleistung messbar.`,
     'p.pt1t': `Odoo-Kundendaten`, 'p.pt1p': `Kundenstammdaten kommen direkt aus Odoo`,
@@ -162,7 +162,7 @@ window.PRODUCT_I18N.rubixb2plus = {
     'p.odoo1': `RubixB2 nutzt die Kundendaten aus Ihrem Odoo-ERP-System und verbindet so Ihre Außendienstaktivitäten nahtlos mit Ihren zentralen Geschäftsprozessen.`,
     'p.odoo2': `Das verringert die erneute Erfassung von Daten in verschiedenen Systemen und erleichtert es Außendienst und Führungskräften, mit denselben Daten zu arbeiten.`,
     'p.flowSub': `Datenfluss`,
-    'p.fl1': `Kundenstammdaten`, 'p.fl1s': `Odoo`, 'p.fl2': `Touren- und Besuchsplan`, 'p.fl2s': `Zentrale · RubixB2Plus`,
+    'p.fl1': `Kundenstammdaten`, 'p.fl1s': `Odoo`, 'p.fl2': `Touren- und Besuchsplan`, 'p.fl2s': `Zentrale · RubixB2`,
     'p.fl3': `Besuch vor Ort`, 'p.fl3s': `Autorisiertes Gerät`, 'p.fl4': `Tagesabschlussbericht`, 'p.fl4s': `Führungskraft`, 'p.fl5': `KPI und Leistung`, 'p.fl5s': `Analyse`,
     'p.benEyebrow': `Vorteile`, 'p.benTitle': `Was bringt RubixB2 <span class="gradient-text">Ihrem Unternehmen?</span>`,
     'p.b1t': `Geplante Außendienstarbeit`, 'p.b1p': `Strukturierte Verwaltung täglicher und periodischer Besuche.`,
@@ -171,12 +171,12 @@ window.PRODUCT_I18N.rubixb2plus = {
     'p.b4t': `Messbare Leistung`, 'p.b4p': `Datenbasierte Entscheidungen mit KPI- und Verkaufsberichten.`,
     'p.b5t': `Odoo-Integration`, 'p.b5p': `Integriertes Betriebsmanagement, passend zu Ihrer bestehenden ERP-Infrastruktur.`,
     'p.ctaTitle': `Digitalisieren Sie Ihre <span class="gradient-text">Außendienstarbeit</span>`,
-    'p.ctaLead': `Mit RubixB2Plus planen Sie jeden Besuch, messen jede Leistung und steuern Ihre Vertriebsprozesse im Außendienst effizienter.`
+    'p.ctaLead': `Mit RubixB2 planen Sie jeden Besuch, messen jede Leistung und steuern Ihre Vertriebsprozesse im Außendienst effizienter.`
   },
 
   es: {
-    'meta.title': `RubixB2Plus | Sistema de gestión de campo y rutas — integrado con Odoo`,
-    'meta.desc': `Planifique rutas y visitas de su equipo de campo, gestione dispositivos y mida el rendimiento con informes de cierre y de KPI. RubixB2Plus sobre Odoo.`,
+    'meta.title': `RubixB2 Sistema de gestión de campo y rutas | integrado con Odoo`,
+    'meta.desc': `Planifique rutas y visitas de su equipo de campo, gestione dispositivos y mida el rendimiento con informes de cierre y de KPI. RubixB2 sobre Odoo.`,
     'p.bcLabel': `Ruta de navegación`, 'p.bcHome': `Inicio`,
     'p.title': `Sistema de gestión de campo y rutas`,
     'p.slogan': `Rutas inteligentes, <span class="accent-text">ventas sólidas.</span>`,
@@ -186,7 +186,7 @@ window.PRODUCT_I18N.rubixb2plus = {
     'p.vPlan': `Plan de visitas`, 'p.vWeek': `Semana 42`, 'p.vMon': `Lun`, 'p.vTue': `Mar`, 'p.vWed': `Mié`, 'p.vThu': `Jue`, 'p.vFri': `Vie`,
     'p.vDaily': `Diaria`, 'p.vWeekly': `Semanal`, 'p.vMonthly': `Mensual`, 'p.vYearly': `Anual`,
     'p.vDevice': `Dispositivo autorizado`, 'p.vDeviceOk': `Acceso aprobado`,
-    'p.introEyebrow': `¿Qué es RubixB2Plus?`,
+    'p.introEyebrow': `¿Qué es RubixB2?`,
     'p.intro1': `RubixB2 es una solución integral de gestión de campo y rutas, integrada con el ERP {odoo}, que permite a las empresas planificar, gestionar y analizar digitalmente sus operaciones de venta en campo.`,
     'p.intro2': `A partir de los datos de clientes registrados en Odoo, crea las rutas diarias de visita de sus equipos, planifica la frecuencia de las visitas y permite medir el rendimiento comercial.`,
     'p.pt1t': `Datos de clientes de Odoo`, 'p.pt1p': `Las fichas de cliente llegan directamente de Odoo`,
@@ -203,7 +203,7 @@ window.PRODUCT_I18N.rubixb2plus = {
     'p.odoo1': `RubixB2 utiliza los datos de clientes de su sistema ERP Odoo para integrar sus operaciones de campo con sus procesos centrales de negocio.`,
     'p.odoo2': `Así reduce la necesidad de volver a crear datos en distintos sistemas y facilita que los equipos de campo y los responsables trabajen con los mismos datos.`,
     'p.flowSub': `Flujo de datos`,
-    'p.fl1': `Fichas de cliente`, 'p.fl1s': `Odoo`, 'p.fl2': `Plan de rutas y visitas`, 'p.fl2s': `Oficina · RubixB2Plus`,
+    'p.fl1': `Fichas de cliente`, 'p.fl1s': `Odoo`, 'p.fl2': `Plan de rutas y visitas`, 'p.fl2s': `Oficina · RubixB2`,
     'p.fl3': `Visita en campo`, 'p.fl3s': `Dispositivo autorizado`, 'p.fl4': `Informe de cierre`, 'p.fl4s': `Responsable`, 'p.fl5': `KPI y rendimiento`, 'p.fl5s': `Análisis`,
     'p.benEyebrow': `Beneficios`, 'p.benTitle': `¿Qué aporta RubixB2 <span class="gradient-text">a su empresa?</span>`,
     'p.b1t': `Operaciones de campo planificadas`, 'p.b1p': `Gestión ordenada de las visitas diarias y periódicas.`,
@@ -212,6 +212,6 @@ window.PRODUCT_I18N.rubixb2plus = {
     'p.b4t': `Rendimiento medible`, 'p.b4p': `Decisiones basadas en datos con informes de KPI y de ventas.`,
     'p.b5t': `Integración con Odoo`, 'p.b5p': `Gestión de operaciones integrada y compatible con su infraestructura ERP actual.`,
     'p.ctaTitle': `Digitalice sus <span class="gradient-text">operaciones de campo</span>`,
-    'p.ctaLead': `Con RubixB2Plus, planifique cada visita, mida cada resultado y gestione con más eficacia sus procesos de venta en campo.`
+    'p.ctaLead': `Con RubixB2, planifique cada visita, mida cada resultado y gestione con más eficacia sus procesos de venta en campo.`
   }
 };

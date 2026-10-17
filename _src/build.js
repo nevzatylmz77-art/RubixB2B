@@ -38,7 +38,7 @@
   var PAGES = [
     { path: '', root: '../' },
     { path: 'faq/', root: '../../' },
-    { path: 'rubixb2plus/', root: '../../', product: 'rubixb2plus', productName: 'RubixB2Plus', interest: 'Rut Yönetim Sistemi' }
+    { path: 'field-route-management/', root: '../../', product: 'field-route-management', productName: 'RubixB2 Saha ve Rota Yönetim Sistemi', interest: 'Rut Yönetim Sistemi' }
   ];
   var PRODUCT_HTML = {};
   for (var pp = 0; pp < PAGES.length; pp++) {
@@ -174,13 +174,14 @@
         ]
       });
     } else if (isProduct) {
+      var prodName = 'RubixB2 ' + doc.querySelector('.p-hero h1').textContent.replace(/­/g, '').trim();
       graph.push({
         '@type': 'WebPage', '@id': pageUrl + '#webpage', url: pageUrl, name: title, description: desc,
         inLanguage: HREFLANG[lang], isPartOf: { '@id': BASE + '#website' }, about: { '@id': BASE + '#' + PG.product },
         primaryImageOfPage: OG_IMAGE
       });
       graph.push({
-        '@type': 'SoftwareApplication', '@id': BASE + '#' + PG.product, name: PG.productName,
+        '@type': 'SoftwareApplication', '@id': BASE + '#' + PG.product, name: prodName,
         applicationCategory: 'BusinessApplication', operatingSystem: 'Web', description: desc, url: pageUrl,
         image: BASE + 'assets/img/rubixb2-logo-stacked.png', publisher: { '@id': BASE + '#organization' },
         isPartOf: { '@id': BASE + '#software' }
@@ -189,7 +190,7 @@
         '@type': 'BreadcrumbList', itemListElement: [
           { '@type': 'ListItem', position: 1, name: 'RubixB2', item: BASE + lang + '/' },
           { '@type': 'ListItem', position: 2, name: val('nav.solutions', 'Çözümler'), item: BASE + lang + '/#cozumler' },
-          { '@type': 'ListItem', position: 3, name: PG.productName, item: pageUrl }
+          { '@type': 'ListItem', position: 3, name: prodName, item: pageUrl }
         ]
       });
     } else {
@@ -225,11 +226,14 @@
         if (h === '#top') { a.setAttribute('href', '../'); return; }
         if (!doc.getElementById(h.slice(1))) a.setAttribute('href', '../' + h);
       });
-      doc.querySelectorAll('a[href="faq/"]').forEach(function (a) {
-        if (isFaq) { a.setAttribute('href', './'); a.setAttribute('aria-current', 'page'); }
-        else a.setAttribute('href', '../faq/');
+      // Site içi sayfa bağlantıları (faq/, ürün sayfaları, privacy/, cookies/)
+      var SITE_PATHS = PAGES.map(function (x) { return x.path; }).filter(Boolean).concat(['privacy/', 'cookies/']);
+      doc.querySelectorAll('a[href]').forEach(function (a) {
+        var h = a.getAttribute('href');
+        if (SITE_PATHS.indexOf(h) === -1) return;
+        if (h === PG.path) { a.setAttribute('href', './'); a.setAttribute('aria-current', 'page'); }
+        else a.setAttribute('href', '../' + h);
       });
-      doc.querySelectorAll('a[href="privacy/"], a[href="cookies/"]').forEach(function (a) { a.setAttribute('href', '../' + a.getAttribute('href')); });
     }
 
     // 7) Yolları sayfa derinliğine göre düzelt
@@ -329,7 +333,7 @@
       return '  <url>\n    <loc>' + BASE + l + '/' + path + '</loc>\n    <lastmod>' + today + '</lastmod>\n' + alts + '\n  </url>';
     }).join('\n');
   };
-  var urls = [sitemapEntry('', BASE), sitemapEntry('rubixb2plus/', BASE + 'en/rubixb2plus/'), sitemapEntry('faq/', BASE + 'en/faq/'), sitemapEntry('privacy/', BASE + 'en/privacy/'), sitemapEntry('cookies/', BASE + 'en/cookies/')].join('\n');
+  var urls = [sitemapEntry('', BASE), sitemapEntry('field-route-management/', BASE + 'en/field-route-management/'), sitemapEntry('faq/', BASE + 'en/faq/'), sitemapEntry('privacy/', BASE + 'en/privacy/'), sitemapEntry('cookies/', BASE + 'en/cookies/')].join('\n');
   await save('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + urls + '\n</urlset>\n');
 
   log('\nBuild tamamlandı.');

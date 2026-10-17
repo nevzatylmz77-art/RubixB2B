@@ -118,6 +118,16 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  // Çözümler alt menüsü: dokunmatik ekran ve klavye için aç/kapa butonu
+  var navGroup = document.getElementById('nav-solutions');
+  if (navGroup) {
+    var navToggle = navGroup.querySelector('.nav__toggle');
+    var setSub = function (open) { navGroup.classList.toggle('is-open', open); navToggle.setAttribute('aria-expanded', String(open)); };
+    navToggle.addEventListener('click', function (e) { e.stopPropagation(); setSub(!navGroup.classList.contains('is-open')); });
+    document.addEventListener('click', function (e) { if (!navGroup.contains(e.target)) setSub(false); });
+    navGroup.addEventListener('keydown', function (e) { if (e.key === 'Escape') { setSub(false); navToggle.focus(); } });
+  }
+
   // Mobil menü
   function setMenu(open) {
     nav.classList.toggle('is-open', open);
