@@ -38,9 +38,9 @@
   var PAGES = [
     { path: '', root: '../' },
     { path: 'faq/', root: '../../' },
-    { path: 'field-route-management/', root: '../../', product: 'field-route-management', productName: 'RubixB2 Saha ve Rota Yönetim Sistemi', interest: 'Rut Yönetim Sistemi' },
-    { path: 'mobile-sales/', root: '../../', product: 'mobile-sales', prefix: 'RubixB2 Plus', interest: 'Mobil Plasiyer Satış Sistemi' },
-    { path: 'warehouse/', root: '../../', product: 'warehouse', prefix: 'RubixB2 WMS', interest: 'Mobil Depo ve Stok Yönetim Sistemi' },
+    { path: 'field-route-management/', root: '../../', product: 'field-route-management', productName: 'RubixB2 Saha ve Rota Yönetim Sistemi', interest: 'RubixB2 Saha ve Rota Yönetim Sistemi' },
+    { path: 'mobile-sales/', root: '../../', product: 'mobile-sales', prefix: 'RubixB2 Plus', interest: 'RubixB2 Plus Mobil Plasiyer Satış Sistemi' },
+    { path: 'warehouse/', root: '../../', product: 'warehouse', prefix: 'RubixB2 WMS', interest: 'RubixB2 WMS Mobil Depo ve Stok Yönetim Sistemi' },
     { path: 'b2b-app/', root: '../../', product: 'b2b-app', prefix: '', interest: 'Kurumsal B2B Mobil Uygulama' }
   ];
   var PRODUCT_HTML = {};
