@@ -34,13 +34,32 @@
   var template = await (await fetch('index.html?' + Date.now())).text();
   var DICT = window.I18N;
 
+  // Ana sayfa (/xx/) ve SSS sayfası (/xx/faq/) aynı şablondan üretilir
+  var PAGES = [
+    { path: '', root: '../' },
+    { path: 'faq/', root: '../../' }
+  ];
+
   for (var li = 0; li < LANGS.length; li++) {
+    for (var pgi = 0; pgi < PAGES.length; pgi++) {
+    var PG = PAGES[pgi];
+    var isFaq = PG.path === 'faq/';
     var lang = LANGS[li];
     var D = DICT[lang] || {};
     var doc = new DOMParser().parseFromString(template, 'text/html');
-    var pageUrl = BASE + lang + '/';
+    var pageUrl = BASE + lang + '/' + PG.path;
     var val = function (key, orig) { return lang === 'tr' ? orig : (D[key] != null ? D[key] : orig); };
     var meta = function (key) { return D[key] || DICT.tr[key]; };
+
+    // 0) Sayfaya göre bölümler: ana sayfada SSS yok; SSS sayfasında yalnızca SSS + iletişim
+    if (isFaq) {
+      doc.querySelectorAll('main > section').forEach(function (s) {
+        if (s.id !== 'sss' && s.id !== 'iletisim') s.remove();
+      });
+    } else {
+      var faqSec = doc.getElementById('sss');
+      if (faqSec) faqSec.remove();
+    }
 
     // 1) Metinler ve öznitelikler
     doc.querySelectorAll('[data-i18n]').forEach(function (n) {
@@ -57,9 +76,12 @@
     });
 
     // 2) Dil, başlık, açıklama
-    var title = meta('meta.title'), desc = meta('meta.desc');
+    var title = isFaq ? meta('meta.faqTitle') : meta('meta.title');
+    var desc = isFaq ? meta('meta.faqDesc') : meta('meta.desc');
     doc.documentElement.setAttribute('lang', HREFLANG[lang]);
     doc.documentElement.setAttribute('data-page-lang', lang);
+    doc.documentElement.setAttribute('data-page-path', PG.path);
+    doc.documentElement.setAttribute('data-root', PG.root);
     doc.title = title;
     doc.querySelector('meta[name="description"]').setAttribute('content', desc);
     doc.querySelector('[name="language"]').setAttribute('value', lang.toUpperCase());
@@ -74,8 +96,8 @@
     var add = function (node) { anchor.parentNode.insertBefore(node, anchor.nextSibling); anchor = node; };
     add(el(doc, 'meta', { name: 'robots', content: 'index, follow, max-image-preview:large' }));
     add(el(doc, 'link', { rel: 'canonical', href: pageUrl }));
-    LANGS.forEach(function (l) { add(el(doc, 'link', { rel: 'alternate', hreflang: HREFLANG[l], href: BASE + l + '/' })); });
-    add(el(doc, 'link', { rel: 'alternate', hreflang: 'x-default', href: BASE }));
+    LANGS.forEach(function (l) { add(el(doc, 'link', { rel: 'alternate', hreflang: HREFLANG[l], href: BASE + l + '/' + PG.path })); });
+    add(el(doc, 'link', { rel: 'alternate', hreflang: 'x-default', href: isFaq ? BASE + 'en/faq/' : BASE }));
     add(el(doc, 'meta', { property: 'og:type', content: 'website' }));
     add(el(doc, 'meta', { property: 'og:site_name', content: 'RubixB2' }));
     add(el(doc, 'meta', { property: 'og:title', content: title }));
@@ -95,53 +117,87 @@
     add(el(doc, 'meta', { name: 'twitter:image', content: OG_IMAGE }));
 
     // 5) Yapılandırılmış veri (schema.org JSON-LD)
-    var ld = {
-      '@context': 'https://schema.org',
-      '@graph': [
-        {
-          '@type': 'Organization', '@id': BASE + '#organization',
-          name: 'NameTech Solutions BV', legalName: 'NameTech Solutions BV', url: BASE, email: 'info@nametech.be',
-          vatID: 'BE1032351303',
-          identifier: { '@type': 'PropertyValue', propertyID: 'KBO/BCE', value: '1032.351.303' },
-          logo: BASE + 'assets/img/nametech-logo.png',
-          address: { '@type': 'PostalAddress', streetAddress: 'Excelsiorlaan 44', postalCode: '1930', addressLocality: 'Zaventem', addressCountry: 'BE' }
-        },
-        {
-          '@type': 'WebSite', '@id': BASE + '#website', url: BASE, name: 'RubixB2',
-          publisher: { '@id': BASE + '#organization' }, inLanguage: LANGS.map(function (l) { return HREFLANG[l]; })
-        },
-        {
-          '@type': 'WebPage', '@id': pageUrl + '#webpage', url: pageUrl, name: title, description: desc,
-          inLanguage: HREFLANG[lang], isPartOf: { '@id': BASE + '#website' }, about: { '@id': BASE + '#software' },
-          primaryImageOfPage: OG_IMAGE
-        },
-        {
-          '@type': 'SoftwareApplication', '@id': BASE + '#software', name: 'RubixB2',
-          applicationCategory: 'BusinessApplication', operatingSystem: 'Web',
-          description: desc, url: pageUrl, image: BASE + 'assets/img/rubixb2-logo-stacked.png',
-          publisher: { '@id': BASE + '#organization' }
-        }
-      ]
-    };
+    var graph = [
+      {
+        '@type': 'Organization', '@id': BASE + '#organization',
+        name: 'NameTech Solutions BV', legalName: 'NameTech Solutions BV', url: BASE, email: 'info@nametech.be',
+        vatID: 'BE1032351303',
+        identifier: { '@type': 'PropertyValue', propertyID: 'KBO/BCE', value: '1032.351.303' },
+        logo: BASE + 'assets/img/nametech-logo.png',
+        address: { '@type': 'PostalAddress', streetAddress: 'Excelsiorlaan 44', postalCode: '1930', addressLocality: 'Zaventem', addressCountry: 'BE' }
+      },
+      {
+        '@type': 'WebSite', '@id': BASE + '#website', url: BASE, name: 'RubixB2',
+        publisher: { '@id': BASE + '#organization' }, inLanguage: LANGS.map(function (l) { return HREFLANG[l]; })
+      }
+    ];
+    if (isFaq) {
+      var faqItems = [];
+      doc.querySelectorAll('#sss details').forEach(function (d) {
+        faqItems.push({
+          '@type': 'Question', name: d.querySelector('summary').textContent.trim(),
+          acceptedAnswer: { '@type': 'Answer', text: d.querySelector('p').textContent.trim() }
+        });
+      });
+      graph.push({
+        '@type': 'FAQPage', '@id': pageUrl + '#webpage', url: pageUrl, name: title, description: desc,
+        inLanguage: HREFLANG[lang], isPartOf: { '@id': BASE + '#website' }, mainEntity: faqItems
+      });
+      graph.push({
+        '@type': 'BreadcrumbList', itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'RubixB2', item: BASE + lang + '/' },
+          { '@type': 'ListItem', position: 2, name: val('faq.title', doc.querySelector('#sss h2, #sss h1').textContent), item: pageUrl }
+        ]
+      });
+    } else {
+      graph.push({
+        '@type': 'WebPage', '@id': pageUrl + '#webpage', url: pageUrl, name: title, description: desc,
+        inLanguage: HREFLANG[lang], isPartOf: { '@id': BASE + '#website' }, about: { '@id': BASE + '#software' },
+        primaryImageOfPage: OG_IMAGE
+      });
+      graph.push({
+        '@type': 'SoftwareApplication', '@id': BASE + '#software', name: 'RubixB2',
+        applicationCategory: 'BusinessApplication', operatingSystem: 'Web',
+        description: desc, url: pageUrl, image: BASE + 'assets/img/rubixb2-logo-stacked.png',
+        publisher: { '@id': BASE + '#organization' }
+      });
+    }
     var ldScript = el(doc, 'script', { type: 'application/ld+json' });
-    ldScript.textContent = JSON.stringify(ld);
+    ldScript.textContent = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
     add(ldScript);
 
-    // 6) Yolları bir üst klasöre göre düzelt (sayfa /xx/ altında)
+    // 6) SSS sayfasına özel düzen: başlık H1 olur, sayfa içi bağlantılar ana sayfaya gider
+    if (isFaq) {
+      var faqHead = doc.querySelector('#sss .section__head h2');
+      var h1 = doc.createElement('h1');
+      h1.innerHTML = faqHead.innerHTML;
+      Array.prototype.forEach.call(faqHead.attributes, function (a) { h1.setAttribute(a.name, a.value); });
+      faqHead.replaceWith(h1);
+      doc.getElementById('sss').classList.add('faq-page');
+      doc.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        var h = a.getAttribute('href');
+        if (h !== '#iletisim') a.setAttribute('href', '../' + (h === '#top' ? '' : h));
+      });
+      doc.querySelectorAll('a[href="faq/"]').forEach(function (a) { a.setAttribute('href', './'); a.setAttribute('aria-current', 'page'); });
+      doc.querySelectorAll('a[href="privacy/"], a[href="cookies/"]').forEach(function (a) { a.setAttribute('href', '../' + a.getAttribute('href')); });
+    }
+
+    // 7) Yolları sayfa derinliğine göre düzelt
     doc.querySelectorAll('[src^="assets/"], [href^="assets/"]').forEach(function (n) {
       ['src', 'href'].forEach(function (a) {
         var v = n.getAttribute(a);
-        if (v && v.indexOf('assets/') === 0) n.setAttribute(a, '../' + v);
+        if (v && v.indexOf('assets/') === 0) n.setAttribute(a, PG.root + v);
       });
     });
     doc.querySelectorAll('.footer__langs a').forEach(function (a) {
       var l = a.getAttribute('href').replace('/', '');
-      a.setAttribute('href', '../' + l + '/');
+      a.setAttribute('href', PG.root + l + '/' + PG.path);
       if (l === lang) a.setAttribute('aria-current', 'page');
     });
     doc.querySelector('.footer__langs').setAttribute('aria-label', val('a.lang', 'Diller'));
 
-    await save(lang + '/index.html', '<!doctype html>\n' + doc.documentElement.outerHTML + '\n');
+    await save(lang + '/' + PG.path + 'index.html', '<!doctype html>\n' + doc.documentElement.outerHTML + '\n');
+    }
   }
 
   // Yasal sayfalar: /xx/privacy/ ve /xx/cookies/
@@ -223,7 +279,7 @@
       return '  <url>\n    <loc>' + BASE + l + '/' + path + '</loc>\n    <lastmod>' + today + '</lastmod>\n' + alts + '\n  </url>';
     }).join('\n');
   };
-  var urls = [sitemapEntry('', BASE), sitemapEntry('privacy/', BASE + 'en/privacy/'), sitemapEntry('cookies/', BASE + 'en/cookies/')].join('\n');
+  var urls = [sitemapEntry('', BASE), sitemapEntry('faq/', BASE + 'en/faq/'), sitemapEntry('privacy/', BASE + 'en/privacy/'), sitemapEntry('cookies/', BASE + 'en/cookies/')].join('\n');
   await save('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + urls + '\n</urlset>\n');
 
   log('\nBuild tamamlandı.');

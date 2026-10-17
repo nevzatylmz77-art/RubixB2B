@@ -12,7 +12,10 @@
   var HTML_LANG = { tr: 'tr', en: 'en', fr: 'fr', nl: 'nl-BE', de: 'de', es: 'es' };
   var DICT = window.I18N || {};
   // Dil sayfaları (/tr/, /en/ …) bir alt klasörde olduğu için yollar bir üst klasörden başlar
-  var ASSET_PREFIX = document.documentElement.hasAttribute('data-page-lang') ? '../' : '';
+  var IS_STATIC = document.documentElement.hasAttribute('data-page-lang');
+  var ROOT = document.documentElement.getAttribute('data-root') || (IS_STATIC ? '../' : '');
+  var PAGE_PATH = document.documentElement.getAttribute('data-page-path') || '';
+  var ASSET_PREFIX = ROOT;
   var ODOO_IMG = '<img class="odoo-logo" src="' + ASSET_PREFIX + 'assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196">';
   var lang = LANGS.indexOf(window.__LANG) > -1 ? window.__LANG : 'tr';
   var langListeners = [];
@@ -48,9 +51,12 @@
       n.el.setAttribute(n.attr, v);
     });
     document.documentElement.lang = HTML_LANG[lang];
-    document.title = t('meta.title');
-    var desc = document.querySelector('meta[name="description"]');
-    if (desc) desc.setAttribute('content', t('meta.desc'));
+    // Yayındaki sayfaların başlık ve açıklaması build sırasında yazılır
+    if (!IS_STATIC) {
+      document.title = t('meta.title');
+      var desc = document.querySelector('meta[name="description"]');
+      if (desc) desc.setAttribute('content', t('meta.desc'));
+    }
     langFlag.querySelector('use').setAttribute('href', '#flag-' + lang);
     var current = langMenu.querySelector('[data-lang="' + lang + '"]');
     langBtn.setAttribute('aria-label', t('a.lang') + ': ' + current.textContent.trim());
@@ -84,9 +90,9 @@
     li.addEventListener('click', function () {
       var next = li.dataset.lang;
       // Yayındaki sitede her dilin kendi adresi var (/tr/, /en/ …): o sayfaya geç
-      if (document.documentElement.hasAttribute('data-page-lang')) {
+      if (IS_STATIC) {
         try { localStorage.setItem('rubix-lang', next); } catch (e) {}
-        if (next !== lang) { location.href = '../' + next + '/' + location.hash; return; }
+        if (next !== lang) { location.href = ROOT + next + '/' + PAGE_PATH + location.hash; return; }
       } else {
         applyLang(next, true);
       }
