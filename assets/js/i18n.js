@@ -8,8 +8,8 @@ window.I18N = {
 
   /* ---------------------------------- TR ---------------------------------- */
   tr: {
-    'meta.title': `RubixB2 | Odoo ile Plasiyer Satış, Rut Yönetim Sistemi ve KPI Analizi`,
-    'meta.desc': `RubixB2; Odoo üzerinde çalışan sıcak ve soğuk satış, rut yönetim sistemi ve KPI performans raporlama platformu. Saha ekibinizi tek ekrandan yönetin.`,
+    'meta.title': `RubixB2 | Odoo ile Plasiyer Satış, Rota Yönetim Sistemi ve KPI Analizi`,
+    'meta.desc': `RubixB2; Odoo üzerinde çalışan sıcak ve soğuk satış, rota yönetim sistemi ve KPI performans raporlama platformu. Saha ekibinizi tek ekrandan yönetin.`,
     'a.lang': `Dil seçin`,
     'meta.faqTitle': `Sıkça Sorulan Sorular | RubixB2 — Odoo ile Saha Satışı`,
     'meta.faqDesc': `RubixB2 hakkında sık sorulan sorular: sıcak ve soğuk satış farkı, Odoo uyumu, internet gereksinimi, kurulum süresi, raporlar, fiyatlandırma ve Google Maps.`,
