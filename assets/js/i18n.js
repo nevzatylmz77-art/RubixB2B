@@ -163,7 +163,7 @@ window.I18N = {
     'fm.message': `Your message *`, 'fm.ph': `Briefly describe what you need`,
     'fm.privacy': `We only use your details to respond to your request. The form is delivered via the FormSubmit service and does not sign you up for any marketing lists.`,
 
-    'ftr.tagline': `Van sales, route management system and KPI analytics with Odoo.`, 'ftr.dev': `Developed by`, 'ftr.product': `Product`, 'ftr.contact': `Contact`,
+    'ftr.tagline': `Van sales, route management system and KPI analytics with Odoo.`, 'ftr.dev': `Developed by`, 'ftr.product': `Discover`, 'ftr.contact': `Contact`,
     'ftr.rights': `NameTech Solutions BV. All rights reserved.`, 'ftr.tm': `Odoo is a registered trademark of Odoo S.A.`,
 
     'js.menuOpen': `Open menu`, 'js.menuClose': `Close menu`, 'js.pause': `Pause autoplay`, 'js.play': `Start autoplay`,
@@ -310,7 +310,7 @@ window.I18N = {
     'fm.message': `Votre message *`, 'fm.ph': `Décrivez brièvement votre besoin`,
     'fm.privacy': `Nous utilisons vos données uniquement pour répondre à votre demande. Le formulaire est transmis via le service FormSubmit et ne vous inscrit à aucune liste marketing.`,
 
-    'ftr.tagline': `Vente en tournée, système de gestion des tournées et analyse KPI avec Odoo.`, 'ftr.dev': `Développé par`, 'ftr.product': `Produit`, 'ftr.contact': `Contact`,
+    'ftr.tagline': `Vente en tournée, système de gestion des tournées et analyse KPI avec Odoo.`, 'ftr.dev': `Développé par`, 'ftr.product': `Découvrir`, 'ftr.contact': `Contact`,
     'ftr.rights': `NameTech Solutions BV. Tous droits réservés.`, 'ftr.tm': `Odoo est une marque déposée d'Odoo S.A.`,
 
     'js.menuOpen': `Ouvrir le menu`, 'js.menuClose': `Fermer le menu`, 'js.pause': `Mettre en pause le défilement`, 'js.play': `Lancer le défilement`,
@@ -457,7 +457,7 @@ window.I18N = {
     'fm.message': `Uw bericht *`, 'fm.ph': `Beschrijf kort wat u nodig hebt`,
     'fm.privacy': `We gebruiken uw gegevens enkel om op uw aanvraag te antwoorden. Het formulier wordt verstuurd via de dienst FormSubmit en schrijft u niet in op marketinglijsten.`,
 
-    'ftr.tagline': `Ritverkoop, routebeheersysteem en KPI-analyse met Odoo.`, 'ftr.dev': `Ontwikkeld door`, 'ftr.product': `Product`, 'ftr.contact': `Contact`,
+    'ftr.tagline': `Ritverkoop, routebeheersysteem en KPI-analyse met Odoo.`, 'ftr.dev': `Ontwikkeld door`, 'ftr.product': `Ontdek`, 'ftr.contact': `Contact`,
     'ftr.rights': `NameTech Solutions BV. Alle rechten voorbehouden.`, 'ftr.tm': `Odoo is een geregistreerd handelsmerk van Odoo S.A.`,
 
     'js.menuOpen': `Menu openen`, 'js.menuClose': `Menu sluiten`, 'js.pause': `Automatisch afspelen pauzeren`, 'js.play': `Automatisch afspelen starten`,
@@ -604,7 +604,7 @@ window.I18N = {
     'fm.message': `Ihre Nachricht *`, 'fm.ph': `Beschreiben Sie kurz Ihren Bedarf`,
     'fm.privacy': `Wir verwenden Ihre Angaben ausschließlich zur Beantwortung Ihrer Anfrage. Das Formular wird über den Dienst FormSubmit übermittelt und trägt Sie in keine Marketingliste ein.`,
 
-    'ftr.tagline': `Tourenverkauf, Tourenmanagementsystem und KPI-Analyse mit Odoo.`, 'ftr.dev': `Entwickelt von`, 'ftr.product': `Produkt`, 'ftr.contact': `Kontakt`,
+    'ftr.tagline': `Tourenverkauf, Tourenmanagementsystem und KPI-Analyse mit Odoo.`, 'ftr.dev': `Entwickelt von`, 'ftr.product': `Entdecken`, 'ftr.contact': `Kontakt`,
     'ftr.rights': `NameTech Solutions BV. Alle Rechte vorbehalten.`, 'ftr.tm': `Odoo ist eine eingetragene Marke der Odoo S.A.`,
 
     'js.menuOpen': `Menü öffnen`, 'js.menuClose': `Menü schließen`, 'js.pause': `Automatische Wiedergabe anhalten`, 'js.play': `Automatische Wiedergabe starten`,
@@ -751,7 +751,7 @@ window.I18N = {
     'fm.message': `Su mensaje *`, 'fm.ph': `Describa brevemente lo que necesita`,
     'fm.privacy': `Solo usamos sus datos para responder a su solicitud. El formulario se envía a través del servicio FormSubmit y no le suscribe a ninguna lista de marketing.`,
 
-    'ftr.tagline': `Autoventa, sistema de gestión de rutas y análisis de KPI con Odoo.`, 'ftr.dev': `Desarrollado por`, 'ftr.product': `Producto`, 'ftr.contact': `Contacto`,
+    'ftr.tagline': `Autoventa, sistema de gestión de rutas y análisis de KPI con Odoo.`, 'ftr.dev': `Desarrollado por`, 'ftr.product': `Descubrir`, 'ftr.contact': `Contacto`,
     'ftr.rights': `NameTech Solutions BV. Todos los derechos reservados.`, 'ftr.tm': `Odoo es una marca registrada de Odoo S.A.`,
 
     'js.menuOpen': `Abrir menú`, 'js.menuClose': `Cerrar menú`, 'js.pause': `Pausar la reproducción automática`, 'js.play': `Iniciar la reproducción automática`,
