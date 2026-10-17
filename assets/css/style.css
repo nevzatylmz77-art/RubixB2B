@@ -224,9 +224,16 @@ h1 .odoo-logo, h2 .odoo-logo { height: .74em; }
   transition: background .3s, border-color .3s, box-shadow .3s;
   border-bottom: 1px solid transparent;
 }
-.header.is-scrolled {
+/* Bulanık arka plan ayrı katmanda: header'a backdrop-filter verilirse
+   içindeki sabit (fixed) mobil menü header'ın içine sıkışır */
+.header::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
   background: rgba(245, 242, 236, .86);
   backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  opacity: 0; transition: opacity .3s;
+}
+.header.is-scrolled::before { opacity: 1; }
+.header.is-scrolled {
   border-bottom-color: var(--border);
   box-shadow: 0 6px 24px -16px rgba(19, 33, 63, .25);
 }
