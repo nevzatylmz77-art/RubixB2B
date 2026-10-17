@@ -28,7 +28,7 @@
     })();
   </script>
   <link rel="preload" href="assets/fonts/plusjakartasans-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/style.css?v=20261019a">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261019c">
 </head>
 <body>
 
@@ -646,30 +646,29 @@
           <a href="#iletisim" class="btn btn--primary" data-i18n="odoo.cta">Entegrasyonu Konuşalım</a>
         </div>
 
-        <!-- Ekosistem: Odoo merkezde; RubixB2 web platformu RubixB2 Plus'ı yönetir, WMS ve B2B uygulaması doğrudan Odoo'ya bağlanır -->
+        <!-- Ekosistem: Odoo merkezde, RubixB2 çözümleri çevresinde -->
         <div class="odoo__diagram">
-          <div class="eco">
-            <div class="eco__erp">
+          <div class="orbit">
+            <div class="orbit__ring orbit__ring--out" aria-hidden="true"></div>
+            <div class="orbit__ring orbit__ring--in" aria-hidden="true"></div>
+            <svg class="orbit__spokes" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <line x1="50" y1="50" x2="23.6" y2="23.6" vector-effect="non-scaling-stroke"/>
+              <line x1="50" y1="50" x2="76.4" y2="23.6" vector-effect="non-scaling-stroke"/>
+              <line x1="50" y1="50" x2="76.4" y2="76.4" vector-effect="non-scaling-stroke"/>
+              <line x1="50" y1="50" x2="23.6" y2="76.4" vector-effect="non-scaling-stroke"/>
+            </svg>
+            <span class="orbit__mod orbit__mod--t" data-i18n="chip.sales">Satış</span>
+            <span class="orbit__mod orbit__mod--r" data-i18n="hub.stock">Stok</span>
+            <span class="orbit__mod orbit__mod--b" data-i18n="chip.acc">Muhasebe</span>
+            <span class="orbit__mod orbit__mod--l" data-i18n="eco.ecom">e-Ticaret</span>
+            <div class="orbit__core">
               <img src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196">
               <small>ERP</small>
-              <ul class="eco__mods">
-                <li data-i18n="chip.sales">Satış</li>
-                <li data-i18n="hub.stock">Stok</li>
-                <li data-i18n="chip.acc">Muhasebe</li>
-                <li>CRM</li>
-                <li data-i18n="eco.ecom">e-Ticaret</li>
-              </ul>
             </div>
-            <div class="eco__links" aria-hidden="true"><span></span><span></span><span></span></div>
-            <div class="eco__apps">
-              <div class="eco__col">
-                <a href="field-route-management/" class="eco__node eco__node--rubix"><span aria-hidden="true">🗺️</span><b>RubixB2</b><small data-i18n="eco.frm">Saha &amp; Rota · Web</small></a>
-                <span class="eco__sub" aria-hidden="true"></span>
-                <a href="mobile-sales/" class="eco__node"><span aria-hidden="true">📱</span><b>RubixB2 Plus</b><small data-i18n="eco.mob">Plasiyer · Mobil</small></a>
-              </div>
-              <a href="warehouse/" class="eco__node"><span aria-hidden="true">📦</span><b>RubixB2 WMS</b><small data-i18n="eco.wms">Depo · Mobil</small></a>
-              <a href="b2b-app/" class="eco__node"><span aria-hidden="true">🛍️</span><b data-i18n="eco.b2b">B2B Uygulama</b><small data-i18n="eco.b2bSub">Müşteri · Mobil</small></a>
-            </div>
+            <a href="field-route-management/" class="orbit__node orbit__node--main" style="--a:-135deg"><span aria-hidden="true">🗺️</span><b>RubixB2</b><small data-i18n="eco.frm">Saha &amp; Rota · Web</small></a>
+            <a href="mobile-sales/" class="orbit__node" style="--a:-45deg"><span aria-hidden="true">📱</span><b>RubixB2 Plus</b><small data-i18n="eco.mob">Plasiyer · Mobil</small></a>
+            <a href="warehouse/" class="orbit__node" style="--a:45deg"><span aria-hidden="true">📦</span><b>RubixB2 WMS</b><small data-i18n="eco.wms">Depo · Mobil</small></a>
+            <a href="b2b-app/" class="orbit__node" style="--a:135deg"><span aria-hidden="true">🛍️</span><b data-i18n="eco.b2b">B2B Uygulama</b><small data-i18n="eco.b2bSub">Müşteri · Mobil</small></a>
           </div>
         </div>
       </div>
@@ -1035,7 +1034,7 @@
     </div>
   </footer>
 
-  <script src="assets/js/i18n.js?v=20261019a"></script>
-  <script src="assets/js/main.js?v=20261019a"></script>
+  <script src="assets/js/i18n.js?v=20261019c"></script>
+  <script src="assets/js/main.js?v=20261019c"></script>
 </body>
 </html>
