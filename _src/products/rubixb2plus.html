@@ -1,0 +1,181 @@
+<!-- RubixB2Plus ürün sayfası — yalnızca <main> içeriği.
+     Build, ana şablonun üst menüsü, iletişim formu ve alt bilgisiyle birleştirir. -->
+<main>
+  <!-- ============ ÜRÜN HERO ============ -->
+  <section class="p-hero">
+    <div class="hero__bg" aria-hidden="true">
+      <div class="dots-bg"></div>
+      <div class="blob blob--1"></div>
+      <div class="blob blob--2"></div>
+    </div>
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb" data-i18n-attr="aria-label:p.bcLabel">
+        <a href="../" data-i18n="p.bcHome">Ana sayfa</a>
+        <span aria-hidden="true">›</span>
+        <a href="../#cozumler" data-i18n="nav.solutions">Çözümler</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">RubixB2Plus</span>
+      </nav>
+
+      <div class="p-hero__inner">
+        <div class="p-hero__content">
+          <span class="eyebrow"><span class="dot"></span> RubixB2Plus</span>
+          <h1 data-i18n="p.title">Saha ve Rota Yönetim Sistemi</h1>
+          <p class="p-hero__slogan" data-i18n="p.slogan">Akıllı Rotalar, <span class="accent-text">Güçlü Satışlar.</span></p>
+          <p class="lead" data-i18n="p.lead">Saha satış ekiplerinizi daha verimli yönetin, müşteri ziyaretlerinizi planlayın ve satış performansınızı tek merkezden takip edin.</p>
+          <div class="hero__ctas">
+            <a href="#iletisim" class="btn btn--primary btn--lg"><span data-i18n="cta.freeDemo">Ücretsiz Demo Talep Et</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#ozellikler" class="btn btn--ghost btn--lg" data-i18n="p.ctaFeatures">Özellikleri İncele</a>
+          </div>
+          <ul class="chips">
+            <li data-i18n="p.chip1">Rota Planlama</li>
+            <li data-i18n="p.chip2">Ziyaret Frekansı</li>
+            <li data-i18n="p.chip3">Cihaz Yönetimi</li>
+            <li data-i18n="p.chip4">Gün Sonu Raporu</li>
+            <li data-i18n="p.chip5">KPI</li>
+          </ul>
+        </div>
+
+        <!-- Ürün görseli: haftalık plan + rota haritası -->
+        <div class="p-hero__visual" aria-hidden="true">
+          <div class="plan-card">
+            <div class="plan-card__head">
+              <div><small data-i18n="p.vPlan">Ziyaret planı</small><strong data-i18n="p.vWeek">42. hafta</strong></div>
+              <span class="pill" data-i18n="d.sample">Örnek veri</span>
+            </div>
+            <div class="plan-grid">
+              <span class="plan-grid__d" data-i18n="p.vMon">Pzt</span><span class="plan-grid__d" data-i18n="p.vTue">Sal</span><span class="plan-grid__d" data-i18n="p.vWed">Çar</span><span class="plan-grid__d" data-i18n="p.vThu">Per</span><span class="plan-grid__d" data-i18n="p.vFri">Cum</span>
+              <span class="pv pv--w">A</span><span class="pv pv--d">B</span><span class="pv pv--w">A</span><span class="pv pv--m">C</span><span class="pv pv--w">A</span>
+              <span class="pv pv--d">B</span><span class="pv pv--m">D</span><span class="pv pv--d">B</span><span class="pv pv--w">E</span><span class="pv pv--d">B</span>
+              <span class="pv pv--w">E</span><span class="pv pv--d">F</span><span class="pv pv--w">G</span><span class="pv pv--d">F</span><span class="pv pv--y">H</span>
+            </div>
+            <div class="plan-legend">
+              <span><i class="pv pv--d"></i><span data-i18n="p.vDaily">Günlük</span></span>
+              <span><i class="pv pv--w"></i><span data-i18n="p.vWeekly">Haftalık</span></span>
+              <span><i class="pv pv--m"></i><span data-i18n="p.vMonthly">Aylık</span></span>
+              <span><i class="pv pv--y"></i><span data-i18n="p.vYearly">Yıllık</span></span>
+            </div>
+          </div>
+
+          <div class="ui-card ui-card--map p-hero__map">
+            <svg viewBox="0 0 400 200" class="map">
+              <path class="map__road" d="M0 150 C80 130 120 170 200 140 S330 80 400 100"/>
+              <path class="map__road" d="M120 0 C130 60 90 110 140 200"/>
+              <path class="map__route" d="M40 160 L100 115 L165 135 L230 75 L300 105 L355 45"/>
+              <g class="map__pin map__pin--done"><circle cx="40" cy="160" r="9"/><text x="40" y="164">1</text></g>
+              <g class="map__pin map__pin--done"><circle cx="100" cy="115" r="9"/><text x="100" y="119">2</text></g>
+              <g class="map__pin map__pin--done"><circle cx="165" cy="135" r="9"/><text x="165" y="139">3</text></g>
+              <g class="map__pin map__pin--active"><circle cx="230" cy="75" r="11"/><text x="230" y="79">4</text></g>
+              <g class="map__pin"><circle cx="300" cy="105" r="9"/><text x="300" y="109">5</text></g>
+              <g class="map__pin"><circle cx="355" cy="45" r="9"/><text x="355" y="49">6</text></g>
+            </svg>
+          </div>
+
+          <div class="float-card p-hero__device">
+            <span class="sync-ico">🔒</span>
+            <div><small data-i18n="p.vDevice">Yetkili cihaz</small><strong data-i18n="p.vDeviceOk">Erişim onaylı</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GİRİŞ ============ -->
+  <section class="section p-intro">
+    <div class="container p-intro__inner">
+      <div class="p-intro__text">
+        <span class="eyebrow" data-i18n="p.introEyebrow">RubixB2Plus Nedir?</span>
+        <p class="p-intro__big" data-i18n="p.intro1">RubixB2, <img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196"> ERP ile entegre çalışan, işletmelerin saha satış operasyonlarını dijital ortamda planlamasını, yönetmesini ve analiz etmesini sağlayan kapsamlı bir saha ve rota yönetim çözümüdür.</p>
+        <p data-i18n="p.intro2">Odoo'da kayıtlı müşteri bilgilerini kullanarak saha ekiplerinin günlük ziyaret rotalarını oluşturur, ziyaret sıklıklarını planlar ve satış performanslarının ölçülmesine olanak tanır.</p>
+      </div>
+      <ul class="p-intro__points">
+        <li><span class="p-intro__ico">🗂️</span><div><b data-i18n="p.pt1t">Odoo müşteri verisi</b><small data-i18n="p.pt1p">Müşteri kartları doğrudan Odoo'dan gelir</small></div></li>
+        <li><span class="p-intro__ico">🗓️</span><div><b data-i18n="p.pt2t">Dönemsel planlama</b><small data-i18n="p.pt2p">Günlük, haftalık, aylık ve yıllık ziyaretler</small></div></li>
+        <li><span class="p-intro__ico">📊</span><div><b data-i18n="p.pt3t">Ölçülebilir performans</b><small data-i18n="p.pt3p">Müşteri, plasiyer ve rota bazında analiz</small></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ ÖZELLİKLER ============ -->
+  <section class="section section--alt" id="ozellikler">
+    <div class="container">
+      <div class="section__head">
+        <span class="eyebrow" data-i18n="nav.features">Özellikler</span>
+        <h2 data-i18n="p.featTitle">Öne çıkan <span class="gradient-text">özellikler</span></h2>
+      </div>
+      <div class="p-features">
+        <article class="p-feature reveal">
+          <span class="p-feature__num">01</span><span class="p-feature__ico">🗺️</span>
+          <h3 data-i18n="p.f1t">Akıllı Rota ve Ziyaret Planlama</h3>
+          <p data-i18n="p.f1p">Müşteri ziyaretlerini günlük, haftalık, aylık ve yıllık olarak planlayın. Saha ekiplerinizin ziyaret programlarını merkezi olarak yönetin.</p>
+        </article>
+        <article class="p-feature reveal">
+          <span class="p-feature__num">02</span><span class="p-feature__ico">🔁</span>
+          <h3 data-i18n="p.f2t">Ziyaret Frekansı Yönetimi</h3>
+          <p data-i18n="p.f2p">Her müşteri için belirlenen ziyaret sıklığına göre planlamalar oluşturun. Müşterilerin düzenli ve sistematik olarak ziyaret edilmesini sağlayın.</p>
+        </article>
+        <article class="p-feature reveal">
+          <span class="p-feature__num">03</span><span class="p-feature__ico">📈</span>
+          <h3 data-i18n="p.f3t">Satış Performansı Takibi</h3>
+          <p data-i18n="p.f3p">Saha satış ekiplerinin performanslarını müşteri, plasiyer ve rota bazında analiz edin. Satış hedeflerini ve gerçekleşen sonuçları karşılaştırarak operasyonel verimliliği değerlendirin.</p>
+        </article>
+        <article class="p-feature reveal">
+          <span class="p-feature__num">04</span><span class="p-feature__ico">🔐</span>
+          <h3 data-i18n="p.f4t">Cihaz ve Erişim Yönetimi</h3>
+          <p data-i18n="p.f4p">Saha ekiplerinin kullandığı cihazları merkezi olarak yönetin. Yetkilendirilmiş cihazların sisteme erişimini kontrol ederek operasyonel güvenliği artırın.</p>
+        </article>
+        <article class="p-feature reveal">
+          <span class="p-feature__num">05</span><span class="p-feature__ico">🧾</span>
+          <h3 data-i18n="p.f5t">Gün Sonu Raporları</h3>
+          <p data-i18n="p.f5p">Günlük saha faaliyetlerini, müşteri ziyaretlerini ve satış sonuçlarını raporlayın. Yöneticilerin saha operasyonlarını kolayca değerlendirmesini sağlayın.</p>
+        </article>
+        <article class="p-feature reveal">
+          <span class="p-feature__num">06</span><span class="p-feature__ico">🎯</span>
+          <h3 data-i18n="p.f6t">KPI ve Performans Raporları</h3>
+          <p data-i18n="p.f6p">İşletmenizin ihtiyaçlarına özel oluşturulan KPI raporlarıyla satış performansını, ziyaret gerçekleşmelerini ve saha ekiplerinin verimliliğini ölçün.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ODOO ENTEGRASYONU ============ -->
+  <section class="section">
+    <div class="container odoo">
+      <div class="odoo__text">
+        <span class="eyebrow" data-i18n="odoo.eyebrow"><img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196"> Entegrasyonu</span>
+        <h2 data-i18n="p.odooTitle"><img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196"> ERP ile <span class="gradient-text">entegre çalışma</span></h2>
+        <p data-i18n="p.odoo1">RubixB2, Odoo ERP sisteminizde bulunan müşteri verilerini kullanarak saha operasyonlarınız ile merkezi iş süreçleriniz arasında bütünlük sağlar.</p>
+        <p data-i18n="p.odoo2">Böylece farklı sistemlerde tekrar veri oluşturma ihtiyacını azaltır, saha ekipleri ile yöneticilerin aynı veriler üzerinden çalışmasını kolaylaştırır.</p>
+      </div>
+      <div class="flow p-flow" aria-hidden="true">
+        <div class="flow__head"><img src="assets/img/rubixb2-icon.png" alt="" width="36" height="41"><div><small data-i18n="p.flowSub">Veri akışı</small><strong>RubixB2Plus + <img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196"></strong></div></div>
+        <ol class="flow__steps">
+          <li class="is-done"><span class="flow__ico">🗂️</span><div><b data-i18n="p.fl1">Müşteri kartları</b><small data-i18n="p.fl1s">Odoo</small></div></li>
+          <li class="is-done"><span class="flow__ico">🗓️</span><div><b data-i18n="p.fl2">Rota ve ziyaret planı</b><small data-i18n="p.fl2s">Merkez · RubixB2Plus</small></div></li>
+          <li class="is-active"><span class="flow__ico">📱</span><div><b data-i18n="p.fl3">Sahada ziyaret</b><small data-i18n="p.fl3s">Yetkili cihaz</small></div></li>
+          <li><span class="flow__ico">🧾</span><div><b data-i18n="p.fl4">Gün sonu raporu</b><small data-i18n="p.fl4s">Yönetici</small></div></li>
+          <li><span class="flow__ico">🎯</span><div><b data-i18n="p.fl5">KPI ve performans</b><small data-i18n="p.fl5s">Analiz</small></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ KAZANIMLAR ============ -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__head">
+        <span class="eyebrow" data-i18n="p.benEyebrow">Kazanımlar</span>
+        <h2 data-i18n="p.benTitle">RubixB2 işletmenize <span class="gradient-text">ne kazandırır?</span></h2>
+      </div>
+      <div class="p-benefits">
+        <article class="p-benefit reveal"><span class="p-benefit__ico">🗓️</span><h3 data-i18n="p.b1t">Planlı Saha Operasyonları</h3><p data-i18n="p.b1p">Günlük ve dönemsel ziyaretlerin düzenli yönetimi.</p></article>
+        <article class="p-benefit reveal"><span class="p-benefit__ico">🚀</span><h3 data-i18n="p.b2t">Artan Satış Verimliliği</h3><p data-i18n="p.b2p">Saha ekiplerinin zamanını ve ziyaret kapasitesini daha etkin kullanma.</p></article>
+        <article class="p-benefit reveal"><span class="p-benefit__ico">🎛️</span><h3 data-i18n="p.b3t">Merkezi Yönetim</h3><p data-i18n="p.b3p">Rota, ziyaret, cihaz ve performans bilgilerinin tek noktadan kontrolü.</p></article>
+        <article class="p-benefit reveal"><span class="p-benefit__ico">📊</span><h3 data-i18n="p.b4t">Ölçülebilir Performans</h3><p data-i18n="p.b4p">KPI ve satış raporlarıyla veriye dayalı karar alma.</p></article>
+        <article class="p-benefit reveal"><span class="p-benefit__ico">🔗</span><h3 data-i18n="p.b5t">Odoo Entegrasyonu</h3><p data-i18n="p.b5p">Mevcut ERP altyapınızla uyumlu ve bütünleşik operasyon yönetimi.</p></article>
+      </div>
+    </div>
+  </section>
+</main>

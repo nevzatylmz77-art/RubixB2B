@@ -37,25 +37,48 @@
   // Ana sayfa (/xx/) ve SSS sayfası (/xx/faq/) aynı şablondan üretilir
   var PAGES = [
     { path: '', root: '../' },
-    { path: 'faq/', root: '../../' }
+    { path: 'faq/', root: '../../' },
+    { path: 'rubixb2plus/', root: '../../', product: 'rubixb2plus', productName: 'RubixB2Plus', interest: 'Rut Yönetim Sistemi' }
   ];
+  var PRODUCT_HTML = {};
+  for (var pp = 0; pp < PAGES.length; pp++) {
+    if (PAGES[pp].product) PRODUCT_HTML[PAGES[pp].product] = await (await fetch('products/' + PAGES[pp].product + '.html?' + Date.now())).text();
+  }
+  var PDICT = window.PRODUCT_I18N || {};
 
   for (var li = 0; li < LANGS.length; li++) {
     for (var pgi = 0; pgi < PAGES.length; pgi++) {
     var PG = PAGES[pgi];
     var isFaq = PG.path === 'faq/';
+    var isProduct = !!PG.product;
+    var isSub = PG.path !== '';
     var lang = LANGS[li];
-    var D = DICT[lang] || {};
+    var PD = isProduct ? (PDICT[PG.product] || {}) : {};
+    var D = Object.assign({}, DICT[lang] || {}, PD[lang] || {});
     var doc = new DOMParser().parseFromString(template, 'text/html');
     var pageUrl = BASE + lang + '/' + PG.path;
     var val = function (key, orig) { return lang === 'tr' ? orig : (D[key] != null ? D[key] : orig); };
-    var meta = function (key) { return D[key] || DICT.tr[key]; };
+    var meta = function (key) { return D[key] || (PD.tr && PD.tr[key]) || DICT.tr[key]; };
 
-    // 0) Sayfaya göre bölümler: ana sayfada SSS yok; SSS sayfasında yalnızca SSS + iletişim
+    // 0) Sayfaya göre bölümler: ana sayfada SSS yok; SSS sayfasında yalnızca SSS + iletişim;
+    //    ürün sayfasında ürün bölümleri + iletişim
     if (isFaq) {
       doc.querySelectorAll('main > section').forEach(function (s) {
         if (s.id !== 'sss' && s.id !== 'iletisim') s.remove();
       });
+    } else if (isProduct) {
+      var contact = doc.getElementById('iletisim');
+      doc.querySelectorAll('main > section').forEach(function (s) { if (s !== contact) s.remove(); });
+      var pdoc = new DOMParser().parseFromString(PRODUCT_HTML[PG.product], 'text/html');
+      pdoc.querySelectorAll('main > section').forEach(function (s) {
+        contact.parentNode.insertBefore(doc.importNode(s, true), contact);
+      });
+      // İletişim bölümünü ürüne göre uyarla (çalışma anında değişmesin diye çeviri anahtarı kaldırılır)
+      var ctaH = contact.querySelector('.cta__text h2'), ctaP = contact.querySelector('.cta__text > p');
+      ctaH.innerHTML = meta('p.ctaTitle'); ctaH.removeAttribute('data-i18n');
+      ctaP.textContent = meta('p.ctaLead'); ctaP.removeAttribute('data-i18n');
+      var opt = contact.querySelector('select[name="interest"] option[value="' + PG.interest + '"]');
+      if (opt) opt.setAttribute('selected', '');
     } else {
       var faqSec = doc.getElementById('sss');
       if (faqSec) faqSec.remove();
@@ -78,6 +101,7 @@
     // 2) Dil, başlık, açıklama
     var title = isFaq ? meta('meta.faqTitle') : meta('meta.title');
     var desc = isFaq ? meta('meta.faqDesc') : meta('meta.desc');
+    if (isProduct) { title = (PD[lang] && PD[lang]['meta.title']) || PD.tr['meta.title']; desc = (PD[lang] && PD[lang]['meta.desc']) || PD.tr['meta.desc']; }
     doc.documentElement.setAttribute('lang', HREFLANG[lang]);
     doc.documentElement.setAttribute('data-page-lang', lang);
     doc.documentElement.setAttribute('data-page-path', PG.path);
@@ -97,7 +121,7 @@
     add(el(doc, 'meta', { name: 'robots', content: 'index, follow, max-image-preview:large' }));
     add(el(doc, 'link', { rel: 'canonical', href: pageUrl }));
     LANGS.forEach(function (l) { add(el(doc, 'link', { rel: 'alternate', hreflang: HREFLANG[l], href: BASE + l + '/' + PG.path })); });
-    add(el(doc, 'link', { rel: 'alternate', hreflang: 'x-default', href: isFaq ? BASE + 'en/faq/' : BASE }));
+    add(el(doc, 'link', { rel: 'alternate', hreflang: 'x-default', href: isSub ? BASE + 'en/' + PG.path : BASE }));
     add(el(doc, 'meta', { property: 'og:type', content: 'website' }));
     add(el(doc, 'meta', { property: 'og:site_name', content: 'RubixB2' }));
     add(el(doc, 'meta', { property: 'og:title', content: title }));
@@ -149,6 +173,25 @@
           { '@type': 'ListItem', position: 2, name: val('faq.title', doc.querySelector('#sss h2, #sss h1').textContent), item: pageUrl }
         ]
       });
+    } else if (isProduct) {
+      graph.push({
+        '@type': 'WebPage', '@id': pageUrl + '#webpage', url: pageUrl, name: title, description: desc,
+        inLanguage: HREFLANG[lang], isPartOf: { '@id': BASE + '#website' }, about: { '@id': BASE + '#' + PG.product },
+        primaryImageOfPage: OG_IMAGE
+      });
+      graph.push({
+        '@type': 'SoftwareApplication', '@id': BASE + '#' + PG.product, name: PG.productName,
+        applicationCategory: 'BusinessApplication', operatingSystem: 'Web', description: desc, url: pageUrl,
+        image: BASE + 'assets/img/rubixb2-logo-stacked.png', publisher: { '@id': BASE + '#organization' },
+        isPartOf: { '@id': BASE + '#software' }
+      });
+      graph.push({
+        '@type': 'BreadcrumbList', itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'RubixB2', item: BASE + lang + '/' },
+          { '@type': 'ListItem', position: 2, name: val('nav.solutions', 'Çözümler'), item: BASE + lang + '/#cozumler' },
+          { '@type': 'ListItem', position: 3, name: PG.productName, item: pageUrl }
+        ]
+      });
     } else {
       graph.push({
         '@type': 'WebPage', '@id': pageUrl + '#webpage', url: pageUrl, name: title, description: desc,
@@ -174,11 +217,18 @@
       Array.prototype.forEach.call(faqHead.attributes, function (a) { h1.setAttribute(a.name, a.value); });
       faqHead.replaceWith(h1);
       doc.getElementById('sss').classList.add('faq-page');
+    }
+    // Alt sayfalarda: sayfada olmayan bölümlere giden bağlantılar ana sayfaya, diğer sayfa bağlantıları bir üst klasöre
+    if (isSub) {
       doc.querySelectorAll('a[href^="#"]').forEach(function (a) {
         var h = a.getAttribute('href');
-        if (h !== '#iletisim') a.setAttribute('href', '../' + (h === '#top' ? '' : h));
+        if (h === '#top') { a.setAttribute('href', '../'); return; }
+        if (!doc.getElementById(h.slice(1))) a.setAttribute('href', '../' + h);
       });
-      doc.querySelectorAll('a[href="faq/"]').forEach(function (a) { a.setAttribute('href', './'); a.setAttribute('aria-current', 'page'); });
+      doc.querySelectorAll('a[href="faq/"]').forEach(function (a) {
+        if (isFaq) { a.setAttribute('href', './'); a.setAttribute('aria-current', 'page'); }
+        else a.setAttribute('href', '../faq/');
+      });
       doc.querySelectorAll('a[href="privacy/"], a[href="cookies/"]').forEach(function (a) { a.setAttribute('href', '../' + a.getAttribute('href')); });
     }
 
@@ -279,7 +329,7 @@
       return '  <url>\n    <loc>' + BASE + l + '/' + path + '</loc>\n    <lastmod>' + today + '</lastmod>\n' + alts + '\n  </url>';
     }).join('\n');
   };
-  var urls = [sitemapEntry('', BASE), sitemapEntry('faq/', BASE + 'en/faq/'), sitemapEntry('privacy/', BASE + 'en/privacy/'), sitemapEntry('cookies/', BASE + 'en/cookies/')].join('\n');
+  var urls = [sitemapEntry('', BASE), sitemapEntry('rubixb2plus/', BASE + 'en/rubixb2plus/'), sitemapEntry('faq/', BASE + 'en/faq/'), sitemapEntry('privacy/', BASE + 'en/privacy/'), sitemapEntry('cookies/', BASE + 'en/cookies/')].join('\n');
   await save('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + urls + '\n</urlset>\n');
 
   log('\nBuild tamamlandı.');
