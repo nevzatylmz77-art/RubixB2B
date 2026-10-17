@@ -247,13 +247,6 @@
         if (v && v.indexOf('assets/') === 0) n.setAttribute(a, PG.root + v);
       });
     });
-    doc.querySelectorAll('.footer__langs a').forEach(function (a) {
-      var l = a.getAttribute('href').replace('/', '');
-      a.setAttribute('href', PG.root + l + '/' + PG.path);
-      if (l === lang) a.setAttribute('aria-current', 'page');
-    });
-    doc.querySelector('.footer__langs').setAttribute('aria-label', val('a.lang', 'Diller'));
-
     await save(lang + '/' + PG.path + 'index.html', '<!doctype html>\n' + doc.documentElement.outerHTML + '\n');
     }
   }
