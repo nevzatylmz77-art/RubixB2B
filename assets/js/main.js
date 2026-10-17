@@ -390,6 +390,65 @@
     go(0);
   }
 
+  // Bölüm bağlantıları: ilk açılışta yazı tipleri ve görseller yüklenirken bölümlerin yeri
+  // değişebildiği için kaydırma bittikten sonra hedef bölüm yeniden hizalanır
+  var html = document.documentElement;
+  var userMoved = false;
+  ['wheel', 'touchstart', 'keydown'].forEach(function (ev) {
+    window.addEventListener(ev, function () { userMoved = true; }, { passive: true });
+  });
+
+  function hashTarget(hash) {
+    if (!hash || hash.length < 2) return null;
+    try { return document.getElementById(decodeURIComponent(hash.slice(1))); } catch (e) { return null; }
+  }
+
+  function isAligned(el) {
+    var pad = parseFloat(getComputedStyle(html).scrollPaddingTop) || 0;
+    var atBottom = window.scrollY + window.innerHeight >= html.scrollHeight - 2;
+    return Math.abs(el.getBoundingClientRect().top - pad) < 4 || atBottom;
+  }
+
+  function jumpTo(el) {
+    var prev = html.style.scrollBehavior;
+    html.style.scrollBehavior = 'auto';
+    el.scrollIntoView(true);
+    html.style.scrollBehavior = prev;
+  }
+
+  function alignAfterScroll(el) {
+    var done = false;
+    function check() {
+      if (done) return;
+      done = true;
+      window.removeEventListener('scrollend', check);
+      if (!userMoved && !isAligned(el)) jumpTo(el);
+    }
+    if ('onscrollend' in window) window.addEventListener('scrollend', check);
+    setTimeout(check, 'onscrollend' in window ? 2000 : 1000);
+  }
+
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href*="#"]');
+    if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    if (a.pathname !== location.pathname || a.search !== location.search) return;
+    var el = hashTarget(a.hash);
+    if (!el) return;
+    e.preventDefault();
+    if (location.hash !== a.hash) history.pushState(null, '', a.hash);
+    userMoved = false;
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    alignAfterScroll(el);
+  });
+
+  // Başka sayfadan bölüm bağlantısıyla gelindiyse, sayfa tamamen yüklenince konumu düzelt
+  var landing = hashTarget(location.hash);
+  if (landing) {
+    var fixLanding = function () { if (!userMoved && !isAligned(landing)) jumpTo(landing); };
+    window.addEventListener('load', fixLanding);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fixLanding);
+  }
+
   document.getElementById('year').textContent = new Date().getFullYear();
 
   // Açılış dilini uygula (dil sayfasında sayfanın dili; şablonda tarayıcı dili veya kayıtlı tercih)
