@@ -1098,6 +1098,72 @@ body { transition: opacity .2s; }
   .float-card--chart { right: -10px; }
 }
 
+/* ---------- Hero: ilgili ürün bağlantısı ---------- */
+.hero__prod {
+  display: inline-flex; align-items: center; gap: 12px; max-width: 100%;
+  margin: -8px 0 24px; padding: 8px 14px 8px 8px; border-radius: 16px;
+  background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+  color: var(--text); transition: border-color .2s, transform .2s;
+}
+.hero__prod:hover { border-color: rgba(2, 123, 160, .4); transform: translateY(-2px); }
+.hero__prod-ico { flex: none; width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center; font-size: 18px; background: var(--bg); border: 1px solid var(--border); }
+.hero__prod > span:nth-child(2) { min-width: 0; text-align: left; }
+.hero__prod small { display: block; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--teal-2); }
+.hero__prod b { display: block; font-size: 14px; line-height: 1.3; color: var(--navy-2); }
+.hero__prod svg { flex: none; width: 18px; height: 18px; fill: none; stroke: var(--orange-2); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.slide.is-active .hero__content > :nth-child(6) { transition-delay: .4s; }
+
+/* ---------- Ürün ailesi ---------- */
+.prod-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.prod-card {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 10px;
+  padding: 26px 22px 22px; border-radius: 22px; background: var(--surface); border: 1px solid var(--border);
+  color: var(--text); hyphens: auto;
+}
+.prod-card.reveal { transition: opacity .6s ease, transform .6s ease, border-color .25s, box-shadow .25s; }
+.prod-card.reveal.is-visible:hover { transform: translateY(-4px); border-color: rgba(2, 123, 160, .35); box-shadow: var(--shadow); }
+.prod-card__ico { width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center; font-size: 26px; background: var(--bg); border: 1px solid var(--border); }
+.prod-card__tag { font-size: 11.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--teal-2); }
+.prod-card h3 { font-size: 18px; line-height: 1.3; color: var(--navy-2); }
+.prod-card p { flex: 1; font-size: 14.5px; color: var(--muted); }
+.prod-card__more { margin-top: 4px; font-size: 14px; font-weight: 700; color: var(--orange-2); }
+@media (max-width: 1100px) { .prod-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .prod-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- Odoo ekosistem diyagramı ---------- */
+.eco { width: 100%; max-width: 470px; display: flex; flex-direction: column; }
+.eco__erp {
+  align-self: center; text-align: center; padding: 18px 22px 16px; border-radius: 22px;
+  background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow);
+}
+.eco__erp img { display: block; width: 96px; height: auto; margin: 0 auto; }
+.eco__erp > small { display: block; margin-top: 4px; font-size: 11px; font-weight: 700; letter-spacing: .14em; color: var(--muted); }
+.eco__mods { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.eco__mods li { padding: 3px 10px; border-radius: 999px; font-size: 11.5px; font-weight: 600; color: var(--navy-2); background: var(--bg); border: 1px solid var(--border); }
+.eco__links { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; height: 40px; }
+.eco__links::before { content: ""; position: absolute; left: 16.66%; right: 16.66%; top: 20px; border-top: 2px dashed rgba(2, 123, 160, .45); }
+.eco__links span { justify-self: center; margin-top: 20px; border-left: 2px dashed rgba(2, 123, 160, .45); }
+.eco__links span:nth-child(2) { margin-top: 0; }
+.eco__apps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: start; }
+.eco__col { display: flex; flex-direction: column; }
+.eco__sub { align-self: center; height: 20px; border-left: 2px dashed rgba(2, 123, 160, .45); }
+.eco__node {
+  display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 14px 8px;
+  text-align: center; font-size: 24px; border-radius: 18px; background: var(--surface); border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm); transition: transform .2s, border-color .2s;
+}
+.eco__node:hover { transform: translateY(-3px); border-color: rgba(2, 123, 160, .4); }
+.eco__node b { margin-top: 4px; font-size: 13px; line-height: 1.25; color: var(--navy-2); }
+.eco__node small { font-size: 11px; line-height: 1.3; font-weight: 600; color: var(--muted); overflow-wrap: anywhere; }
+.eco__node--rubix { border-color: var(--orange); box-shadow: 0 12px 30px -14px rgba(242, 131, 35, .5); }
+.eco__node--rubix b { color: var(--orange-2); }
+@media (max-width: 520px) {
+  .eco__apps, .eco__links { gap: 8px; }
+  .eco__node { padding: 12px 4px; font-size: 20px; }
+  .eco__node b { font-size: 12px; }
+  .eco__node small { font-size: 10px; }
+}
+
 /* Menü 1100px altında hamburger menüye geçer (uzun dillerde taşmayı önler) */
 @media (max-width: 1100px) {
   .burger { display: block; }

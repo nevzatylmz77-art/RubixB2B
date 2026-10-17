@@ -43,6 +43,8 @@
     { path: 'warehouse/', root: '../../', product: 'warehouse', prefix: 'RubixB2 WMS', interest: 'RubixB2 WMS Mobil Depo ve Stok Yönetim Sistemi' },
     { path: 'b2b-app/', root: '../../', product: 'b2b-app', prefix: '', interest: 'Kurumsal B2B Mobil Uygulama' }
   ];
+  // schema.org operatingSystem: web platformu ve mobil uygulamalar
+  var PRODUCT_OS = { 'field-route-management': 'Web', 'mobile-sales': 'iOS, Android', 'warehouse': 'iOS, Android', 'b2b-app': 'iOS, Android' };
   var PRODUCT_HTML = {};
   for (var pp = 0; pp < PAGES.length; pp++) {
     if (PAGES[pp].product) PRODUCT_HTML[PAGES[pp].product] = await (await fetch('products/' + PAGES[pp].product + '.html?' + Date.now())).text();
@@ -186,14 +188,14 @@
       });
       graph.push({
         '@type': 'SoftwareApplication', '@id': BASE + '#' + PG.product, name: prodName,
-        applicationCategory: 'BusinessApplication', operatingSystem: 'Web', description: desc, url: pageUrl,
+        applicationCategory: 'BusinessApplication', operatingSystem: PRODUCT_OS[PG.product], description: desc, url: pageUrl,
         image: BASE + 'assets/img/rubixb2-logo-stacked.png', publisher: { '@id': BASE + '#organization' },
         isPartOf: { '@id': BASE + '#software' }
       });
       graph.push({
         '@type': 'BreadcrumbList', itemListElement: [
           { '@type': 'ListItem', position: 1, name: 'RubixB2', item: BASE + lang + '/' },
-          { '@type': 'ListItem', position: 2, name: val('nav.solutions', 'Çözümler'), item: BASE + lang + '/#cozumler' },
+          { '@type': 'ListItem', position: 2, name: val('nav.solutions', 'Çözümler'), item: BASE + lang + '/#urunler' },
           { '@type': 'ListItem', position: 3, name: prodName, item: pageUrl }
         ]
       });
@@ -203,11 +205,23 @@
         inLanguage: HREFLANG[lang], isPartOf: { '@id': BASE + '#website' }, about: { '@id': BASE + '#software' },
         primaryImageOfPage: OG_IMAGE
       });
+      // Ürün ailesi: ana sayfadaki ürün kartlarından
+      var parts = [];
+      doc.querySelectorAll('#urunler .prod-card').forEach(function (card) {
+        var slug = card.getAttribute('href').replace(/\/$/, '');
+        parts.push({ '@id': BASE + '#' + slug });
+        graph.push({
+          '@type': 'SoftwareApplication', '@id': BASE + '#' + slug, name: card.querySelector('h3').textContent.trim(),
+          applicationCategory: 'BusinessApplication', operatingSystem: PRODUCT_OS[slug],
+          description: card.querySelector('p').textContent.trim(), url: BASE + lang + '/' + slug + '/',
+          publisher: { '@id': BASE + '#organization' }, isPartOf: { '@id': BASE + '#software' }
+        });
+      });
       graph.push({
         '@type': 'SoftwareApplication', '@id': BASE + '#software', name: 'RubixB2',
-        applicationCategory: 'BusinessApplication', operatingSystem: 'Web',
+        applicationCategory: 'BusinessApplication', operatingSystem: 'Web, iOS, Android',
         description: desc, url: pageUrl, image: BASE + 'assets/img/rubixb2-logo-stacked.png',
-        publisher: { '@id': BASE + '#organization' }
+        publisher: { '@id': BASE + '#organization' }, hasPart: parts
       });
     }
     var ldScript = el(doc, 'script', { type: 'application/ld+json' });
