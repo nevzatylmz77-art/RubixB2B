@@ -1,0 +1,173 @@
+<!-- RubixB2 WMS — Mobil Depo ve Stok Yönetim Sistemi ürün sayfası (yalnızca <main> içeriği).
+     Build, ana şablonun üst menüsü, iletişim formu ve alt bilgisiyle birleştirir. -->
+<main>
+  <!-- ============ ÜRÜN HERO ============ -->
+  <section class="p-hero">
+    <div class="hero__bg" aria-hidden="true">
+      <div class="dots-bg"></div>
+      <div class="blob blob--1"></div>
+      <div class="blob blob--2"></div>
+    </div>
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb" data-i18n-attr="aria-label:p.bcLabel">
+        <a href="../" data-i18n="p.bcHome">Ana sayfa</a>
+        <span aria-hidden="true">›</span>
+        <a href="../#cozumler" data-i18n="nav.solutions">Çözümler</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page" data-i18n="p.title">Mobil Depo ve Stok Yönetim Sistemi</span>
+      </nav>
+
+      <div class="p-hero__inner">
+        <div class="p-hero__content">
+          <span class="eyebrow"><span class="dot"></span> RubixB2 WMS</span>
+          <h1 data-i18n="p.title">Mobil Depo ve Stok Yönetim Sistemi</h1>
+          <p class="p-hero__slogan" data-i18n="p.slogan">Deponuzda Hız, <span class="accent-text">Stoklarınızda Kontrol!</span></p>
+          <p class="lead" data-i18n="p.lead">Depo operasyonlarınızı dijitalleştirin, barkod teknolojisiyle işlemlerinizi hızlandırın ve stok yönetiminde doğruluğu artırın.</p>
+          <div class="hero__ctas">
+            <a href="#iletisim" class="btn btn--primary btn--lg"><span data-i18n="cta.freeDemo">Ücretsiz Demo Talep Et</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#ozellikler" class="btn btn--ghost btn--lg" data-i18n="p.ctaFeatures">Özellikleri İncele</a>
+          </div>
+          <ul class="chips">
+            <li data-i18n="p.chip1">Mal Kabul</li>
+            <li data-i18n="p.chip2">Sipariş Hazırlama</li>
+            <li data-i18n="p.chip3">Stok Sayımı</li>
+            <li data-i18n="p.chip4">Barkod</li>
+          </ul>
+        </div>
+
+        <!-- Ürün görseli: mobil mal kabul / barkod ekranı -->
+        <div class="p-hero__visual p-hero__visual--phone" aria-hidden="true">
+          <div class="phone">
+            <div class="phone__notch"></div>
+            <div class="phone__screen">
+              <div class="app-top">
+                <div><small data-i18n="p.vReceipt">Mal kabul</small><strong>WH/IN/01043</strong></div>
+                <span class="pill pill--live" data-i18n="p.vOpen">Açık</span>
+              </div>
+              <div class="scan-box">
+                <span class="scan-box__code"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                <span class="scan-box__line"></span>
+                <small data-i18n="p.vScan">Barkodu okutun</small>
+              </div>
+              <ul class="m-lines">
+                <li><div><b data-i18n="u.water">Su 0,5L (24'lü)</b><small>8690000123457</small></div><span class="qty qty--ok">10 / 10</span></li>
+                <li><div><b data-i18n="u.juice">Meyve Suyu 1L</b><small>8690000765432</small></div><span class="qty">6 / 8</span></li>
+                <li><div><b data-i18n="u.tea">Soğuk Çay 500ml</b><small>8690000345678</small></div><span class="qty">0 / 4</span></li>
+              </ul>
+              <div class="app-progress">
+                <div class="app-progress__label"><span data-i18n="p.vProgress">Okutulan</span><span>16 / 22</span></div>
+                <div class="bar"><span style="width:73%"></span></div>
+              </div>
+              <div class="app-btn" data-i18n="p.vConfirm">Kabulü onayla</div>
+            </div>
+          </div>
+
+          <div class="float-card p-float p-float--sign">
+            <span class="sync-ico">✅</span>
+            <div><small data-i18n="p.vVerified">Barkod doğrulandı</small><strong data-i18n="u.water">Su 0,5L (24'lü)</strong></div>
+          </div>
+          <div class="float-card p-float p-float--os">
+            <div class="ring" style="--p:92"><span data-i18n="p.vPct">%92</span></div>
+            <div><small data-i18n="p.vCount">Stok sayımı</small><strong data-i18n="p.vZone">Raf A-12</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GİRİŞ ============ -->
+  <section class="section p-intro">
+    <div class="container p-intro__inner">
+      <div class="p-intro__text">
+        <span class="eyebrow" data-i18n="p.introEyebrow">RubixB2 WMS Nedir?</span>
+        <p class="p-intro__big" data-i18n="p.intro1">RubixB2 WMS, <img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196"> ERP ile entegre çalışan, günlük depo operasyonlarının mobil cihazlar ve barkod okuma teknolojisiyle gerçekleştirilmesini sağlayan akıllı bir depo yönetim çözümüdür.</p>
+        <p data-i18n="p.intro2">Mal kabul, sipariş hazırlama, stok sayımı ve barkod kontrolü gibi temel depo işlemlerini dijital ortamda yöneterek manuel veri girişini azaltır, operasyonel hataların önüne geçilmesine yardımcı olur.</p>
+        <p data-i18n="p.intro3">Depo çalışanlarının işlemleri doğrudan mobil cihazlar üzerinden gerçekleştirmesini sağlayarak depo süreçlerinde hız, doğruluk ve izlenebilirlik sunar.</p>
+      </div>
+      <ul class="p-intro__points">
+        <li><span class="p-intro__ico">📷</span><div><b data-i18n="p.pt1t">Barkod teknolojisi</b><small data-i18n="p.pt1p">Her işlemde doğru ürün kontrolü</small></div></li>
+        <li><span class="p-intro__ico">📱</span><div><b data-i18n="p.pt2t">Mobil depo işlemleri</b><small data-i18n="p.pt2p">Mal kabul, sipariş hazırlama ve sayım</small></div></li>
+        <li><span class="p-intro__ico">🔗</span><div><b data-i18n="p.pt3t">Odoo stok entegrasyonu</b><small data-i18n="p.pt3p">Kayıtlar merkezi sistemle bütünleşik</small></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ ÖZELLİKLER ============ -->
+  <section class="section section--alt" id="ozellikler">
+    <div class="container">
+      <div class="section__head">
+        <span class="eyebrow" data-i18n="nav.features">Özellikler</span>
+        <h2 data-i18n="p.featTitle">Öne çıkan <span class="gradient-text">özellikler</span></h2>
+      </div>
+      <div class="p-features">
+        <article class="p-feature reveal">
+          <span class="p-feature__num">01</span><span class="p-feature__ico">📥</span>
+          <h3 data-i18n="p.f1t">Mobil Mal Kabul Yönetimi</h3>
+          <p data-i18n="p.f1p">Depoya gelen ürünlerin kabul işlemlerini mobil cihazlar üzerinden gerçekleştirin. Barkod kontrolüyle ürünleri doğrulayın ve mal kabul süreçlerini daha hızlı ve güvenilir şekilde yönetin.</p>
+        </article>
+        <article class="p-feature reveal">
+          <span class="p-feature__num">02</span><span class="p-feature__ico">🧺</span>
+          <h3 data-i18n="p.f2t">Barkod Destekli Sipariş Hazırlama</h3>
+          <p data-i18n="p.f2p">Müşteri siparişlerine ait ürünleri barkod okutarak hazırlayın. Doğru ürünlerin seçilmesini sağlayarak sipariş toplama ve sevkiyat hazırlık süreçlerinde oluşabilecek hataları azaltın.</p>
+        </article>
+        <article class="p-feature reveal">
+          <span class="p-feature__num">03</span><span class="p-feature__ico">🔢</span>
+          <h3 data-i18n="p.f3t">Mobil Stok Sayımı</h3>
+          <p data-i18n="p.f3p">Depo stok sayımlarını mobil cihazlar üzerinden gerçekleştirin. Barkod destekli sayım işlemleriyle fiziksel stokların kontrolünü kolaylaştırın ve sayım sonuçlarını Odoo ERP ile bütünleşik olarak yönetin.</p>
+        </article>
+        <article class="p-feature reveal">
+          <span class="p-feature__num">04</span><span class="p-feature__ico">🔍</span>
+          <h3 data-i18n="p.f4t">Barkod Kontrol ve Ürün Doğrulama</h3>
+          <p data-i18n="p.f4p">Ürün barkodlarını mobil cihazlarla sorgulayarak ürün bilgilerini kontrol edin. Mal kabul, sipariş hazırlama ve stok sayımı süreçlerinde doğru ürünle işlem yapılmasını sağlayın.</p>
+        </article>
+        <article class="p-feature reveal">
+          <span class="p-feature__num">05</span><span class="p-feature__ico">👷</span>
+          <h3 data-i18n="p.f5t">Mobil ve Kullanıcı Dostu Operasyonlar</h3>
+          <p data-i18n="p.f5p">Depo çalışanlarının işlemlerini doğrudan sahada, mobil cihazlar üzerinden gerçekleştirmesini sağlayın. Kağıt tabanlı süreçleri azaltarak operasyonel verimliliği artırın.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ODOO ENTEGRASYONU ============ -->
+  <section class="section">
+    <div class="container odoo">
+      <div class="odoo__text">
+        <span class="eyebrow" data-i18n="odoo.eyebrow"><img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196"> Entegrasyonu</span>
+        <h2 data-i18n="p.odooTitle"><img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196"> ERP ile <span class="gradient-text">entegre depo yönetimi</span></h2>
+        <p class="p-hero__slogan p-odoo-tag" data-i18n="p.odooTag">Depodaki her işlem, merkezi sisteminizle uyumlu.</p>
+        <p data-i18n="p.odoo1">RubixB2 WMS, Odoo ERP'nin stok ve depo yönetimi süreçleriyle entegre çalışarak depo operasyonlarının merkezi sistemle bütünleşik yürütülmesini sağlar.</p>
+        <p data-i18n="p.odoo2">Mal kabul, sipariş hazırlama, stok sayımı ve ürün doğrulama işlemlerinin mobil ortamda gerçekleştirilmesi sayesinde manuel veri girişleri azalır, stok bilgilerinin doğruluğu ve operasyonel izlenebilirlik artar.</p>
+      </div>
+      <div class="flow p-flow" aria-hidden="true">
+        <div class="flow__head"><img src="assets/img/rubixb2-icon.png" alt="" width="36" height="41"><div><small data-i18n="p.flowSub">Veri akışı</small><strong>RubixB2 WMS + <img class="odoo-logo" src="assets/img/odoo-logo.svg" alt="Odoo" width="621" height="196"></strong></div></div>
+        <ol class="flow__steps">
+          <li class="is-done"><span class="flow__ico">📄</span><div><b data-i18n="p.fl1">Satın alma ve satış siparişleri</b><small data-i18n="p.fl1s">Odoo → mobil</small></div></li>
+          <li class="is-done"><span class="flow__ico">📥</span><div><b data-i18n="p.fl2">Barkodlu mal kabul</b><small data-i18n="p.fl2s">Depo · RubixB2 WMS</small></div></li>
+          <li class="is-active"><span class="flow__ico">🧺</span><div><b data-i18n="p.fl3">Sipariş hazırlama</b><small data-i18n="p.fl3s">Depo · RubixB2 WMS</small></div></li>
+          <li><span class="flow__ico">🔢</span><div><b data-i18n="p.fl4">Stok sayımı</b><small data-i18n="p.fl4s">Depo · RubixB2 WMS</small></div></li>
+          <li><span class="flow__ico">📦</span><div><b data-i18n="p.fl5">Güncel stok kayıtları</b><small data-i18n="p.fl5s">Mobil → Odoo</small></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ KAZANIMLAR ============ -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__head">
+        <span class="eyebrow" data-i18n="p.benEyebrow">Kazanımlar</span>
+        <h2 data-i18n="p.benTitle">RubixB2 WMS işletmenize <span class="gradient-text">ne kazandırır?</span></h2>
+      </div>
+      <div class="p-benefits">
+        <article class="p-benefit reveal"><span class="p-benefit__ico">⚡</span><h3 data-i18n="p.b1t">Hızlı Depo Operasyonları</h3><p data-i18n="p.b1p">Mal kabulden sipariş hazırlamaya kadar günlük depo işlemlerini mobil cihazlarla daha hızlı gerçekleştirin.</p></article>
+        <article class="p-benefit reveal"><span class="p-benefit__ico">🎯</span><h3 data-i18n="p.b2t">Daha Az Operasyonel Hata</h3><p data-i18n="p.b2p">Barkod doğrulama sayesinde yanlış ürün seçimi ve hatalı veri girişlerini azaltın.</p></article>
+        <article class="p-benefit reveal"><span class="p-benefit__ico">📦</span><h3 data-i18n="p.b3t">Doğru Stok Yönetimi</h3><p data-i18n="p.b3p">Mobil stok sayımıyla fiziksel stoklarınızı daha kolay kontrol edin ve kayıt doğruluğunu artırın.</p></article>
+        <article class="p-benefit reveal"><span class="p-benefit__ico">🌱</span><h3 data-i18n="p.b4t">Kağıtsız Depo Süreçleri</h3><p data-i18n="p.b4p">Manuel formlar yerine dijital işlem akışları kullanarak operasyonlarınızı sadeleştirin.</p></article>
+        <article class="p-benefit reveal"><span class="p-benefit__ico">🔗</span><h3 data-i18n="p.b5t">Merkezi ERP Entegrasyonu</h3><p data-i18n="p.b5p">Odoo ERP ile bütünleşik çalışan depo operasyonları sayesinde stok ve sipariş süreçlerinde veri tutarlılığını güçlendirin.</p></article>
+      </div>
+    </div>
+  </section>
+</main>
